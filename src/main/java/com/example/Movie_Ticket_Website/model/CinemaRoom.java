@@ -12,16 +12,17 @@ public class CinemaRoom {
     @Column(name = "roomName")
     private String roomName;
 
-    @OneToOne(mappedBy = "cinemaroom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cinema cinema;
 
-    @OneToOne(mappedBy = "cinemaroom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Seat seat;
 
-    @OneToOne(mappedBy = "cinemaroom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TicketDetail ticketDetail;
 
-    public CinemaRoom() {}
+    public CinemaRoom() {
+    }
 
     public Seat getSeat() {
         return seat;
