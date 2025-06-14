@@ -1,6 +1,5 @@
 package com.example.Movie_Ticket_Website.dto;
 
-import jakarta.persistence.Column;
 
 public class CinemaWithMovieDTO {
     private String cinemaID;
