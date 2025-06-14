@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "movie")
@@ -44,35 +45,21 @@ public class Movie {
     @Column(name = "movieScore")
     private double movieScore;
 
+    @ManyToOne
+    @JoinColumn(name = "actorID")
+    private Actor actor;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ShowTime> showTimes;
+
     @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MovieMediaLink movieMediaLink;
 
-    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Actor actor;
-
-    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ShowTime showTime;
 
     @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private UserComment userComment;
 
     public Movie() {
-    }
-
-    public ShowTime getShowTime() {
-        return showTime;
-    }
-
-    public void setShowTime(ShowTime showTime) {
-        this.showTime = showTime;
-    }
-
-    public UserComment getUserComment() {
-        return userComment;
-    }
-
-    public void setUserComment(UserComment userComment) {
-        this.userComment = userComment;
     }
 
     public Actor getActor() {
@@ -81,6 +68,22 @@ public class Movie {
 
     public void setActor(Actor actor) {
         this.actor = actor;
+    }
+
+    public List<ShowTime> getShowTimes() {
+        return showTimes;
+    }
+
+    public void setShowTimes(List<ShowTime> showTimes) {
+        this.showTimes = showTimes;
+    }
+
+    public UserComment getUserComment() {
+        return userComment;
+    }
+
+    public void setUserComment(UserComment userComment) {
+        this.userComment = userComment;
     }
 
     public int getStt() {

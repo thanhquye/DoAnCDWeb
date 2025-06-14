@@ -2,6 +2,8 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -26,15 +28,23 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "userID")
-    private UserLogin UserLogin;
+    private UserLogin userLogin;
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TransactionTicket TransactionTicket;
+    private TransactionBooking TransactionTicket;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private UserComment userComment;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserComment> userComment;
 
     public Customer() {
+    }
+
+    public List<UserComment> getUserComment() {
+        return userComment;
+    }
+
+    public void setUserComment(List<UserComment> userComment) {
+        this.userComment = userComment;
     }
 
     public String getCustomerID() {
@@ -86,26 +96,20 @@ public class Customer {
     }
 
     public UserLogin getUserLogin() {
-        return UserLogin;
+        return userLogin;
     }
 
     public void setUserLogin(UserLogin userLogin) {
-        UserLogin = userLogin;
+        userLogin = userLogin;
     }
 
-    public UserComment getUserComment() {
-        return userComment;
-    }
 
-    public void setUserComment(UserComment userComment) {
-        this.userComment = userComment;
-    }
 
-    public TransactionTicket getTransactionTicket() {
+    public TransactionBooking getTransactionTicket() {
         return TransactionTicket;
     }
 
-    public void setTransactionTicket(TransactionTicket transactionTicket) {
+    public void setTransactionTicket(TransactionBooking transactionTicket) {
         TransactionTicket = transactionTicket;
     }
 }

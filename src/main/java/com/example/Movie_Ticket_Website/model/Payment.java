@@ -14,7 +14,7 @@ public class Payment {
     private String paymentTypeName;
 
     @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TransactionTicket transactionTicket;
+    private TransactionBooking transactionTicket;
 
     public Payment() {
     }
@@ -35,11 +35,11 @@ public class Payment {
         this.paymentTypeName = paymentTypeName;
     }
 
-    public TransactionTicket getTransactionTicket() {
+    public TransactionBooking getTransactionTicket() {
         return transactionTicket;
     }
 
-    public void setTransactionTicket(TransactionTicket transactionTicket) {
+    public void setTransactionTicket(TransactionBooking transactionTicket) {
         this.transactionTicket = transactionTicket;
     }
 }

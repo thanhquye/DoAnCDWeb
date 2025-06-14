@@ -16,11 +16,12 @@ public class UserComment {
     @JoinColumn(name = "movieID")
     private Movie movie;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customerID")
     private Customer customer;
 
     public UserComment() {}
+
 
     public String getCommentID() {
         return commentID;

@@ -2,6 +2,9 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "actor")
 public class Actor {
@@ -15,25 +18,22 @@ public class Actor {
     private String actorName;
 
     @Column(name = "dob")
-    private String dob;
+    private Date dob;
 
     @Column(name = "gender")
     private String gender;
 
-    @OneToOne
-    @JoinColumn(name = "movieID") // khóa ngoại trong bảng movie_link
-    private Movie movie;
+    @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL)
+    private List<Movie> movies;
 
     public Actor() {}
 
-
-
-    public Movie getMovie() {
-        return movie;
+    public List<Movie> getMovies() {
+        return movies;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 
     public String getGender() {
@@ -44,11 +44,11 @@ public class Actor {
         this.gender = gender;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
