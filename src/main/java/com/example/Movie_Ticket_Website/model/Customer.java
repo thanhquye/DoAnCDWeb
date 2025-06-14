@@ -28,7 +28,6 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "userID")
-
     private UserLogin userLogin;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -96,14 +95,12 @@ public class Customer {
         this.dob = dob;
     }
 
-
     public UserLogin getUserLogin() {
         return userLogin;
     }
 
     public void setUserLogin(UserLogin userLogin) {
         userLogin = userLogin;
-
     }
 
     public List<TransactionBooking> getTransactionTicket() {
