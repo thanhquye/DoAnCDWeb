@@ -1,5 +1,6 @@
 package com.example.Movie_Ticket_Website;
 
+import com.example.Movie_Ticket_Website.dto.CommentDTO;
 import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
 import com.example.Movie_Ticket_Website.model.*;
@@ -25,8 +26,12 @@ class MovieTicketWebsiteApplicationTests {
 
 	@Autowired
 	private CinemaService cinemaService;
+
 	@Autowired
 	private CinemaRoomService cinemaRoomService;
+
+	@Autowired
+	private UserCommentService userCommentService;
 
 	@Test
 	void contextLoads() {
@@ -77,6 +82,13 @@ class MovieTicketWebsiteApplicationTests {
 		List<CinemaRoom> cinemas = cinemaRoomService.getCinemaRoomNameByMID_CNAME_DATE("Mv1", "Cinestar Quốc Thanh", "2023-12-22");
 		for (CinemaRoom cinema : cinemas) {
 			System.out.println(cinema.getRoomName());
+		}
+	}
+	@Test
+    void getAllComment() {
+		List<CommentDTO> commentDTOS = userCommentService.getCommentsByMovieId("Mv3");
+		for (CommentDTO commentDTO : commentDTOS) {
+			System.out.println(commentDTO.getCommentText());
 		}
 
 	}
