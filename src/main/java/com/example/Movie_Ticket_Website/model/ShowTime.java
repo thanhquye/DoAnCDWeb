@@ -7,28 +7,29 @@ import jakarta.persistence.*;
 public class ShowTime {
     @Id
     @Column(name = "showtimeID")
-    private  String showtimeID;
+    private String showtimeID;
 
     @Column(name = "showDate")
-    private  String showDate;
+    private String showDate;
 
     @Column(name = "startTime")
-    private  String startTime;
+    private String startTime;
 
     @Column(name = "endTime")
-    private  String endTime;
+    private String endTime;
 
     @OneToOne
     @JoinColumn(name = "movieID")
-    private  Movie movie;
+    private Movie movie;
 
-    @OneToOne(mappedBy = "showtime", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "showTime", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Ticket ticket;
 
-    @OneToOne(mappedBy = "showtime", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "showTime", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Contain contain;
 
-    public ShowTime(){}
+    public ShowTime() {
+    }
 
     public String getShowDate() {
         return showDate;
