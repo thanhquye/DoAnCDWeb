@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RestController
 public class ValidateUserController {
-
+    // kiểm tra gmail và username trong Register
     @Autowired
     private RegisterService registerService;
 
