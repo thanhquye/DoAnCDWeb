@@ -33,6 +33,9 @@ class MovieTicketWebsiteApplicationTests {
 	@Autowired
 	private UserCommentService userCommentService;
 
+	@Autowired
+	private CustomerService customerService;
+
 	@Test
 	void contextLoads() {
 	}
@@ -90,6 +93,13 @@ class MovieTicketWebsiteApplicationTests {
 		for (CommentDTO commentDTO : commentDTOS) {
 			System.out.println(commentDTO.getCommentText());
 		}
+
+	}
+	@Test
+    void getCustomerByUserID() {
+		Customer customer = new Customer("Cus2", "SANG", "Nam" , "Hà nội", "0912827812", "2003-03-23");
+		boolean cus = customerService.updateCustomer(customer);
+		System.out.println(cus);
 
 	}
 

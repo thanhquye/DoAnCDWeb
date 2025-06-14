@@ -16,7 +16,7 @@ public class TicketDetail {
     @JoinColumn(name = "seatID")
     private Seat seat;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cinemaRoomID")
     private CinemaRoom cinemaRoom;
 

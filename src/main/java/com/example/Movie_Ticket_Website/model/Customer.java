@@ -39,6 +39,15 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String customerID, String fullName, String gender, String address, String phoneNumber, String dob) {
+        this.customerID = customerID;
+        this.fullName = fullName;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.dob = dob;
+    }
+
     public List<UserComment> getUserComment() {
         return userComment;
     }
