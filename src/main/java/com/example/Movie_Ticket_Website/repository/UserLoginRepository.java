@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
     // Tìm kiếm UserLogin theo email và userPassword
     UserLogin findByEmailAndUserPassword(String email, String userPassword);
+
+    // register
+    boolean existsByEmail(String email);
+    boolean existsByUserName(String userName);
 }
