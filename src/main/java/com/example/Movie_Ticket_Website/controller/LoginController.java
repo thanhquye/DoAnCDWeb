@@ -38,12 +38,14 @@ public class LoginController {
             session.setAttribute("customer", customer);
             session.setAttribute("userName", user.getUserName());
 
+            System.out.println("login success");
+
             if (user.isAdmin()) {
                 session.setAttribute("admin", user);
                 return "redirect:/adminHome";
             } else {
                 // Nếu không phải admin, chuyển hướng đến trang chính (index.jsp hoặc controller homepage)
-                return "redirect:/index";
+                return "redirect:/home";
             }
         } else {
             // Đăng nhập thất bại
