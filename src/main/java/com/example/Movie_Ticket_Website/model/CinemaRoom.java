@@ -14,6 +14,7 @@ public class CinemaRoom {
     @Column(name = "roomName")
     private String roomName;
 
+
     @ManyToOne
     @JoinColumn(name = "cinemaID")
     private Cinema cinema;
@@ -21,10 +22,12 @@ public class CinemaRoom {
     @OneToMany(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Seat> seats;
 
+
     @OneToOne(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TicketDetail ticketDetail;
 
-    public CinemaRoom() {}
+    public CinemaRoom() {
+    }
 
     public List<Seat> getSeats() {
         return seats;

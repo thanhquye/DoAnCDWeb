@@ -7,20 +7,21 @@ import jakarta.persistence.*;
 public class ShowTime {
     @Id
     @Column(name = "showtimeID")
-    private  String showtimeID;
+    private String showtimeID;
 
     @Column(name = "showDate")
-    private  String showDate;
+    private String showDate;
 
     @Column(name = "startTime")
-    private  String startTime;
+    private String startTime;
 
     @Column(name = "endTime")
-    private  String endTime;
+    private String endTime;
 
     @ManyToOne
     @JoinColumn(name = "movieID")
     private Movie movie;
+
 
     @ManyToOne
     @JoinColumn(name = "cinemaID")
@@ -30,7 +31,9 @@ public class ShowTime {
     private Ticket ticket;
 
 
-    public ShowTime(){}
+
+    public ShowTime() {
+    }
 
     public Cinema getCinema() {
         return cinema;
