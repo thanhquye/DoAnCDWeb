@@ -29,6 +29,11 @@ public class CinemaRoom {
     public CinemaRoom() {
     }
 
+    public CinemaRoom(String cinemaRoomID, String roomName) {
+        this.cinemaRoomID = cinemaRoomID;
+        this.roomName = roomName;
+    }
+
     public List<Seat> getSeats() {
         return seats;
     }

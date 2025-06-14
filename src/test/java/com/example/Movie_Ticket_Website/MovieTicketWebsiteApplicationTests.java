@@ -2,9 +2,7 @@ package com.example.Movie_Ticket_Website;
 
 import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
-import com.example.Movie_Ticket_Website.model.Actor;
-import com.example.Movie_Ticket_Website.model.Movie;
-import com.example.Movie_Ticket_Website.model.UserLogin;
+import com.example.Movie_Ticket_Website.model.*;
 import com.example.Movie_Ticket_Website.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,11 @@ class MovieTicketWebsiteApplicationTests {
 
 	@Autowired
 	private MovieService movieService;
+
+	@Autowired
+	private CinemaService cinemaService;
+	@Autowired
+	private CinemaRoomService cinemaRoomService;
 
 	@Test
 	void contextLoads() {
@@ -52,6 +55,30 @@ class MovieTicketWebsiteApplicationTests {
 		for (MovieEaringDTO movieEaringDTO : top10) {
 			System.out.println(movieEaringDTO.getMovieName());
 		}
+	}
+	@Test
+    void findMovieByName() {
+		List<Movie> movies = movieService.getMovieByName("Kẻ Ăn Hồn");
+		for (Movie movie : movies) {
+			System.out.println(movie.getMovieName());
+		}
+
+	}
+	@Test
+    void findCinemaByID() {
+		List<Cinema> cinemas = cinemaService.getMostPopularCinema();
+		for (Cinema cinema : cinemas) {
+			System.out.println(cinema.getCinemaID());
+		}
+
+	}
+	@Test
+    void findCinemaRoomDay() {
+		List<CinemaRoom> cinemas = cinemaRoomService.getCinemaRoomNameByMID_CNAME_DATE("Mv1", "Cinestar Quốc Thanh", "2023-12-22");
+		for (CinemaRoom cinema : cinemas) {
+			System.out.println(cinema.getRoomName());
+		}
+
 	}
 
 }

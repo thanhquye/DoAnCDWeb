@@ -24,8 +24,15 @@ public class Cinema {
     private List<CinemaRoom> cinemaRooms;
 
 
+    public Cinema(String cinemaID, String cinemaName, String location) {
+        this.cinemaID = cinemaID;
+        this.cinemaName = cinemaName;
+        this.location = location;
+    }
 
-    public Cinema() {  }
+    public Cinema() {
+
+    }
 
     public List<ShowTime> getShowTimes() {
         return showTimes;

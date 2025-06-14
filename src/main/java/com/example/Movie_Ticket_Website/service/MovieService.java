@@ -2,6 +2,7 @@ package com.example.Movie_Ticket_Website.service;
 
 import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
+import com.example.Movie_Ticket_Website.model.Cinema;
 import com.example.Movie_Ticket_Website.model.Movie;
 import com.example.Movie_Ticket_Website.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,49 +23,23 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
-    }
-
-    public Movie getMovieById(String id) {
-        return movieRepository.findById(id).orElse(null);
-    }
-
-    public Movie getMovieByMovieID(String movieID) {
-        return movieRepository.findByMovieID(movieID);
-    }
-
-    public Movie saveMovie(Movie movie) {
-        return movieRepository.save(movie);
-    }
-
-    public void deleteMovie(String id) {
-        movieRepository.deleteById(id);
-    }
-
-    public List<Movie> searchMoviesByName(String name) {
-        return movieRepository.findByMovieNameContaining(name);
-    }
-
-    public List<Movie> getMoviesByCategory(String category) {
-        return movieRepository.findByMovieCategory(category);
-    }
-
-    public List<Movie> getPublishedMovies() {
-        return movieRepository.findByIsPublished(1);
-    }
-
     public List<MovieWithMediaDTO> getAllMoviesWithMedia() {
         return movieRepository.findAllMoviesWithLinksDTO();
     }
     // lấy tổng số bộ phim
-    public long gettotalMovie(){
+    public long getTotalMovie(){
         return movieRepository.count();
     }
-
+    // lấy top 10 movie
     public List<MovieEaringDTO> getMovieEarings(){
         return movieRepository.getMovieEarning(PageRequest.of(0, 10));
     }
+
+    public List<Movie> getMovieByName(String name){
+        return movieRepository.findByMovieNameContaining(name);
+    }
+
+
 
 
 }
