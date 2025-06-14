@@ -59,7 +59,7 @@
 
             <div class="login-register">
                 <p>Đã có tài khoản?
-                    <a href="login.jsp" class="login-link">Đăng nhập</a>
+                    <a href="login" class="login-link">Đăng nhập</a>
                 </p>
             </div>
 

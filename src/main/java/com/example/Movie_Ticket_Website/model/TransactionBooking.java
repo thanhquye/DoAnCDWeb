@@ -18,7 +18,7 @@ public class TransactionBooking {
     @Column(name = "stateTransaction")
     private int stateTransaction;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customerID")
     private Customer customer;
 
