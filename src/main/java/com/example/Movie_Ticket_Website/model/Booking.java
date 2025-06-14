@@ -2,6 +2,8 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "booking")
 public class Booking {
@@ -9,21 +11,39 @@ public class Booking {
     @Column(name = "bookingID")
     private String bookingID;
 
-    @OneToOne
-    @JoinColumn(name = "ticketID")
-    private Ticket ticket;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userID")
     private UserLogin userLogin;
 
+    // 1 booking có nhiều ticket
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ticket> tickets;
 
     @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private BookingDetail bookingDetail;
 
+    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private TransactionBooking transactionTicket;
+
     public Booking() {
     }
 
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public TransactionBooking getTransactionTicket() {
+        return transactionTicket;
+    }
+
+    public void setTransactionTicket(TransactionBooking transactionTicket) {
+        this.transactionTicket = transactionTicket;
+    }
 
     public BookingDetail getBookingDetail() {
         return bookingDetail;
@@ -49,11 +69,11 @@ public class Booking {
         this.userLogin = userLogin;
     }
 
-    public Ticket getTicket() {
-        return ticket;
+    public List<Ticket> getTicket() {
+        return tickets;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setTicket(List<Ticket> ticket) {
+        this.tickets = ticket;
     }
 }

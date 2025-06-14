@@ -3,8 +3,8 @@ package com.example.Movie_Ticket_Website.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "transactionticket")
-public class TransactionTicket {
+@Table(name = "transactionbooking")
+public class TransactionBooking {
     @Id
     @Column(name = "transactionID")
     private String transactionID;
@@ -23,14 +23,22 @@ public class TransactionTicket {
     private Customer customer;
 
     @OneToOne
-    @JoinColumn(name = "ticketID")
-    private Ticket ticket;
+    @JoinColumn(name = "bookingID")
+    private Booking booking;
 
     @OneToOne
     @JoinColumn(name = "paymentTypeID")
     private Payment payment;
 
-    public TransactionTicket() {}
+    public TransactionBooking() {}
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 
     public String getTransactionID() {
         return transactionID;
@@ -72,13 +80,7 @@ public class TransactionTicket {
         this.customer = customer;
     }
 
-    public Ticket getTicket() {
-        return ticket;
-    }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
 
     public Payment getPayment() {
         return payment;

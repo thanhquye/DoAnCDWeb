@@ -18,17 +18,29 @@ public class ShowTime {
     @Column(name = "endTime")
     private String endTime;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "movieID")
     private Movie movie;
+
+
+    @ManyToOne
+    @JoinColumn(name = "cinemaID")
+    private Cinema cinema;
 
     @OneToOne(mappedBy = "showTime", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Ticket ticket;
 
-    @OneToOne(mappedBy = "showTime", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Contain contain;
+
 
     public ShowTime() {
+    }
+
+    public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
     }
 
     public String getShowDate() {
@@ -79,11 +91,5 @@ public class ShowTime {
         this.ticket = ticket;
     }
 
-    public Contain getContain() {
-        return contain;
-    }
 
-    public void setContain(Contain contain) {
-        this.contain = contain;
-    }
 }
