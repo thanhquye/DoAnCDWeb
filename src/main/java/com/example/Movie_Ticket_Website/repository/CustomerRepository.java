@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String> {
-    // Vì mối quan hệ đã được ánh xạ qua UserLogin, tùy chọn:
+    // Vì mối quan hệ đã được ánh xạ qua UserLogin:
     Customer findByUserLogin_UserId(String userId);
 }

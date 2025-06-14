@@ -14,4 +14,8 @@ public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
     List<UserLogin> findAllByIsActiveTrue();
     // Tìm kiếm UserLogin theo email và userPassword
     UserLogin findByEmailAndUserPassword(String email, String userPassword);
+
+    // register
+    boolean existsByEmail(String email);
+    boolean existsByUserName(String userName);
 }
