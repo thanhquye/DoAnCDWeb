@@ -26,6 +26,6 @@ public class LoginService {
 
     // Lấy Customer của user theo userId
     public Customer getCustomerByUserId(String userId) {
-        return customerRepository.findByUserlogin_UserId(userId);
+        return customerRepository.findByUserLogin_UserId(userId);
     }
 }
