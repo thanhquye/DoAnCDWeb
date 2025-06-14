@@ -30,8 +30,8 @@ public class Customer {
     @JoinColumn(name = "userID")
     private UserLogin userLogin;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TransactionBooking TransactionTicket;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TransactionBooking> TransactionTicket;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UserComment> userComment;
@@ -103,13 +103,11 @@ public class Customer {
         userLogin = userLogin;
     }
 
-
-
-    public TransactionBooking getTransactionTicket() {
+    public List<TransactionBooking> getTransactionTicket() {
         return TransactionTicket;
     }
 
-    public void setTransactionTicket(TransactionBooking transactionTicket) {
+    public void setTransactionTicket(List<TransactionBooking> transactionTicket) {
         TransactionTicket = transactionTicket;
     }
 }
