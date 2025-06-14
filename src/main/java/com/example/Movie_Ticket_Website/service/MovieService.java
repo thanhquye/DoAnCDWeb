@@ -1,5 +1,6 @@
 package com.example.Movie_Ticket_Website.service;
 
+import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
 import com.example.Movie_Ticket_Website.model.Movie;
 import com.example.Movie_Ticket_Website.repository.MovieRepository;
@@ -56,5 +57,14 @@ public class MovieService {
     public List<MovieWithMediaDTO> getAllMoviesWithMedia() {
         return movieRepository.findAllMoviesWithLinksDTO();
     }
+    // lấy tổng số bộ phim
+    public long gettotalMovie(){
+        return movieRepository.count();
+    }
+
+    public List<MovieEaringDTO> getMovieEarings(){
+        return movieRepository.getMovieEarning(PageRequest.of(0, 10));
+    }
+
 
 }

@@ -11,7 +11,7 @@ public class Ticket {
     @Column(name = "ticketID")
     private String ticketID;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "showtimeID")
     private ShowTime showTime;
 

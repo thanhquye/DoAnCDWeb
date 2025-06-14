@@ -12,4 +12,8 @@ public class TicketDetailService {
     public TicketDetailService(TicketDetailRepository ticketDetailRepository) {
         this.ticketDetailRepository = ticketDetailRepository;
     }
+
+    public long totalPriceTicketDetails() {
+        return ticketDetailRepository.getTotalEarnings();
+    }
 }
