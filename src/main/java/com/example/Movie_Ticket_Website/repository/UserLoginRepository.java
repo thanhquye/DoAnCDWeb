@@ -9,5 +9,9 @@ import java.util.List;
 @Repository
 public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
     UserLogin findByEmail(String email);
+
+    // check user active is true
     List<UserLogin> findAllByIsActiveTrue();
+    // Tìm kiếm UserLogin theo email và userPassword
+    UserLogin findByEmailAndUserPassword(String email, String userPassword);
 }
