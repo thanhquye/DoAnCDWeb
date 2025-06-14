@@ -2,9 +2,12 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "userlogin")
 public class UserLogin {
+
     int stt;
 
     @Id
@@ -29,10 +32,21 @@ public class UserLogin {
     @Column(name = "isVerifyEmail")
     boolean isVerifyEmail;
 
-    @OneToOne(mappedBy = "userlogin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "userLogin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Customer customer;
 
+    @OneToMany(mappedBy = "userLogin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Booking> bookings;
+
     public UserLogin() {}
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public int getStt() {
         return stt;

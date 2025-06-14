@@ -15,7 +15,7 @@ public class Seat {
     @Column(name = "seatType")
     private String seatType;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cinemaRoomID")
     private CinemaRoom cinemaRoom;
 
@@ -24,6 +24,8 @@ public class Seat {
 
     public Seat() {
     }
+
+
 
     public String getSeatID() {
         return seatID;

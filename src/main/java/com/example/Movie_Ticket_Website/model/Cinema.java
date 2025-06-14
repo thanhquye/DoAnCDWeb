@@ -2,6 +2,8 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "cinema")
 public class Cinema {
@@ -15,33 +17,30 @@ public class Cinema {
     @Column(name = "location")
     private String location;
 
-    @OneToOne
-    @JoinColumn(name = "cinemaRoomID")
-    private CinemaRoom cinemaRoom;
+    @OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ShowTime> showTimes;
 
-    @OneToOne(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Contain contain;
+    @OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CinemaRoom> cinemaRooms;
 
-    @OneToOne(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Ticket ticket;
 
 
     public Cinema() {  }
 
-    public Ticket getTicket() {
-        return ticket;
+    public List<ShowTime> getShowTimes() {
+        return showTimes;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setShowTimes(List<ShowTime> showTimes) {
+        this.showTimes = showTimes;
     }
 
-    public Contain getContain() {
-        return contain;
+    public List<CinemaRoom> getCinemaRooms() {
+        return cinemaRooms;
     }
 
-    public void setContain(Contain contain) {
-        this.contain = contain;
+    public void setCinemaRooms(List<CinemaRoom> cinemaRooms) {
+        this.cinemaRooms = cinemaRooms;
     }
 
     public String getCinemaID() {
@@ -68,11 +67,4 @@ public class Cinema {
         this.location = location;
     }
 
-    public CinemaRoom getCinemaRoom() {
-        return cinemaRoom;
-    }
-
-    public void setCinemaRoom(CinemaRoom cinemaRoom) {
-        this.cinemaRoom = cinemaRoom;
-    }
 }
