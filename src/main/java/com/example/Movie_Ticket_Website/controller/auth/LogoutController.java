@@ -1,4 +1,4 @@
-package com.example.Movie_Ticket_Website.controller;
+package com.example.Movie_Ticket_Website.controller.auth;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;

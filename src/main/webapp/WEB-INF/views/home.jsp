@@ -1,3 +1,4 @@
+
 <%@ page import="com.example.Movie_Ticket_Website.beans.ShoppingCart" %>
 <%@ page import="com.example.Movie_Ticket_Website.model.MovieMediaLink" %>
 <%--<%--%>
@@ -11,6 +12,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>MovieBooking - PZO</title>
     <jsp:include page="../views/layout-view/header.jsp"/>
@@ -128,6 +130,7 @@
         </div>
     </div>
 </section>
+
 
 <%--Section PHIM SẮP CHIẾU --%>
 <section class="w3l-grids">
