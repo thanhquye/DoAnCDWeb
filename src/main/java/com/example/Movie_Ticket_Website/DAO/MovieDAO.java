@@ -15,18 +15,18 @@ public class MovieDAO {
     private MovieService movieService;
 
     public void all(){
-        List<MovieWithMediaDTO> getAllMovie = movieService.getAllMoviesWithMedia();
-        List<MovieWithMediaDTO> getNewestFilms = movieService.getNewestMovies(4);
-        List<Movie> getPublishedMovie = movieService.getPublishedMovie(1, 4);
+        List<MovieWithMediaDTO> getAllMovie = movieService.getAllMovie();
+        List<MovieWithMediaDTO> getNewestFilms = movieService.getNewestFilms(4);
+        List<MovieWithMediaDTO> getPublishedMovie = movieService.getPublishedMovie(1, 4);
         List<String> getAllMovieCatelogy = movieService.getAllMovieCategory();
         List<String> getAllMovieCountry = movieService.getAllMovieCountry();
         List<String> getAllMovieYear = movieService.getAllMovieCategory();
-        List<Movie> getMovieForCinemaAndShowtime = movieService.getMovieForCinemaAndShowtime("", "");
-        Movie getMovieByID = movieService.getMovieById("");
-        List<Movie> getMovieByCategory = movieService.getAllMovieByCategory("");
-        List<Movie> getMovieByCountry = movieService.getAllMovieByCountry("");
-        List<MovieWithMediaDTO> getMovieByYear = movieService.getAllMovieByYear(2023);
-        List<Movie> getMovieByName = movieService.getAllMovieByName("");
+        List<MovieWithMediaDTO> getMovieForCinemaAndShowtime = movieService.getMovieForCinemaAndShowtime("", "");
+        MovieWithMediaDTO getMovieByID = movieService.getMovieByID("");
+        List<MovieWithMediaDTO> getMovieByCategory = movieService.getMovieByCategory("");
+        List<MovieWithMediaDTO> getMovieByCountry = movieService.getMovieByCountry("");
+        List<MovieWithMediaDTO> getMovieByYear = movieService.getMovieByYear(2023);
+        List<MovieWithMediaDTO> getMovieByName = movieService.getMovieByName("");
         List<MovieWithMediaDTO> getMostPopularMovie = movieService.getMostPopularMovies(3);
 
         Boolean addNewMovie = movieService.addNewMovie(new Movie(), new MovieMediaLink(), "At1");

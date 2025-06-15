@@ -29,7 +29,7 @@ public class MovieService {
     }
 
 
-    public List<MovieWithMediaDTO> getAllMoviesWithMedia() {
+    public List<MovieWithMediaDTO> getAllMovie() {
         return movieRepository.findAllMoviesWithLinksDTO();
     }
     // lấy tổng số bộ phim
@@ -41,16 +41,13 @@ public class MovieService {
         return movieRepository.getMovieEarning(PageRequest.of(0, 10));
     }
 
-    public List<Movie> getMovieByName(String name){
-        return movieRepository.findByMovieNameContaining(name);
-    }
 
-    public List<MovieWithMediaDTO> getNewestMovies(int number){
+    public List<MovieWithMediaDTO> getNewestFilms(int number){
         return movieRepository.findNewestMovies(PageRequest.of(0, number));
     }
 
     // find movie isPublish
-    public List<Movie> getPublishedMovie(int isPublished, int numMovies){
+    public List<MovieWithMediaDTO> getPublishedMovie(int isPublished, int numMovies){
         Pageable pageable = PageRequest.of(0, numMovies);
         return movieRepository.findPublishedMoviesWithMedia(isPublished, pageable);
     }
@@ -68,29 +65,29 @@ public class MovieService {
     }
 
     // getmovie by cinemaID và date
-    public List<Movie> getMovieForCinemaAndShowtime(String cinemaID, String date){
+    public List<MovieWithMediaDTO> getMovieForCinemaAndShowtime(String cinemaID, String date){
         return movieRepository.findMovieForCinemaAndShowtime(cinemaID, date);
     }
 
     // get movie by id
-    public Movie getMovieById(String movieID){
+    public MovieWithMediaDTO getMovieByID(String movieID){
         return movieRepository.findByMovieID(movieID);
     }
 
     // by category
-    public List<Movie> getAllMovieByCategory(String category){
+    public List<MovieWithMediaDTO> getMovieByCategory(String category){
         return movieRepository.findAllByMovieCategory(category);
     }
     // by country
-    public List<Movie> getAllMovieByCountry(String country){
+    public List<MovieWithMediaDTO> getMovieByCountry(String country){
         return movieRepository.findAllByCountry(country);
     }
     // by year
-    public List<MovieWithMediaDTO> getAllMovieByYear(int year){
+    public List<MovieWithMediaDTO> getMovieByYear(int year){
         return movieRepository.findAllMovieByYear(year);
     }
     // by name
-    public List<Movie> getAllMovieByName(String name){
+    public List<MovieWithMediaDTO> getMovieByName(String name){
         return movieRepository.findAllByMovieName(name);
     }
 
@@ -115,9 +112,9 @@ public class MovieService {
             dto.setMovieContent((String) row[8]);                           // movieContent
             dto.setIsPublished(((Number) row[9]).intValue());               // isPublished (check kiểu cẩn thận!)
             dto.setMovieScore(((Number) row[10]).doubleValue());            // movieScore (Double hoặc BigDecimal)
-            dto.setLinkMovieTrailer((String) row[11]);                      // trailer
-            dto.setLinkMovieImage((String) row[12]);                        // image
-
+            dto.setLinkMovieTrailer((String) row[12]);                      // trailer
+            dto.setLinkMovieImage((String) row[13]);                        // image
+            System.out.println("11: "+ row[11] + " - 12 " + row[12]);
             movies.add(dto);
         }
         return movies;

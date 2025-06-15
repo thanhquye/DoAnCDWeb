@@ -27,9 +27,9 @@ public class AdminHomeDAO {
 
 
     public void all (){
-        List<UserLogin> getUserOnl = userLoginService.getAllActiveUserLogins();
+        int getUserOnl = userLoginService.getAllActiveUserLogins();
         long getTicketQuantity = ticketService.getTicketCount();
-        double getTotalEarning = ticketDetailService.totalPriceTicketDetails();
+        double getTotalEarning = ticketDetailService.getTotalEarning();
         double getTotalMovie = movieService.getTotalMovie();
         List<MovieEaringDTO> getFilmEaring = movieService.getMovieEarings();
     }

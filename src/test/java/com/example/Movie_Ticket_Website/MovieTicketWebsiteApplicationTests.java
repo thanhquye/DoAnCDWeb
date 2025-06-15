@@ -73,7 +73,7 @@ class MovieTicketWebsiteApplicationTests {
 	}
 	@Test
     void countTickets() {
-		List<Ticket> tickets = ticketService.getTicketsByCinemaID("cnm1");
+		List<Ticket> tickets = ticketService.getAllTicketByMovieID("cnm1");
 		for (Ticket ticket : tickets) {
 			System.out.println(ticket.getTicketID());
 		}
@@ -87,15 +87,15 @@ class MovieTicketWebsiteApplicationTests {
 	}
 	@Test
     void top10Movie() {
-		List<MovieWithMediaDTO> movies = movieService.getMostPopularMovies(3);
+		List<MovieWithMediaDTO> movies = movieService.getMovieForCinemaAndShowtime("cnm1", "2023-12-22");
 		for (MovieWithMediaDTO movie : movies) {
 			System.out.println(movie.getMovieName());
 		}
 	}
 	@Test
     void findMovieByName() {
-		List<Movie> movies = movieService.getAllMovieByName("Kẻ ăn Hồn");
-		for (Movie movie : movies) {
+		List<MovieWithMediaDTO> movies = movieService.getMostPopularMovies(3);
+		for (MovieWithMediaDTO movie : movies) {
 			System.out.println(movie.getMovieName());
 		}
 
