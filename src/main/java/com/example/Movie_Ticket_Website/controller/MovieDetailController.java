@@ -33,7 +33,7 @@ public class MovieDetailController {
 
 
     @GetMapping
-    public String movieRedirect(@RequestParam(name = "action", required = false) String action,
+    public String movieDetailRedirect(@RequestParam(name = "action", required = false) String action,
                                 @RequestParam(name = "cid", required = false) String cid,
                                 @RequestParam(name = "cinemaName", required = false) String cinemaName,
                                 @RequestParam(name = "movieID", required = false) String mid,
