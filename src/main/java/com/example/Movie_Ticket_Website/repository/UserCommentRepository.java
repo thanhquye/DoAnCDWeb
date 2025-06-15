@@ -2,7 +2,9 @@ package com.example.Movie_Ticket_Website.repository;
 
 import com.example.Movie_Ticket_Website.dto.CommentDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
+import com.example.Movie_Ticket_Website.dto.UserCommentWithMovieDTO;
 import com.example.Movie_Ticket_Website.model.UserComment;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -28,4 +30,11 @@ public interface UserCommentRepository extends JpaRepository<UserComment, String
             "JOIN uc.movie m " +
             "WHERE m.movieID = :movieId")
     List<CommentDTO> getAllCommentByMovieID(@Param("movieId") String movieId);
+
+    @Query("select new com.example.Movie_Ticket_Website.dto.UserCommentWithMovieDTO(" +
+            "uc.commentID, m.movieID, m.movieName, ml.linkMovieImage, uc.commentText)" +
+            "from UserComment uc " +
+            "JOIN uc.movie m " +
+            "JOIN m.movieMediaLink ml")
+    List<UserCommentWithMovieDTO> findPopularComment(Pageable pageable);
 }

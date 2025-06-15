@@ -40,6 +40,11 @@ class MovieTicketWebsiteApplicationTests {
 	@Autowired
 	private ShowTimeService showTimeService;
 
+	@Autowired
+	private TransactionBookingService transactionBookingService;
+
+
+
 
 	@Test
 	void contextLoads() {
@@ -47,9 +52,23 @@ class MovieTicketWebsiteApplicationTests {
 
 	@Test
     void getMovies() {
-		List<UserLogin> userLogins = userLoginService.getAllActiveUserLogins();
-		for (UserLogin userLogin : userLogins) {
-			System.out.println(userLogin);
+		UserLogin userLogin = new UserLogin();
+		userLogin.setUserId("user14");
+		userLogin.setUserName("ThanhQUYEN");
+		userLogin.setEmail("thanhquyen@email.com");
+		userLogin.setUserPassword("thanhquyen");
+		userLogin.setActive(true);
+		userLogin.setAdmin(false);
+		userLogin.setVerifyEmail(false);
+		Boolean update = userLoginService.updateUser(userLogin);
+		System.out.println(update);
+
+	}
+	@Test
+    void countUser() {
+		List<String> getUserID = userLoginService.getAllUserID();
+		for (String userID : getUserID) {
+			System.out.println(userID);
 		}
 	}
 	@Test
@@ -130,9 +149,9 @@ class MovieTicketWebsiteApplicationTests {
 	}
 	@Test
     void getAllComment() {
-		List<CommentDTO> commentDTOS = userCommentService.getCommentsByMovieId("Mv3");
-		for (CommentDTO commentDTO : commentDTOS) {
-			System.out.println(commentDTO.getCommentText());
+		List<UserCommentWithMovieDTO> getPopular = userCommentService.getPopularComment(3);
+		for (UserCommentWithMovieDTO userComment : getPopular) {
+			System.out.println(userComment.getMovieName());
 		}
 
 	}
@@ -157,6 +176,15 @@ class MovieTicketWebsiteApplicationTests {
 		List<ShowTime> showTimes = showTimeService.getShowtimeByMID_CNAME_DATE_RNAME("Mv1", "cnm1", "2023-12-22", "Phòng 4");
 		for (ShowTime showTime : showTimes) {
 			System.out.println(showTime.getMovie().getMovieName());
+		}
+
+	}
+
+	@Test
+    void getTransByUserID() {
+		List<TransactionBooking> transactionBookings = transactionBookingService.getTransactionBookingByUserID_TID("user1", "trans1");
+		for (TransactionBooking transactionBooking : transactionBookings) {
+			System.out.println(transactionBooking.getTotalPrice());
 		}
 
 	}
