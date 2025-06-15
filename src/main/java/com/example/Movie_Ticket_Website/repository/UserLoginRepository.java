@@ -9,18 +9,23 @@ import java.util.List;
 
 @Repository
 public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
+    // Tìm kiếm UserLogin theo email và userPassword - đăng nhập
+    UserLogin findByEmailAndUserPassword(String email, String userPassword);
+
+    // Kiểm tra tồn tại khi đăng ký - register
+    boolean existsByEmail(String email);
+
+    boolean existsByUserName(String userName);
+
+    // Tìm theo email - forgotPass
     UserLogin findByEmail(String email);
 
     // check user active is true
     List<UserLogin> findAllByIsActiveTrue();
-    // Tìm kiếm UserLogin theo email và userPassword
-    UserLogin findByEmailAndUserPassword(String email, String userPassword);
-
 
     List<UserLogin> findAllByUserName(String userName);
 
-    boolean existsByEmail(String email);
-
     @Query("select user.userId from UserLogin user")
     List<String> findAllUserID();
+
 }

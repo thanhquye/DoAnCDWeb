@@ -19,6 +19,9 @@ target/
 *.iml
 *.ipr
 
+# Ignore email config file with sensitive data
+src/main/resources/properties.env
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
