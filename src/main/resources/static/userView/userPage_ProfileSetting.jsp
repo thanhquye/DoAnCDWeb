@@ -1,6 +1,6 @@
-<%@ page import="model.User" %>
-<%@ page import="beans.ShoppingCart" %>
-<%@ page import="model.Customer" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.UserLogin" %>
+<%@ page import="com.example.Movie_Ticket_Website.beans.ShoppingCart" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -14,7 +14,7 @@
     }
 </script>
 <%
-    User user = (User) session.getAttribute("user");
+    UserLogin user = (UserLogin) session.getAttribute("user");
     Customer customer = (Customer) session.getAttribute("customer");
     boolean isLogined = user == null ? false : true;
 %>
@@ -64,7 +64,7 @@
                             <h5 class="author-card-name text-lg">${sessionScope.get("userName")} #${sessionScope.get("user").userId}</h5>
                             <span class="author-card-position">Email : ${sessionScope.get("user").email}
                                 <%
-                                    User u = (User) session.getAttribute("user");
+                                    UserLogin u = (UserLogin) session.getAttribute("user");
                                     if(u.isActive()) {
                                 %>
                                     ✅

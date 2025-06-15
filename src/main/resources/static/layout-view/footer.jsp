@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="../layout-view/head_libraries.jsp"></jsp:include>
+<jsp:include page="head_libraries.jsp"></jsp:include>
 <footer class="w3l-footer">
   <section class="footer-inner-main">
     <div class="footer-hny-grids py-5" style="padding: 0px 0px">
@@ -10,16 +10,16 @@
           <div class="right-side">
             <div class="row footer-about" style="text-align: center">
               <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/lat-mat-6.png" alt=""></a>
+                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../assets/movie-image/lat-mat-6.png" alt=""></a>
                 </div>
                 <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/nha-ba-nu.png" alt=""></a>
+                  <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../assets/movie-image/nha-ba-nu.png" alt=""></a>
                 </div>
                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/wonka.png" alt=""></a>
+                <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../assets/movie-image/wonka.png" alt=""></a>
                 </div>
                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
-                <a href="movie-servlet?action=init"><img  style="height: 250px; width: 200px" class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/mai.png" alt=""></a>
+                <a href="movie-servlet?action=init"><img style="height: 250px; width: 200px" class="img-fluid" src="../assets/movie-image/mai.png" alt=""></a>
                </div>
             </div>
             <div class="row footer-links">
@@ -74,7 +74,7 @@
       <div class="container">
         <div class="copyright-footer">
           <div class="columns text-lg-left">
-            <p>&copy; 2023 PZO TICKET _ WEBSITE ĐẶT VÉ UY TÍN HÀNG ĐẦU VIỆT NAM</p>
+            <p>&copy; 2025 PZO TICKET _ WEBSITE ĐẶT VÉ UY TÍN HÀNG ĐẦU VIỆT NAM</p>
           </div>
 
           <ul class="social text-lg-right">
