@@ -18,8 +18,9 @@ public class UserLoginService {
         this.userLoginRepository = userLoginRepository;
     }
 
-    public List<UserLogin> getAllActiveUserLogins() {
-        return userLoginRepository.findAllByIsActiveTrue();
+    public int getAllActiveUserLogins() {
+        List<UserLogin> userLogins = userLoginRepository.findAllByIsActiveTrue();
+        return userLogins.size();
     }
 
     public Boolean checkEmailExits(String email) {
@@ -38,7 +39,7 @@ public class UserLoginService {
         return userLoginRepository.findAll();
     }
 
-    public List<UserLogin> getUserLoginsByName(String name) {
+    public List<UserLogin> getAllUserByName(String name) {
         return userLoginRepository.findAllByUserName(name);
     }
 

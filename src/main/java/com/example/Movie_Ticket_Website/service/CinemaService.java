@@ -14,12 +14,12 @@ public class CinemaService {
     @Autowired
     public CinemaService(CinemaRepository repository) {this.cinemaRepository = repository;}
 
-    public List<Cinema> getAllCinemaByCinemaName(String cinemaName) {return cinemaRepository.findAllByCinemaName(cinemaName);}
+    public List<Cinema> getCinemaByName(String cinemaName) {return cinemaRepository.findAllByCinemaName(cinemaName);}
 
-    public Cinema getCinemaByCinemaID(String cinemaID) {return cinemaRepository.getCinemasByCinemaID(cinemaID);}
+    public Cinema getCinemaByID(String cinemaID) {return cinemaRepository.getCinemasByCinemaID(cinemaID);}
 
     // lấy all cinem
-    public List<Cinema> getAllCinemas() {return cinemaRepository.findAll();}
+    public List<Cinema> getAllCinema() {return cinemaRepository.findAll();}
 
     // lấy cinema theo movieID
     public List<Cinema> getCinemaByMovieID(String movieID){

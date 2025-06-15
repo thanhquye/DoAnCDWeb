@@ -16,7 +16,13 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, String> {
     List<Movie> findByMovieNameContaining(String name);
-    Movie findByMovieID(String movieID);
+
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, \n" +
+            "m.movieDescription, m.movieContent, m.isPublished, m.movieScore, ml.linkMovieTrailer, ml.linkMovieImage) " +
+            "FROM Movie m " +
+            "join m.movieMediaLink ml " +
+            "where m.movieID = :movieID")
+            MovieWithMediaDTO  findByMovieID(@Param("movieID") String movieID);
 
     // get all movieLink
     @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country,\n" +
@@ -42,10 +48,12 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     List<MovieWithMediaDTO> findNewestMovies(Pageable pageable);
 
     // movie isPublished
-    @Query("SELECT m FROM Movie m " +
-            "JOIN FETCH m.movieMediaLink " +
-            "WHERE m.isPublished = :isPublished")
-    List<Movie> findPublishedMoviesWithMedia(@Param("isPublished") int isPublished, Pageable pageable);
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, \n" +
+            "m.movieDescription, m.movieContent, m.isPublished, m.movieScore, ml.linkMovieTrailer, ml.linkMovieImage) " +
+            "FROM Movie m " +
+            "join m.movieMediaLink ml " +
+            "where m.isPublished = :isPublished")
+    List<MovieWithMediaDTO> findPublishedMoviesWithMedia(@Param("isPublished") int isPublished, Pageable pageable);
 
     // get all movie category
     @Query("select DISTINCT m.movieCategory from Movie m")
@@ -60,17 +68,30 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     List<String> findAllYear();
 
     // movie isPublished
-    @Query("SELECT m FROM Movie m " +
-            "JOIN FETCH m.movieMediaLink ml " +
-            "JOIN FETCH m.showTimes st " +
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, \n" +
+            "m.movieDescription, m.movieContent, m.isPublished, m.movieScore, ml.linkMovieTrailer, ml.linkMovieImage) " +
+            "FROM Movie m " +
+            "JOIN m.movieMediaLink ml " +
+            "JOIN m.showTimes st " +
             "JOIN st.cinema c " +
             "WHERE c.cinemaID =:cinemaID " +
             "and st.showDate =:date")
-    List<Movie> findMovieForCinemaAndShowtime(@Param("cinemaID") String cinemaID, @Param("date") String date);
+    List<MovieWithMediaDTO> findMovieForCinemaAndShowtime(@Param("cinemaID") String cinemaID, @Param("date") String date);
 
-    List<Movie> findAllByMovieCategory(String movieCategory);
 
-    List<Movie> findAllByCountry(String country);
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, \n" +
+            "m.movieDescription, m.movieContent, m.isPublished, m.movieScore, ml.linkMovieTrailer, ml.linkMovieImage) " +
+            "FROM Movie m " +
+            "join m.movieMediaLink ml " +
+            "where m.movieCategory = :movieCategory")
+    List<MovieWithMediaDTO> findAllByMovieCategory(@Param("movieCategory") String movieCategory);
+
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, \n" +
+            "m.movieDescription, m.movieContent, m.isPublished, m.movieScore, ml.linkMovieTrailer, ml.linkMovieImage) " +
+            "FROM Movie m " +
+            "join m.movieMediaLink ml " +
+            "where m.country = :country")
+    List<MovieWithMediaDTO> findAllByCountry(@Param("country") String country);
 
     // by year
     @Query(value = "SELECT m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, " +
@@ -82,7 +103,12 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
             nativeQuery = true)
     List<MovieWithMediaDTO> findAllMovieByYear(@Param("year") int year);
 
-    List<Movie> findAllByMovieName(String movieName);
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO(m.movieID, m.movieName, m.movieCategory, m.releaseDate, m.director, m.duration, m.country, \n" +
+            "m.movieDescription, m.movieContent, m.isPublished, m.movieScore, ml.linkMovieTrailer, ml.linkMovieImage) " +
+            "FROM Movie m " +
+            "join m.movieMediaLink ml " +
+            "where m.movieName = :movieName")
+    List<MovieWithMediaDTO> findAllByMovieName(@Param("movieName") String movieName);
 
     // find most popular
     @Query(value = """

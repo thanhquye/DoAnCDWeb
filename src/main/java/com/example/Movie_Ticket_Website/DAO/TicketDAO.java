@@ -15,8 +15,8 @@ public class TicketDAO {
     private TicketService ticketService;
 
     public void all(){
-        List<TicketWithCustomerDTO> getAll = ticketService.getAllTickets();
-        List<Ticket> getByCinemaID = ticketService.getTicketsByCinemaID("cnm1");
+        List<TicketWithCustomerDTO> getAll = ticketService.getAllTicket();
+        List<Ticket> getByCinemaID = ticketService.getAllTicketByMovieID("cnm1");
     }
 
 }

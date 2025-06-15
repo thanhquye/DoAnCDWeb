@@ -22,11 +22,11 @@
 <html>
 <head>
     <title>Giỏ hàng</title>
-    <jsp:include page="../../static/layout-view/head_libraries.jsp"></jsp:include>
-    <link rel="stylesheet" href="../../static/assets/css/shoppingCart.css">
+    <jsp:include page="../views/layout-view/head_libraries.jsp"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}assets/css/shoppingCart.css">
 </head>
 <body>
-    <jsp:include page="../../static/layout-view/header.jsp"></jsp:include>
+    <jsp:include page="../views/layout-view/header.jsp"/>
     <div class="w3l-breadcrumbs" style="padding-top: 70px;padding-bottom: 0px">
         <nav id="breadcrumbs" class="breadcrumbs">
             <div class="container page-wrapper">
@@ -140,14 +140,14 @@
         </div>
     </div>
 
-    <jsp:include page="../../static/layout-view/script-libraries.jsp" ></jsp:include>
-    <jsp:include page="../../static/layout-view/js-function-slider.jsp" ></jsp:include>
+    <jsp:include page="../views/layout-view/script-libraries.jsp" />
+    <jsp:include page="../views/layout-view/js-function-slider.jsp" />
 </body>
 </html>
 <%--<script src="assets/js/jquery-3.7.1.min.js"></script>--%>
-<script src="../../static/assets/js/jquery-1.9.1.min.js"></script>
-<script src="../../static/assets/js/easyResponsiveTabs.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/jquery-1.9.1.min.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/easyResponsiveTabs.js"></script>
 <!--/theme-change-->
-<script src="../../static/assets/js/theme-change.js"></script>
-<script src="../../static/assets/js/owl.carousel.js"></script>
-<script src="../../static/assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/theme-change.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/owl.carousel.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/main.js"></script>

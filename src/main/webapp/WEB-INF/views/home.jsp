@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
     <title>MovieBooking - PZO</title>
-    <jsp:include page="../../../resources/static/layout-view/head_libraries.jsp"/>
+    <jsp:include page="../views/layout-view/header.jsp"/>
 </head>
 <%
     ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
@@ -41,7 +41,7 @@
 %>
 
 <body>
-<jsp:include page="../layout-view/header.jsp"></jsp:include>
+<jsp:include page="../views/layout-view/header.jsp"/>
 
 <%-- Section Trailer Phim--%>
 <section class="w3l-main-slider position-relative" id="home">
@@ -251,7 +251,7 @@
                                 <%-- hien thi 7 ngay tinh tu HOM NAY de dat ve --%>
                                 <div class="showtimes-calenderBox" style="text-align: center">
                                     <%--  dùng javaBean để lấy ngày tháng và hiển thị ngày hôm nay--%>
-                                    <jsp:useBean id="date" class="beans.DateBean" scope="session"/>
+                                    <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean" scope="session"/>
                                     <a class="showtimes-dateItem" href="home-servlet?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
                                         <fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/>
                                     </a>
@@ -278,7 +278,7 @@
                                         <%-- hien thi cac phim trong ngay duoc chon --%>
                                         <div class="card">
                                             <div class="card-body"
-                                                 style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
+                                                 style="background: url(${pageContext.request.contextPath}static/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
                                                 <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
                                                 <p class="card-text" style="color: whitesmoke;">${m.movieDescription}</p>
                                                 <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
@@ -350,9 +350,9 @@
     </div>
 </section>
 
-<jsp:include page="../layout-view/footer.jsp" ></jsp:include>
-<jsp:include page="../layout-view/script-libraries.jsp" ></jsp:include>
-<jsp:include page="../layout-view/js-function-slider.jsp" ></jsp:include>
+<jsp:include page="../views/layout-view/footer.jsp" />
+<jsp:include page="../views/layout-view/script-libraries.jsp" />
+<jsp:include page="../views/layout-view/js-function-slider.jsp" />
 </body>
 
 </html>
@@ -383,9 +383,9 @@
 </script>
 <!-- responsive tabs -->
 <%--<script src="assets/js/jquery-3.7.1.min.js"></script>--%>
-<script src="assets/js/jquery-1.9.1.min.js"></script>
-<script src="assets/js/easyResponsiveTabs.js"></script>
+<script src=".${pageContext.request.contextPath}assets/js/jquery-1.9.1.min.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/easyResponsiveTabs.js"></script>
 <!--/theme-change-->
-<script src="assets/js/theme-change.js"></script>
-<script src="assets/js/owl.carousel.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/theme-change.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/owl.carousel.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/main.js"></script>

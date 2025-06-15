@@ -21,12 +21,12 @@ public class TicketService {
         return ticketRepository.count();
     }
 
-    public List<TicketWithCustomerDTO> getAllTickets() {
+    public List<TicketWithCustomerDTO> getAllTicket() {
         return ticketRepository.findAllTicket();
     }
 
     // get by CinemaID
-    public List<Ticket> getTicketsByCinemaID(String cinemaID) {
+    public List<Ticket> getAllTicketByMovieID(String cinemaID) {
         return ticketRepository.findAllByCinemaID(cinemaID);
     }
 }

@@ -16,7 +16,7 @@ public class UserLoginDAO {
         boolean checkEmailExits = userLoginService.checkEmailExits("Email");
         UserLogin getUserbyEmailAndPassword = userLoginService.getUserbyEmailAndPassword("Email", "Password");
         List<UserLogin> getAll =  userLoginService.getAllUserLogins();
-        List<UserLogin> getByName = userLoginService.getUserLoginsByName("Name");
+        List<UserLogin> getByName = userLoginService.getAllUserByName("Name");
 
 
     }
