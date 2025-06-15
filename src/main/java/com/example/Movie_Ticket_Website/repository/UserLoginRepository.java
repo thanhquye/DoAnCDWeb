@@ -17,7 +17,7 @@ public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
 
     boolean existsByUserName(String userName);
 
-    // Tìm theo email - forgotPass
+    // Tìm theo email - forgotPass - verifyGmail
     UserLogin findByEmail(String email);
 
     // check user active is true

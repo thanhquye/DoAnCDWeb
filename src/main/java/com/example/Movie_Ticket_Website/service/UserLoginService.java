@@ -30,7 +30,7 @@ public class UserLoginService {
         return userLoginRepository.findByEmailAndUserPassword(email, password);
     }
 
-    public List<String> getAllUserID(){
+    public List<String> getAllUserID() {
         return userLoginRepository.findAllUserID();
     }
 
@@ -61,4 +61,19 @@ public class UserLoginService {
 
         return false;
     }
+
+    // Cập nhật cột EmailVerified
+    public void markEmailVerified(String email) {
+        UserLogin user = userLoginRepository.findByEmail(email);
+        if (user != null) {
+            user.setVerifyEmail(true);
+            userLoginRepository.save(user);
+        }
+    }
+
+    // Lấy ra user chỉ bằng Gmail cập nhật session trong gmailVerify
+    public UserLogin getUserByEmail(String email) {
+        return userLoginRepository.findByEmail(email);
+    }
+
 }
