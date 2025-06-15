@@ -10,9 +10,9 @@ import java.util.List;
 
 @Service
 public class UserCommentService {
-    @Autowired
     private UserCommentRepository userCommentRepository;
 
+    @Autowired
     public UserCommentService(UserCommentRepository userCommentRepository) {
         this.userCommentRepository = userCommentRepository;
     }

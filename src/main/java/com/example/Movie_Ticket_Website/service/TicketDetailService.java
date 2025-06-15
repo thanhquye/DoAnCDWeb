@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TicketDetailService {
-    @Autowired
     private TicketDetailRepository ticketDetailRepository;
 
+    @Autowired
     public TicketDetailService(TicketDetailRepository ticketDetailRepository) {
         this.ticketDetailRepository = ticketDetailRepository;
     }

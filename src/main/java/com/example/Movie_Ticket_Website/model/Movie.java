@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "movie")
 public class Movie {
 
-    private int stt;
     @Id
     @Column(name = "movieID")
     private String movieID;
@@ -86,13 +85,6 @@ public class Movie {
         this.userComment = userComment;
     }
 
-    public int getStt() {
-        return stt;
-    }
-
-    public void setStt(int stt) {
-        this.stt = stt;
-    }
 
     public String getMovieID() {
         return movieID;

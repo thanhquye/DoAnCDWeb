@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookingDetailService {
-    @Autowired
     private BookingDetailRepository bookingDetailRepository;
 
+    @Autowired
     public BookingDetailService(BookingDetailRepository bookingDetailRepository) {
         this.bookingDetailRepository = bookingDetailRepository;
     }

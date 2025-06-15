@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public class CinemaRoomService {
-    @Autowired
     private CinemaRoomRepository cinemaRoomRepository;
 
+    @Autowired
     public CinemaRoomService(CinemaRoomRepository cinemaRoomRepository) {
         this.cinemaRoomRepository = cinemaRoomRepository;
     }

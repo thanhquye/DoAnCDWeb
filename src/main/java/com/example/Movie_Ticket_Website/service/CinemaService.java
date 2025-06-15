@@ -2,6 +2,7 @@ package com.example.Movie_Ticket_Website.service;
 
 import com.example.Movie_Ticket_Website.model.Cinema;
 import com.example.Movie_Ticket_Website.repository.CinemaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class CinemaService {
     private CinemaRepository cinemaRepository;
 
+    @Autowired
     public CinemaService(CinemaRepository repository) {this.cinemaRepository = repository;}
 
     public List<Cinema> getAllCinemaByCinemaName(String cinemaName) {return cinemaRepository.findAllByCinemaName(cinemaName);}
