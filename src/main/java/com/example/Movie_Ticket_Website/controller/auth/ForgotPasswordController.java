@@ -1,4 +1,4 @@
-package com.example.Movie_Ticket_Website.controller;
+package com.example.Movie_Ticket_Website.controller.auth;
 
 import com.example.Movie_Ticket_Website.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
