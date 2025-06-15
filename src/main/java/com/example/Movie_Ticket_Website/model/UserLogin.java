@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "userlogin")
 public class UserLogin {
 
-    int stt;
 
     @Id
     @Column(name = "userId")
@@ -48,13 +47,6 @@ public class UserLogin {
         this.bookings = bookings;
     }
 
-    public int getStt() {
-        return stt;
-    }
-
-    public void setStt(int stt) {
-        this.stt = stt;
-    }
 
     public String getUserId() {
         return userId;

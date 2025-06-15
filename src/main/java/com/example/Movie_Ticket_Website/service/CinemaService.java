@@ -1,24 +1,35 @@
 package com.example.Movie_Ticket_Website.service;
 
 import com.example.Movie_Ticket_Website.model.Cinema;
-import com.example.Movie_Ticket_Website.repository.CinemaReppository;
+import com.example.Movie_Ticket_Website.repository.CinemaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CinemaService {
-    private CinemaReppository repository;
+    private CinemaRepository cinemaRepository;
 
-    public CinemaService(CinemaReppository repository) {this.repository = repository;}
-    public List<Cinema> getAllCinemas() {return repository.findAll();}
+    @Autowired
+    public CinemaService(CinemaRepository repository) {this.cinemaRepository = repository;}
 
-    public List<Cinema> getAllCinemaByCinemaName(String cinemaName) {return repository.findAllByCinemaName(cinemaName);}
+    public List<Cinema> getAllCinemaByCinemaName(String cinemaName) {return cinemaRepository.findAllByCinemaName(cinemaName);}
 
-    public Cinema getCinemaByCinemaID(String cinemaID) {return repository.getCinemasByCinemaID(cinemaID);}
+    public Cinema getCinemaByCinemaID(String cinemaID) {return cinemaRepository.getCinemasByCinemaID(cinemaID);}
 
+    // lấy all cinem
+    public List<Cinema> getAllCinemas() {return cinemaRepository.findAll();}
 
+    // lấy cinema theo movieID
+    public List<Cinema> getCinemaByMovieID(String movieID){
+        return cinemaRepository.getCinemasByMovieId(movieID);
+    }
 
+    // top2 cinema
+    public List<Cinema> getMostPopularCinema(){
+        return cinemaRepository.findTop2By();
+    }
 
 
 

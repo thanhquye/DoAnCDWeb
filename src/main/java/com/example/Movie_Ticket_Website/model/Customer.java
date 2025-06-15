@@ -28,16 +28,24 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "userID")
-
     private UserLogin userLogin;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<TransactionBooking> TransactionTicket;
+    private List<TransactionBooking> transactionBookings;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UserComment> userComment;
 
     public Customer() {
+    }
+
+    public Customer(String customerID, String fullName, String gender, String address, String phoneNumber, String dob) {
+        this.customerID = customerID;
+        this.fullName = fullName;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.dob = dob;
     }
 
     public List<UserComment> getUserComment() {
@@ -96,21 +104,19 @@ public class Customer {
         this.dob = dob;
     }
 
-
     public UserLogin getUserLogin() {
         return userLogin;
     }
 
     public void setUserLogin(UserLogin userLogin) {
         userLogin = userLogin;
-
     }
 
-    public List<TransactionBooking> getTransactionTicket() {
-        return TransactionTicket;
+    public List<TransactionBooking> getTransactionBookings() {
+        return transactionBookings;
     }
 
-    public void setTransactionTicket(List<TransactionBooking> transactionTicket) {
-        TransactionTicket = transactionTicket;
+    public void setTransactionBookings(List<TransactionBooking> transactionBookings) {
+        transactionBookings = transactionBookings;
     }
 }

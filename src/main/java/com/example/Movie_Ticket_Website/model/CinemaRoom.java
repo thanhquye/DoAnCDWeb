@@ -23,10 +23,15 @@ public class CinemaRoom {
     private List<Seat> seats;
 
 
-    @OneToOne(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TicketDetail ticketDetail;
+    @OneToMany(mappedBy = "cinemaRoom", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TicketDetail> ticketDetail;
 
     public CinemaRoom() {
+    }
+
+    public CinemaRoom(String cinemaRoomID, String roomName) {
+        this.cinemaRoomID = cinemaRoomID;
+        this.roomName = roomName;
     }
 
     public List<Seat> getSeats() {
@@ -37,11 +42,11 @@ public class CinemaRoom {
         this.seats = seats;
     }
 
-    public TicketDetail getTicketDetail() {
+    public List<TicketDetail> getTicketDetail() {
         return ticketDetail;
     }
 
-    public void setTicketDetail(TicketDetail ticketDetail) {
+    public void setTicketDetail(List<TicketDetail> ticketDetail) {
         this.ticketDetail = ticketDetail;
     }
 
