@@ -18,7 +18,7 @@ window.onload = function () {
         }
 
         // Gửi AJAX để kiểm tra email trên server
-        fetch("validate-email", {
+        fetch("/api/auth/validate-email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -47,33 +47,26 @@ window.onload = function () {
         e.preventDefault();
         const email = emailInput.value;
 
-        // Vô hiệu hóa nút ngay khi click để ngăn spam
-        sendMailButton.disabled = true;
+        sendMailButton.disabled = true; // Tạm ẩn nút khi gửi
 
-        // Gửi yêu cầu forgot-pass như hiện tại
-        fetch("forgot-pass", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "email=" + encodeURIComponent(email)
-        })
-            .then(response => response.json())
-            .then(data => {
+        $.ajax({
+            type: "POST",
+            url: "/forgot-pass",
+            data: {email: email},
+            success: function (data) {
                 swal({
                     title: data.status === "success" ? "Thành công!" : "Thất bại!",
                     text: data.message,
                     icon: data.status === "success" ? "success" : "error",
                     button: "OK",
                 });
-                // Khởi chạy đếm ngược 90 giây
-                startCountdown(90);
-            })
-            .catch(error => {
-                console.error("Lỗi gửi yêu cầu:", error);
+                startCountdown(90); // Khởi động đếm ngược
+            },
+            error: function () {
                 swal("Lỗi!", "Không thể gửi yêu cầu, vui lòng thử lại.", "error");
                 startCountdown(90);
-            });
+            }
+        });
     });
 
     // Hàm đếm ngược và cập nhật lại nút gửi email cũng như phần hiển thị trên JSP

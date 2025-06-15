@@ -6,10 +6,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
-    // Tìm kiếm UserLogin theo email và userPassword
+    // Tìm kiếm UserLogin theo email và userPassword - đăng nhập
     UserLogin findByEmailAndUserPassword(String email, String userPassword);
 
-    // register
+    // Kiểm tra tồn tại khi đăng ký - register
     boolean existsByEmail(String email);
     boolean existsByUserName(String userName);
+
+    // Tìm theo email - forgotPass
+    UserLogin findByEmail(String email);
 }
