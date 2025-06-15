@@ -1,8 +1,6 @@
 package com.example.Movie_Ticket_Website;
 
-import com.example.Movie_Ticket_Website.dto.CommentDTO;
-import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
-import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
+import com.example.Movie_Ticket_Website.dto.*;
 import com.example.Movie_Ticket_Website.model.*;
 import com.example.Movie_Ticket_Website.service.*;
 import org.junit.jupiter.api.Test;
@@ -42,6 +40,7 @@ class MovieTicketWebsiteApplicationTests {
 	@Autowired
 	private ShowTimeService showTimeService;
 
+
 	@Test
 	void contextLoads() {
 	}
@@ -55,13 +54,17 @@ class MovieTicketWebsiteApplicationTests {
 	}
 	@Test
     void countTickets() {
-		long count = ticketService.getTicketCount();
-		System.out.println(count);
+		List<Ticket> tickets = ticketService.getTicketsByCinemaID("cnm1");
+		for (Ticket ticket : tickets) {
+			System.out.println(ticket.getTicketID());
+		}
 	}
 	@Test
     void totaTicketsPrice() {
-		long count = ticketDetailService.totalPriceTicketDetails();
-		System.out.println(count);
+		List<TicketWithMovieDTO> getByTID = ticketDetailService.getTicketDetailByTicketId("tk1");
+		for (TicketWithMovieDTO ticketWithMovieDTO : getByTID) {
+			System.out.println(ticketWithMovieDTO.getPrice());
+		}
 	}
 	@Test
     void top10Movie() {

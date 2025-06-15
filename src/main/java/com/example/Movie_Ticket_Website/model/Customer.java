@@ -31,7 +31,7 @@ public class Customer {
     private UserLogin userLogin;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<TransactionBooking> TransactionTicket;
+    private List<TransactionBooking> transactionBookings;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UserComment> userComment;
@@ -112,11 +112,11 @@ public class Customer {
         userLogin = userLogin;
     }
 
-    public List<TransactionBooking> getTransactionTicket() {
-        return TransactionTicket;
+    public List<TransactionBooking> getTransactionBookings() {
+        return transactionBookings;
     }
 
-    public void setTransactionTicket(List<TransactionBooking> transactionTicket) {
-        TransactionTicket = transactionTicket;
+    public void setTransactionBookings(List<TransactionBooking> transactionBookings) {
+        transactionBookings = transactionBookings;
     }
 }
