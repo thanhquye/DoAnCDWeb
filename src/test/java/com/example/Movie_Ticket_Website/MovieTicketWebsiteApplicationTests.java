@@ -36,6 +36,12 @@ class MovieTicketWebsiteApplicationTests {
 	@Autowired
 	private CustomerService customerService;
 
+	@Autowired
+	private SeatService seatService;
+
+	@Autowired
+	private ShowTimeService showTimeService;
+
 	@Test
 	void contextLoads() {
 	}
@@ -132,6 +138,23 @@ class MovieTicketWebsiteApplicationTests {
 		Customer customer = new Customer("Cus2", "SANG", "Nam" , "Hà nội", "0912827812", "2003-03-23");
 		boolean cus = customerService.updateCustomer(customer);
 		System.out.println(cus);
+
+	}
+
+	@Test
+    void getseat() {
+		List<Seat> seats = seatService.getSeatByMID_CNAME_DATE_RNAME_TIME("Mv1", "cnm1", "2023-12-22", "Phòng 4", "17:00:00");
+		for (Seat seat : seats) {
+			System.out.println(seat.getSeatName());
+		}
+
+	}
+	@Test
+    void getShowtime() {
+		List<ShowTime> showTimes = showTimeService.getShowtimeByMID_CNAME_DATE_RNAME("Mv1", "cnm1", "2023-12-22", "Phòng 4");
+		for (ShowTime showTime : showTimes) {
+			System.out.println(showTime.getMovie().getMovieName());
+		}
 
 	}
 
