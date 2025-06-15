@@ -1,4 +1,4 @@
-package com.example.Movie_Ticket_Website.utils;
+package com.example.Movie_Ticket_Website.verifyCode;
 
 public class CodeData {
     private String code;

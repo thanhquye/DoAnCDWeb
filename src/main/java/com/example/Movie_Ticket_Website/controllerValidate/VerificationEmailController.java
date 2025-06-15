@@ -3,7 +3,7 @@ package com.example.Movie_Ticket_Website.controllerValidate;
 import com.example.Movie_Ticket_Website.model.UserLogin;
 import com.example.Movie_Ticket_Website.service.EmailService;
 import com.example.Movie_Ticket_Website.service.UserLoginService;
-import com.example.Movie_Ticket_Website.utils.VerificationCodeStore;
+import com.example.Movie_Ticket_Website.verifyCode.VerificationCodeStore;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
