@@ -9,7 +9,7 @@ window.onload = function () {
             resendButton.disabled = true;
             resendButton.innerText = "Đang gửi...";
 
-            fetch("resendVerification", {
+            fetch('/api/resendVerification', {
                 method: "POST"
             })
                 .then(response => {
@@ -26,13 +26,11 @@ window.onload = function () {
                         icon: data.status === "success" ? "success" : "error",
                         button: "OK",
                     });
-
                     if (data.status === "success") {
                         startCountdown(90);
                     } else {
-                        // Nếu gửi thất bại vẫn cho thử lại
-                        resendButton.innerText = "Gửi lại mã xác minh";
                         resendButton.disabled = false;
+                        resendButton.innerText = "Gửi lại mã xác minh";
                     }
                 })
                 .catch(error => {

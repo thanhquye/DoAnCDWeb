@@ -73,7 +73,7 @@ public class EmailService {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("Xác minh tài khoản của bạn");
 
-            String verificationLink = "http://localhost:8080/verify?email=" + toEmail + "&code=" + code;
+            String verificationLink = "http://localhost:8080/api/verify?email=" + toEmail + "&code=" + code;
 
             String htmlContent = "<!DOCTYPE html><html><body>" +
                     "<h2 style='color:#2c3e50;'>Xin chào, " + username + "!</h2>" +
