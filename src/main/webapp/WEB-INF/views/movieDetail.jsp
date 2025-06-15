@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="button-center text-center mt-4" style="margin-top: 0px">
-                            <a href="bookingTicket-servlet?action=init" class="btn watch-button" style="color: white;  font-size: 25px">Đặt vé ngay</a>
+                            <a href="bookingTicket-servlet?action=init&movieID=${movie.movieID}" class="btn watch-button" style="color: white;  font-size: 25px">Đặt vé ngay</a>
                         </div>
                     </div>
                     <div class="col-sm-6">

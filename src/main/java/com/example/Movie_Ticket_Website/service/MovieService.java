@@ -74,6 +74,9 @@ public class MovieService {
         return movieRepository.findByMovieID(movieID);
     }
 
+    public Movie getMovieByMovieID(String movieID){
+        return movieRepository.findAllByMovieID(movieID);
+    }
     // by category
     public List<MovieWithMediaDTO> getMovieByCategory(String category){
         return movieRepository.findAllByMovieCategory(category);

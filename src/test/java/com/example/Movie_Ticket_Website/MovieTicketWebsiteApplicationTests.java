@@ -94,10 +94,8 @@ class MovieTicketWebsiteApplicationTests {
 	}
 	@Test
     void findMovieByName() {
-		List<MovieWithMediaDTO> movies = movieService.getMostPopularMovies(3);
-		for (MovieWithMediaDTO movie : movies) {
-			System.out.println(movie.getMovieName());
-		}
+		Movie movies = movieService.getMovieByMovieID("Mv1");
+			System.out.println(movies.getMovieName());
 
 	}
 	@Test
