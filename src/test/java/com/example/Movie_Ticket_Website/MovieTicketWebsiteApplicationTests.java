@@ -1,8 +1,6 @@
 package com.example.Movie_Ticket_Website;
 
-import com.example.Movie_Ticket_Website.dto.CommentDTO;
-import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
-import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
+import com.example.Movie_Ticket_Website.dto.*;
 import com.example.Movie_Ticket_Website.model.*;
 import com.example.Movie_Ticket_Website.service.*;
 import org.junit.jupiter.api.Test;
@@ -36,26 +34,56 @@ class MovieTicketWebsiteApplicationTests {
 	@Autowired
 	private CustomerService customerService;
 
+	@Autowired
+	private SeatService seatService;
+
+	@Autowired
+	private ShowTimeService showTimeService;
+
+	@Autowired
+	private TransactionBookingService transactionBookingService;
+
+
+
+
 	@Test
 	void contextLoads() {
 	}
 
 	@Test
     void getMovies() {
-		List<UserLogin> userLogins = userLoginService.getAllActiveUserLogins();
-		for (UserLogin userLogin : userLogins) {
-			System.out.println(userLogin);
+		UserLogin userLogin = new UserLogin();
+		userLogin.setUserId("user14");
+		userLogin.setUserName("ThanhQUYEN");
+		userLogin.setEmail("thanhquyen@email.com");
+		userLogin.setUserPassword("thanhquyen");
+		userLogin.setActive(true);
+		userLogin.setAdmin(false);
+		userLogin.setVerifyEmail(false);
+		Boolean update = userLoginService.updateUser(userLogin);
+		System.out.println(update);
+
+	}
+	@Test
+    void countUser() {
+		List<String> getUserID = userLoginService.getAllUserID();
+		for (String userID : getUserID) {
+			System.out.println(userID);
 		}
 	}
 	@Test
     void countTickets() {
-		long count = ticketService.getTicketCount();
-		System.out.println(count);
+		List<Ticket> tickets = ticketService.getTicketsByCinemaID("cnm1");
+		for (Ticket ticket : tickets) {
+			System.out.println(ticket.getTicketID());
+		}
 	}
 	@Test
     void totaTicketsPrice() {
-		long count = ticketDetailService.totalPriceTicketDetails();
-		System.out.println(count);
+		List<TicketWithMovieDTO> getByTID = ticketDetailService.getTicketDetailByTicketId("tk1");
+		for (TicketWithMovieDTO ticketWithMovieDTO : getByTID) {
+			System.out.println(ticketWithMovieDTO.getPrice());
+		}
 	}
 	@Test
     void top10Movie() {
@@ -121,9 +149,9 @@ class MovieTicketWebsiteApplicationTests {
 	}
 	@Test
     void getAllComment() {
-		List<CommentDTO> commentDTOS = userCommentService.getCommentsByMovieId("Mv3");
-		for (CommentDTO commentDTO : commentDTOS) {
-			System.out.println(commentDTO.getCommentText());
+		List<UserCommentWithMovieDTO> getPopular = userCommentService.getPopularComment(3);
+		for (UserCommentWithMovieDTO userComment : getPopular) {
+			System.out.println(userComment.getMovieName());
 		}
 
 	}
@@ -132,6 +160,32 @@ class MovieTicketWebsiteApplicationTests {
 		Customer customer = new Customer("Cus2", "SANG", "Nam" , "Hà nội", "0912827812", "2003-03-23");
 		boolean cus = customerService.updateCustomer(customer);
 		System.out.println(cus);
+
+	}
+
+	@Test
+    void getseat() {
+		List<Seat> seats = seatService.getSeatByMID_CNAME_DATE_RNAME_TIME("Mv1", "cnm1", "2023-12-22", "Phòng 4", "17:00:00");
+		for (Seat seat : seats) {
+			System.out.println(seat.getSeatName());
+		}
+
+	}
+	@Test
+    void getShowtime() {
+		List<ShowTime> showTimes = showTimeService.getShowtimeByMID_CNAME_DATE_RNAME("Mv1", "cnm1", "2023-12-22", "Phòng 4");
+		for (ShowTime showTime : showTimes) {
+			System.out.println(showTime.getMovie().getMovieName());
+		}
+
+	}
+
+	@Test
+    void getTransByUserID() {
+		List<TransactionBooking> transactionBookings = transactionBookingService.getTransactionBookingByUserID_TID("user1", "trans1");
+		for (TransactionBooking transactionBooking : transactionBookings) {
+			System.out.println(transactionBooking.getTotalPrice());
+		}
 
 	}
 
