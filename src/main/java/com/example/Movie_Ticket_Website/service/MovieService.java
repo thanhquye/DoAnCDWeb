@@ -114,7 +114,6 @@ public class MovieService {
             dto.setMovieScore(((Number) row[10]).doubleValue());            // movieScore (Double hoặc BigDecimal)
             dto.setLinkMovieTrailer((String) row[12]);                      // trailer
             dto.setLinkMovieImage((String) row[13]);                        // image
-            System.out.println("11: "+ row[11] + " - 12 " + row[12]);
             movies.add(dto);
         }
         return movies;
