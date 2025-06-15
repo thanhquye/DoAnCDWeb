@@ -30,7 +30,7 @@
     <div class="w3l-breadcrumbs" style="padding-top: 70px;padding-bottom: 0px">
         <nav id="breadcrumbs" class="breadcrumbs">
             <div class="container page-wrapper">
-                <a href="index.jsp">Home</a> » <span class="breadcrumb_last" aria-current="page">Giỏ hàng</span>
+                <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Giỏ hàng</span>
             </div>
         </nav>
     </div>
@@ -55,7 +55,7 @@
                                 <tr>
                                 <td class="p-4">
                                     <div class="media align-items-center">
-                                        <img src="../Movie_Ticket_Website/assets/movie-image/<%= ci %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                        <img src="${pageContext.request.contextPath}/assets/assets/movie-image/<%= ci %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                                         <div class="media-body">
                                             <a href="#" class="d-block text-dark"><%= ci %></a>
                                             <small>
