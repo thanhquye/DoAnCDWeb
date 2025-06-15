@@ -1,13 +1,10 @@
 package com.example.Movie_Ticket_Website;
 
+import com.example.Movie_Ticket_Website.dto.CommentDTO;
+import com.example.Movie_Ticket_Website.dto.MovieEaringDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
-import com.example.Movie_Ticket_Website.model.Actor;
-import com.example.Movie_Ticket_Website.model.Movie;
-import com.example.Movie_Ticket_Website.model.UserLogin;
-import com.example.Movie_Ticket_Website.service.ActorService;
-import com.example.Movie_Ticket_Website.service.MovieService;
-import com.example.Movie_Ticket_Website.service.TicketService;
-import com.example.Movie_Ticket_Website.service.UserLoginService;
+import com.example.Movie_Ticket_Website.model.*;
+import com.example.Movie_Ticket_Website.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +17,24 @@ class MovieTicketWebsiteApplicationTests {
 	private UserLoginService userLoginService;
 	@Autowired
 	private TicketService ticketService;
+
+	@Autowired
+	private TicketDetailService ticketDetailService;
+
+	@Autowired
+	private MovieService movieService;
+
+	@Autowired
+	private CinemaService cinemaService;
+
+	@Autowired
+	private CinemaRoomService cinemaRoomService;
+
+	@Autowired
+	private UserCommentService userCommentService;
+
+	@Autowired
+	private CustomerService customerService;
 
 	@Test
 	void contextLoads() {
@@ -36,6 +51,88 @@ class MovieTicketWebsiteApplicationTests {
     void countTickets() {
 		long count = ticketService.getTicketCount();
 		System.out.println(count);
+	}
+	@Test
+    void totaTicketsPrice() {
+		long count = ticketDetailService.totalPriceTicketDetails();
+		System.out.println(count);
+	}
+	@Test
+    void top10Movie() {
+		List<MovieWithMediaDTO> movies = movieService.getMostPopularMovies(3);
+		for (MovieWithMediaDTO movie : movies) {
+			System.out.println(movie.getMovieName());
+		}
+	}
+	@Test
+    void findMovieByName() {
+		List<Movie> movies = movieService.getAllMovieByName("Kẻ ăn Hồn");
+		for (Movie movie : movies) {
+			System.out.println(movie.getMovieName());
+		}
+
+	}
+	@Test
+    void checkMovie() {
+		Movie movie = new Movie();
+		movie.setMovieID("M001");
+		movie.setMovieName("Avengers: Endgame");
+		movie.setMovieCategory("Action");
+		movie.setReleaseDate("2025-06-15");
+		movie.setDirector("Anthony Russo");
+		movie.setDuration("180");
+		movie.setCountry("USA");
+		movie.setMovieDescription("The final battle...");
+		movie.setMovieContent("Tony Stark saves the world...");
+		movie.setIsPublished(1);
+		movie.setMovieScore(9.5);
+		// Khởi tạo media
+		MovieMediaLink mediaLink = new MovieMediaLink();
+		mediaLink.setMovieMediaLinkID("ML001");
+		mediaLink.setLinkMovieTrailer("https://youtube.com/trailer");
+		mediaLink.setLinkMovieImage("https://image.com/poster.jpg");
+
+		Boolean success = movieService.addNewMovie(movie, mediaLink, "At1");
+		System.out.println(success);
+
+	}
+	@Test
+    void getAllCategory() {
+		List<String> list = movieService.getAllMovieYear();
+		for (String c : list) {
+			System.out.println(c);
+		}
+
+	}
+	@Test
+    void findCinemaByID() {
+		List<Cinema> cinemas = cinemaService.getMostPopularCinema();
+		for (Cinema cinema : cinemas) {
+			System.out.println(cinema.getCinemaID());
+		}
+
+	}
+	@Test
+    void findCinemaRoomDay() {
+		List<CinemaRoom> cinemas = cinemaRoomService.getCinemaRoomNameByMID_CNAME_DATE("Mv1", "Cinestar Quốc Thanh", "2023-12-22");
+		for (CinemaRoom cinema : cinemas) {
+			System.out.println(cinema.getRoomName());
+		}
+	}
+	@Test
+    void getAllComment() {
+		List<CommentDTO> commentDTOS = userCommentService.getCommentsByMovieId("Mv3");
+		for (CommentDTO commentDTO : commentDTOS) {
+			System.out.println(commentDTO.getCommentText());
+		}
+
+	}
+	@Test
+    void getCustomerByUserID() {
+		Customer customer = new Customer("Cus2", "SANG", "Nam" , "Hà nội", "0912827812", "2003-03-23");
+		boolean cus = customerService.updateCustomer(customer);
+		System.out.println(cus);
+
 	}
 
 }

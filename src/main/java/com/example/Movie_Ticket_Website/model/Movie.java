@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "movie")
 public class Movie {
 
-    private int stt;
     @Id
     @Column(name = "movieID")
     private String movieID;
@@ -49,8 +48,8 @@ public class Movie {
     @JoinColumn(name = "actorID")
     private Actor actor;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ShowTime> showTimes;
+    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ShowTime showTimes;
 
     @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MovieMediaLink movieMediaLink;
@@ -70,11 +69,11 @@ public class Movie {
         this.actor = actor;
     }
 
-    public List<ShowTime> getShowTimes() {
+    public ShowTime getShowTimes() {
         return showTimes;
     }
 
-    public void setShowTimes(List<ShowTime> showTimes) {
+    public void setShowTimes(ShowTime showTimes) {
         this.showTimes = showTimes;
     }
 
@@ -86,13 +85,6 @@ public class Movie {
         this.userComment = userComment;
     }
 
-    public int getStt() {
-        return stt;
-    }
-
-    public void setStt(int stt) {
-        this.stt = stt;
-    }
 
     public String getMovieID() {
         return movieID;

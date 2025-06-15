@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TransectionBookingService {
-    @Autowired
     private TransectionBookingRepository transectionBookingRepository;
 
+    @Autowired
     public TransectionBookingService(TransectionBookingRepository transectionBookingRepository) {
         this.transectionBookingRepository = transectionBookingRepository;
     }

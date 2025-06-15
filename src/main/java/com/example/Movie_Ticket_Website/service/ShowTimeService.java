@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ShowTimeService {
-    @Autowired
     private ShowTimeRepository showTimeRepository;
 
+    @Autowired
     public ShowTimeService(ShowTimeRepository showTimeRepository) {
         this.showTimeRepository = showTimeRepository;
     }

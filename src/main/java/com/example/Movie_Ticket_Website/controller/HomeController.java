@@ -21,7 +21,8 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private final MovieService movieService;
+    @Autowired
+    private MovieService movieService;
     Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     public HomeController(MovieService movieService) {
