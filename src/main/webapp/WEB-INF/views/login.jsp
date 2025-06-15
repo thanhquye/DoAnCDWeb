@@ -35,12 +35,12 @@
             </div>
             <div class="remenber-forgot">
                 <%--                <label><input type="checkbox">Remenber me</label>--%>
-                <a href="forgotPass.jsp">Quên mật khẩu?</a>
+                <a href="forgotPass">Quên mật khẩu?</a>
             </div>
             <button type="submit" class="btn btn-success">Đăng nhập</button>
             <div class="login-register">
                 <p>Chưa có tài khoản?
-                    <a href="register.jsp" class="register-link">Đăng ký</a>
+                    <a href="register" class="register-link">Đăng ký</a>
                 </p>
             </div>
 

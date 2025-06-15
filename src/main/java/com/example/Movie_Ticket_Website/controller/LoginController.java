@@ -45,7 +45,7 @@ public class LoginController {
                 return "redirect:/adminHome";
             } else {
                 // Nếu không phải admin, chuyển hướng đến trang chính (index.jsp hoặc controller homepage)
-                return "redirect:/home";
+                return "redirect:/";
             }
         } else {
             // Đăng nhập thất bại

@@ -17,10 +17,14 @@ public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
     UserLogin findByEmailAndUserPassword(String email, String userPassword);
 
 
-    List<UserLogin> findAllByUserName(String userName);
 
-    boolean existsByEmail(String email);
+    List<UserLogin> findAllByUserName(String userName);
 
     @Query("select user.userId from UserLogin user")
     List<String> findAllUserID();
+
+    // register
+    boolean existsByEmail(String email);
+    boolean existsByUserName(String userName);
+
 }
