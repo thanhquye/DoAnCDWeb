@@ -48,7 +48,6 @@
     </div>
 </div>
 
-
 <script type="text/javascript">
     var status = document.getElementById("status").value;
     // console.log(status);
