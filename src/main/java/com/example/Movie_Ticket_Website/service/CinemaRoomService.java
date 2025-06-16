@@ -16,7 +16,7 @@ public class CinemaRoomService {
         this.cinemaRoomRepository = cinemaRoomRepository;
     }
 
-    public List<CinemaRoom> getCinemaRoomNameByMID_CNAME_DATE(String movieID, String cinemaID, String date) {
-        return cinemaRoomRepository.findCinemaRoomsOfDay(movieID, cinemaID, date);
+    public List<CinemaRoom> getCinemaRoomNameByMID_CNAME_DATE(String movieID, String cinemaName, String date) {
+        return cinemaRoomRepository.findCinemaRoomsOfDay(movieID, cinemaName, date);
     }
 }

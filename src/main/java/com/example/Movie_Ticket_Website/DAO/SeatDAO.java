@@ -14,7 +14,7 @@ public class SeatDAO {
     private SeatService seatService;
 
     public void all(){
-        List<Seat> seats = seatService.getSeatByMID_CNAME_DATE_RNAME_TIME("Mv1", "cnm1", "2023-12-22", "Phòng 4", "17:00:00");
+//        List<Seat> seats = seatService.getSeatByMovieID("Mv1");
 
     }
 }

@@ -16,13 +16,13 @@ public interface SeatRepository extends JpaRepository<Seat, String> {
             "JOIN c.showTimes st " +
             "JOIN st.movie m " +
             "WHERE m.movieID = :movieID " +
-            "AND c.cinemaID = :cinemaID " +
+            "AND c.cinemaName = :cinemaName " +
             "AND st.showDate = :date " +
             "AND cr.roomName = :roomName " +
             "AND st.startTime = :time")
     List<Seat> findSeatByMID_CNAME_DATE_RNAME_TIME(
             @Param("movieID") String movieID,
-            @Param("cinemaID") String cinemaID,
+            @Param("cinemaName") String cinemaName,
             @Param("date") String date,
             @Param("roomName") String roomName,
             @Param("time") String time

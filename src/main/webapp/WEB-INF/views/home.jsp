@@ -388,9 +388,9 @@
 </script>
 <!-- responsive tabs -->
 <%--<script src="assets/js/jquery-3.7.1.min.js"></script>--%>
-<script src="${pageContext.request.contextPath}assets/js/jquery-1.9.1.min.js"></script>
-<script src="${pageContext.request.contextPath}assets/js/easyResponsiveTabs.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.9.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/easyResponsiveTabs.js"></script>
 <!--/theme-change-->
-<script src="${pageContext.request.contextPath}assets/js/theme-change.js"></script>
-<script src="${pageContext.request.contextPath}assets/js/owl.carousel.js"></script>
-<script src="${pageContext.request.contextPath}assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/theme-change.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/owl.carousel.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>

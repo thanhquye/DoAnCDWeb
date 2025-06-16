@@ -20,7 +20,7 @@ public class ShowTimeService {
         return showTimeRepository.findShowtimeByCinemaIDAndMovieID(cinemaID, movieID);
     }
 
-    public List<ShowTime> getShowtimeByMID_CNAME_DATE_RNAME(String movieID, String cinemaID, String date, String roomName) {
-        return showTimeRepository.findShowtimeByMID_CNAME_DATE_RNAME(movieID, cinemaID, date, roomName);
+    public List<ShowTime> getShowtimeByMID_CNAME_DATE_RNAME(String movieID, String cinemaName, String date, String roomName) {
+        return showTimeRepository.findShowtimeByMID_CNAME_DATE_RNAME(movieID, cinemaName, date, roomName);
     }
 }

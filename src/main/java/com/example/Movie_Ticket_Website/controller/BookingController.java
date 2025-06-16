@@ -222,10 +222,16 @@ public class BookingController {
             map.put(c.getRoomName(),startTimeList);
         }
         model.addAttribute("mapRoomAndTime",map);
+//        List<Map.Entry<String, List<String>>> entryList = new ArrayList<>(map.entrySet());
+//        model.addAttribute("roomTimeList", entryList);
         // thực hiện đặt ghế và chọn dịch vụ đi kèm vé
         model.addAttribute("time",time);
         model.addAttribute("cinemaRoomName",cinemaRoomName);
         List<Seat> seats = seatService.getSeatByMID_CNAME_DATE_RNAME_TIME(movieID,cinemaName,curDate,cinemaRoomName,time);
+        System.out.println("ghế ");
+        for(Seat s : seats) {
+           System.out.println("ghế "+s.getSeatName());
+       }
         model.addAttribute("seats",seats);
 
         return "seatBooking";
@@ -245,8 +251,15 @@ public class BookingController {
         model.addAttribute("cinemaListGetByMovieSize", cinemaNameList.size());
         model.addAttribute("cinemaListGetByMovie", cinemaNameList);
         // lấy lịch chiếu phim của rạp đó
-        model.addAttribute("cinemaName", cinemaName);
-        Cinema cinema = cinemaService.getCinemaByName(cinemaName).get(0);
+        Cinema cinema;
+        if(!cinemaName.isEmpty()){
+            model.addAttribute("cinemaName", cinemaName);
+            cinema = cinemaService.getCinemaByName(cinemaName).get(0);
+        }else{
+            model.addAttribute("cinemaName", cinemaName);
+            cinema = cinemaService.getAllCinema().get(0);
+        }
+
         model.addAttribute("cinemaLocation",cinema.getLocation());
         List<ShowTime> showtimes = showTimeService.getShowtimeByCinemaIDAndMovieID(movieID,cinemaName);
         List<String> showtimesDate = new ArrayList<>();
@@ -286,8 +299,14 @@ public class BookingController {
         model.addAttribute("cinemaListGetByMovieSize", cinemaNameList.size());
         model.addAttribute("cinemaListGetByMovie", cinemaNameList);
         // lấy lịch chiếu phim của rạp đó
-        model.addAttribute("cinemaName", cinemaName);
-        Cinema cinema = cinemaService.getCinemaByName(cinemaName).get(0);
+        Cinema cinema;
+        if(!cinemaName.isEmpty()){
+            model.addAttribute("cinemaName", cinemaName);
+            cinema = cinemaService.getCinemaByName(cinemaName).get(0);
+        }else{
+            model.addAttribute("cinemaName", cinemaName);
+            cinema = cinemaService.getAllCinema().get(0);
+        }
         model.addAttribute("cinemaLocation",cinema.getLocation());
         List<ShowTime> showtimes = showTimeService.getShowtimeByCinemaIDAndMovieID(movieID,cinemaName);
         List<String> showtimesDate = new ArrayList<>();

@@ -30,7 +30,7 @@
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src="${pageContext.request.contextPath}/assets/js/theme-change.js"></script>
 
-<script type="text/javascript" src="/assets/js/ticket-booking.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/ticket-booking.js"></script>
 
 
 
