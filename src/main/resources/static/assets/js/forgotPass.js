@@ -18,9 +18,9 @@ window.onload = function () {
         }
 
         // Gửi AJAX để kiểm tra email trên server
-        fetch("/api/auth/validate-email", {
+            fetch("/api/auth/validate-email", {
             method: "POST",
-            headers: {
+                headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             body: "email=" + encodeURIComponent(email)
