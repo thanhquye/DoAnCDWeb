@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api/auth")
 public class ValidateUserController {
     // kiểm tra gmail và username trong Register
     @Autowired

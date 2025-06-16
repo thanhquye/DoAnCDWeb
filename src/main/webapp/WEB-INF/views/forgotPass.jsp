@@ -4,13 +4,13 @@
     <title>Forgot Pass</title>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/assets/css/form.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/form.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-<body style="background: url('${pageContext.request.contextPath}/static/img/pxfuel.jpg') no-repeat; background-size: cover">
+<body style="background: url('${pageContext.request.contextPath}/img/pxfuel.jpg') no-repeat; background-size: cover">
 <div class="form">
     <div class="form-box login">
         <h2>Quên Mật Khẩu</h2>
@@ -34,6 +34,6 @@
 
 </body>
 
-<script src="${pageContext.request.contextPath}/static/assets/js/forgotPass.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/forgotPass.js"></script>
 
 </html>

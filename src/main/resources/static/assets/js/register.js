@@ -46,7 +46,7 @@ function checkUsernameEmail() {
 
     if (!username && !email) return; // nếu chưa nhập gì thì thôi
 
-    fetch('check-user-email', {
+    fetch('/api/auth/check-user-email', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}`

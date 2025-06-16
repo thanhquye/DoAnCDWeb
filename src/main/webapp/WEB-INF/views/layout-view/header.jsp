@@ -4,10 +4,10 @@
 <%@ page import="com.example.Movie_Ticket_Website.beans.ShoppingCart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%--%>
-<%--    UserLogin user = (UserLogin) session.getAttribute("user");--%>
-<%--    boolean isLogined = user == null ? false : true;--%>
-<%--%>--%>
+<%
+    UserLogin user = (UserLogin) session.getAttribute("user");
+    boolean isLogined = user == null ? false : true;
+%>
 <%
     ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
     if(shoppingCart == null){
@@ -27,24 +27,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"  ><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                     <li class="nav-item"  ><a class="nav-link" href="movie-servlet?action=init">Phim</a></li>
                     <li class="nav-item"  ><a class="nav-link" href="showtimes-servlet?action=init">Lịch chiếu</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="about">Thông tin</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="contact">Liên hệ</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="about.jsp">Thông tin</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="contact.jsp">Liên hệ</a></li>
                 </ul>
-<%--                <div class="Login_SignUp" id="login" style="font-size: 2rem ; display: inline-block; position: relative;border-radius: 5px; ">--%>
-<%--                    <a class="nav-link" href="login.jsp" style="padding: 0px 0px;">--%>
-<%--                    <ul class="navbar-nav ml-auto">--%>
-<%--                    <% if(isLogined) { %>--%>
-<%--                        <li class="nav-item " ><a class="nav-link" href="userpage-servlet?action=init" style="padding-right: 1rem; padding-left: 1rem" >Chào, ${sessionScope.get("userName")}</a></li>--%>
-<%--                        <li class="nav-item " ><a class="nav-link" href="home-servlet?action=logout" style="padding-right: 1rem; padding-left: 1rem" >Đăng xuất</a></li>--%>
-<%--                    <% } else { %>--%>
-<%--                        <li class="nav-item " ><a class="nav-link" href="login.jsp" style="padding-right: 1rem; padding-left: 1rem" >Đăng nhập</a></li>--%>
-<%--                    <% } %>--%>
-<%--                    </ul>--%>
-<%--                    </a>--%>
-<%--                </div>--%>
+                <div class="Login_SignUp" id="login" style="font-size: 2rem ; display: inline-block; position: relative;border-radius: 5px; ">
+                    <a class="nav-link" href="login.jsp" style="padding: 0px 0px;">
+                    <ul class="navbar-nav ml-auto">
+                    <% if(isLogined) { %>
+                        <li class="nav-item " ><a class="nav-link" href="userpage-servlet?action=init" style="padding-right: 1rem; padding-left: 1rem" >Chào, ${sessionScope.get("userName")}</a></li>
+                        <li class="nav-item " ><a class="nav-link" href="/logout" style="padding-right: 1rem; padding-left: 1rem" >Đăng xuất</a></li>
+                    <% } else { %>
+                        <li class="nav-item " ><a class="nav-link" href="login" style="padding-right: 1rem; padding-left: 1rem" >Đăng nhập</a></li>
+                    <% } %>
+                    </ul>
+                    </a>
+                </div>
                 <%--  shopping cart icon --%>
                 <div class="search-right">
                     <a href="shoppingCart-servlet?action=view" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">

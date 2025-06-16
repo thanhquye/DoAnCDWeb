@@ -6,20 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>Register</title>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/assets/css/form.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/form.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/assets/css_made/register.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css_made/register.css">
 </head>
 
-<body style="background: url('${pageContext.request.contextPath}/static/img/pxfuel.jpg') no-repeat; background-size: cover">
+<body style="background: url('${pageContext.request.contextPath}/img/pxfuel.jpg') no-repeat; background-size: cover">
 <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 <div class="form register">
     <div class="form-box register">
@@ -69,6 +71,6 @@
 
 </body>
 
-<script src="${pageContext.request.contextPath}/static/assets/js/register.js"></script>
+<script src="${pageContext.request.contextPath}assets/js/register.js"></script>
 
 </html>
