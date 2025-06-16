@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-@RequestMapping("/showtimes-servlet")
+@RequestMapping("/showTimes")
 public class ShowTimeController {
 
     @Autowired
@@ -102,7 +102,7 @@ public class ShowTimeController {
         session.setAttribute("searchedResultCinemaList", searchedResultCinemaList);
         model.addAttribute("searchedResultCinemaListSize", searchedResultCinemaListSize);
 
-        return "showtimes";
+        return "showTimes";
 
     }
 
@@ -139,7 +139,7 @@ public class ShowTimeController {
             model.addAttribute("movieListForCNameAndShowtime",movieListForCNameAndShowtime);
             session.setAttribute("movieListForCNameAndShowtime",movieListForCNameAndShowtime);
         }
-        return "showtimes";
+        return "showTimes";
 
     }
 
@@ -161,7 +161,7 @@ public class ShowTimeController {
         int size = list.size();
         model.addAttribute("resCinemaList",list);
         model.addAttribute("resCinemaListSize",size);
-        return "showtimes";
+        return "showTimes";
     }
 
     private String showCinemaName(String cid, HttpSession session, Model model) {
@@ -192,7 +192,7 @@ public class ShowTimeController {
         model.addAttribute("searchedResultCinemaList", searchedResultCinemaList);
         session.setAttribute("searchedResultCinemaList", searchedResultCinemaList);
         model.addAttribute("searchedResultCinemaListSize", searchedResultCinemaListSize);
-        return "showtimes";
+        return "showTimes";
 
     }
 
@@ -218,7 +218,7 @@ public class ShowTimeController {
         model.addAttribute("allCinema", allCinema);
         model.addAttribute("searchedResultCinemaList",null);
         model.addAttribute("isShowAllCinema",true);
-        return "showtimes";
+        return "showTimes";
 
     }
 

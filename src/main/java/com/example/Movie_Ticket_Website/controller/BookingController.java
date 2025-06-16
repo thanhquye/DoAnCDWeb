@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/bookingTicket-servlet")
+@RequestMapping("/bookingTicket")
 public class BookingController {
     @Autowired
     CinemaService cinemaService;
@@ -102,6 +102,7 @@ public class BookingController {
                 startTimeList.add(s.getStartTime());
             }
             map.put(c.getRoomName(),startTimeList);
+            System.out.println(c.getRoomName());
         }
         model.addAttribute("mapRoomAndTime",map);
         // thực hiện đặt ghế và chọn dịch vụ đi kèm vé
@@ -302,7 +303,6 @@ public class BookingController {
 
     private String initData(String movieID, HttpSession session, Model model) {
         // process : get Movie to process
-        System.out.println("Booking movieID:"+movieID);
         Movie movie = movieService.getMovieByMovieID(movieID);
         model.addAttribute("movieName", movie.getMovieName());
         model.addAttribute("movieID", movieID);

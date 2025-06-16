@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="button-center text-center mt-4" style="margin-top: 0px">
-                            <a href="bookingTicket-servlet?action=init&movieID=${movie.movieID}" class="btn watch-button" style="color: white;  font-size: 25px">Đặt vé ngay</a>
+                            <a href="bookingTicket?action=init&movieID=${movie.movieID}" class="btn watch-button" style="color: white;  font-size: 25px">Đặt vé ngay</a>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-5">
                     <%-- thực hiện tìm kiếm tên rạp - ten rap chieu phim can tim den HomeController servlet --%>
-                    <form action="movieDetail-servlet" method="post">
+                    <form action="movieDetail" method="post">
                         <input type="hidden" name="action" value="cinemaSearch">
                         <input type="hidden" name="cid" value="${cinemaDetail.cinemaID}">
                         <input type="hidden" name="movieID" value="${movie.movieID}">
@@ -75,7 +75,7 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="movieDetail-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}&movieID=${movie.movieID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="movieDetail?action=show-cinemaShowtime&cid=${cinema.cinemaID}&movieID=${movie.movieID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -83,7 +83,7 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="movieDetail-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}&movieID=${movie.movieID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="movieDetail?action=show-cinemaShowtime&cid=${cinema.cinemaID}&movieID=${movie.movieID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -91,7 +91,7 @@
                             <c:forEach items="${searchedResultCinemaList}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="movieDetail-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}&movieID=${movie.movieID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="movieDetail?action=show-cinemaShowtime&cid=${cinema.cinemaID}&movieID=${movie.movieID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -116,12 +116,12 @@
                                 <div class="showtimes-calenderBox" style="text-align: center">
                                     <%--  dùng javaBean để lấy ngày tháng và hiển thị ngày hôm nay--%>
                                     <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean" scope="session"/>
-                                    <a class="showtimes-dateItem" href="movieDetail-servlet?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&movieID=${movie.movieID}">
+                                    <a class="showtimes-dateItem" href="movieDetail?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&movieID=${movie.movieID}">
                                         <fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/>
                                     </a>
                                     <c:forEach var="i" begin="1" end="6" >
                                         <%-- hien thi 6 ngay bat dau tu ngay chieu phim dang duoc chon --%>
-                                        <a class="showtimes-dateItem" href="movieDetail-servlet?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}&movieID=${movie.movieID}">
+                                        <a class="showtimes-dateItem" href="movieDetail?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}&movieID=${movie.movieID}">
                                             <fmt:formatDate value="${date.addDate(i)}" pattern="dd/MM"/>
                                         </a>
                                     </c:forEach>
@@ -145,7 +145,7 @@
                                                  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
                                                 <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
                                                 <p class="card-text" style="color: whitesmoke;">${m.movieDescription}</p>
-                                                <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
+                                                <a href="bookingTicket?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
                                             </div>
                                         </div>
                                     </c:forEach>

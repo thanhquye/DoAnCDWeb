@@ -98,7 +98,7 @@
                                 <form class="card p-2">
                                     <div class="input-group">
 <%--                                        <input type="text" class="form-control" placeholder="Mã giảm giá" style="width: 10px !important;">--%>
-                                            <a href="bookingTicket-servlet?action=changeToETicket&time=${time}&cinemaRoomName=${cinemaRoomName}&date=${curDate}&cinemaName=${cinemaName}&movieID=${movieID}&seatName=${c.seatName}">Thanh toán</a>
+                                            <a href="bookingTicket?action=changeToETicket&time=${time}&cinemaRoomName=${cinemaRoomName}&date=${curDate}&cinemaName=${cinemaName}&movieID=${movieID}&seatName=${c.seatName}">Thanh toán</a>
                                     </div>
                                 </form>
                             </div>

@@ -37,7 +37,7 @@
                                         <%-- first Filter : filter by country, isPublished, movieCategory, director + find by movieName --%>
                                         <%-- lọc phim theo tên thể loại --%>
                                         <div class="col-2">
-                                            <form action="movie-servlet" method="get">
+                                            <form action="movie" method="get">
                                                 <input type="hidden" name="action" value="filterCategory">
                                                 <input class="filter_input" type="text" name="category"
                                                        placeholder="Thể loại" list="catelogyList">
@@ -50,7 +50,7 @@
                                         </div>
                                         <%-- lọc phim theo tên quốc gia --%>
                                         <div class="col-2">
-                                            <form action="movie-servlet" method="get">
+                                            <form action="movie" method="get">
                                                 <input type="hidden" name="action" value="filterCountry">
                                                 <input class="filter_input" type="text" name="country"
                                                        placeholder="Quốc gia" list="countryList">
@@ -63,7 +63,7 @@
                                         </div>
                                         <%-- lọc phim theo năm phát hành --%>
                                         <div class="col-2">
-                                            <form action="movie-servlet" method="get">
+                                            <form action="movie" method="get">
                                                 <input type="hidden" name="action" value="filterYear">
                                                 <input class="filter_input" type="text" name="year" placeholder="Năm "
                                                        list="yearList">
@@ -76,7 +76,7 @@
                                         </div>
                                         <%-- nhập tên để tìm phim  --%>
                                         <div class="col-2">
-                                            <form action="movie-servlet" method="get">
+                                            <form action="movie" method="get">
                                                 <input type="hidden" name="action" value="findByMovieName">
                                                 <input class="filter_input" type="search" name="movieName"
                                                        placeholder="Nhập tên phim để tìm kiếm">
@@ -117,7 +117,7 @@
                                                         <p style="font-weight: lighter">Một bộ phim của ${m.director}
                                                             - ${m.country}</p>
                                                         <a class="author-book-title"
-                                                           href="movieDetail-servlet?action=init&movieID=${m.movieID}">${m.movieName}</a>
+                                                           href="movieDetail?action=init&movieID=${m.movieID}">${m.movieName}</a>
                                                         <h4><span class="post"><span
                                                                 class="fa fa-clock-o"> </span>${m.duration}</span>
                                                             <span class="post fa fa-heart text-right"></span>
@@ -155,7 +155,7 @@
                                                         <p style="font-weight: lighter">Một bộ phim của ${m.director}
                                                             - ${m.country}</p>
                                                         <a class="author-book-title"
-                                                           href="movieDetail-servlet?action=init&movieID=${m.movieID}">${m.movieName}</a>
+                                                           href="movieDetail?action=init&movieID=${m.movieID}">${m.movieName}</a>
                                                         <h4><span class="post"><span
                                                                 class="fa fa-clock-o"> </span>${m.duration}</span>
                                                             <span class="post fa fa-heart text-right"></span>
@@ -192,7 +192,7 @@
                                                         <p style="font-weight: lighter">Một bộ phim của ${m.director}
                                                             - ${m.country}</p>
                                                         <a class="author-book-title"
-                                                           href="movieDetail-servlet?action=init&movieID=${m.movieID}">${m.movieName}</a>
+                                                           href="movieDetail?action=init&movieID=${m.movieID}">${m.movieName}</a>
                                                         <h4><span class="post"><span
                                                                 class="fa fa-clock-o"> </span>${m.duration}</span>
                                                             <span class="post fa fa-heart text-right"></span>
@@ -229,7 +229,7 @@
                                                         <p style="font-weight: lighter">Một bộ phim của ${m.director}
                                                             - ${m.country}</p>
                                                         <a class="author-book-title"
-                                                           href="movieDetail-servlet?action=init&movieID=${m.movieID}">${m.movieName}</a>
+                                                           href="movieDetail?action=init&movieID=${m.movieID}">${m.movieName}</a>
                                                         <h4><span class="post"><span
                                                                 class="fa fa-clock-o"> </span>${m.duration}</span>
                                                             <span class="post fa fa-heart text-right"></span>
@@ -266,7 +266,7 @@
                                                         <p style="font-weight: lighter">Một bộ phim của ${m.director}
                                                             - ${m.country}</p>
                                                         <a class="author-book-title"
-                                                           href="movieDetail-servlet?action=init&movieID=${m.movieID}">${m.movieName}</a>
+                                                           href="movieDetail?action=init&movieID=${m.movieID}">${m.movieName}</a>
                                                         <h4><span class="post"><span
                                                                 class="fa fa-clock-o"> </span>${m.duration}</span>
                                                             <span class="post fa fa-heart text-right"></span>
@@ -310,7 +310,7 @@
                                      alt=""
                                      style="height: 350px">
                             </figure>
-                            <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" data-toggle="modal">
+                            <a href="movieDetail?action=init&movieID=${m.movieID}" data-toggle="modal">
                                 <div class="box-content">
                                     <h3 class="title">${m.movieName}</h3>
                                     <h4><span class="post"><span
@@ -341,7 +341,7 @@
                                      alt=""
                                      style="height: 350px">
                             </figure>
-                            <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" data-toggle="modal">
+                            <a href="movieDetail?action=init&movieID=${m.movieID}" data-toggle="modal">
                                 <div class="box-content">
                                     <h3 class="title">${m.movieName}</h3>
                                     <h4><span class="post"><span
@@ -371,7 +371,7 @@
                                      alt=""
                                      style="height: 350px">
                             </figure>
-                            <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" data-toggle="modal">
+                            <a href="movieDetail?action=init&movieID=${m.movieID}" data-toggle="modal">
                                 <div class="box-content">
                                     <h3 class="title">${m.movieName}</h3>
                                     <h4><span class="post"><span

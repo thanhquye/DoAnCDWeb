@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-5">
                     <%-- thực hiện tìm kiếm tên rạp - ten rap chieu phim can tim den HomeController servlet --%>
-                    <form action="showtimes-servlet" method="post">
+                    <form action="showTimes" method="post">
                         <input type="hidden" name="action" value="cinemaSearch">
                         <input type="hidden" name="cid" value="${cinemaDetail.cinemaID}">
                         <input class="form-control" type="text" name="cinemaName" placeholder="Nhập tên rạp để tìm kiếm"
@@ -42,7 +42,7 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="showtimes-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
+                                    <a href="showTimes?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
                                        style="color: whitesmoke">${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
@@ -51,7 +51,7 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="showtimes-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
+                                    <a href="showTimes?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
                                        style="color: whitesmoke">${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
@@ -60,7 +60,7 @@
                             <c:forEach items="${searchedResultCinemaList}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="showtimes-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
+                                    <a href="showTimes?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
                                        style="color: whitesmoke">${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
@@ -90,13 +90,13 @@
                                     <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean"
                                                  scope="session"/>
                                     <a class="showtimes-dateItem"
-                                       href="showtimes-servlet?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
+                                       href="showTimes?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
                                         <fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/>
                                     </a>
                                     <c:forEach var="i" begin="1" end="6">
                                         <%-- hien thi 6 ngay bat dau tu ngay chieu phim dang duoc chon --%>
                                         <a class="showtimes-dateItem"
-                                           href="showtimes-servlet?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
+                                           href="showTimes?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
                                             <fmt:formatDate value="${date.addDate(i)}" pattern="dd/MM"/>
                                         </a>
                                     </c:forEach>
@@ -125,7 +125,7 @@
                                                     style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
                                                 <p class="card-text"
                                                    style="color: whitesmoke;">${m.movieDescription}</p>
-                                                <a href="movieDetail-servlet?action=init&movieID=${m.movieID}"
+                                                <a href="movieDetail?action=init&movieID=${m.movieID}"
                                                    class="btn btn-primary" style="margin-top: 5px">Đặt vé
                                                     ngày ${wantedBookDate}</a>
                                             </div>

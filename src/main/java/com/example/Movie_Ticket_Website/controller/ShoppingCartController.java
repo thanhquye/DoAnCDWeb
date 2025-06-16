@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/shoppingCart-servlet")
+@RequestMapping("/shoppingCart")
 public class ShoppingCartController {
     @Autowired
     private MovieService movieService;

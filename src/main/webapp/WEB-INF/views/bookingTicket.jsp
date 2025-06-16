@@ -39,7 +39,7 @@
                                     <div style="margin-top: 5px; border: 1px groove; border: 10px; padding: 5px"><h3>${movieName}</h3></div>
                                 </div>
                                 <div class="col-4" >
-                                    <form action="bookingTicket-servlet" method="get">
+                                    <form action="bookingTicket" method="get">
                                         <input type="hidden" name="action" value="showShowTimeForCinema">
                                         <input type="hidden" name="movieID" value="${movieID}">
                                         <input style="border-radius: 10px; margin-bottom: 20px; width: 630px" type="text" name="cinemaName" placeholder="Chọn rạp chiếu phim bạn muốn đặt vé" list="cinemaListGetByMovie">
@@ -58,7 +58,7 @@
                                 </c:if>
                                 <div class="carousel carousel-nav" data-flickity='{"contain": true, "pageDots": false }'>
                                     <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean" scope="session"/>
-                                    <a class="carousel-cell" id="1" onclick="myFunction(1)" href="bookingTicket-servlet?action=showTimeInThisDate&date=${date.formatDate(date.currentDate)}&cinemaName=${cinemaName}&movieID=${movieID}">
+                                    <a class="carousel-cell" id="1" onclick="myFunction(1)" href="bookingTicket?action=showTimeInThisDate&date=${date.formatDate(date.currentDate)}&cinemaName=${cinemaName}&movieID=${movieID}">
                                         <div class="date-numeric"><fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/></div>
                                         <div class="date-day">Hôm nay</div>
                                         <c:forEach items="${showtimesDate}" var="std">
@@ -69,7 +69,7 @@
                                     </a>
                                     <c:forEach var="i" begin="2" end="7" >
                                         <%-- hien thi 6 ngay bat dau tu ngay chieu phim dang duoc chon --%>
-                                        <a class="carousel-cell" id="${i}" onclick="myFunction(${i})" href="bookingTicket-servlet?action=showTimeInThisDate&date=${date.formatDate(date.addDate(i-1))}&cinemaName=${cinemaName}&movieID=${movieID}">
+                                        <a class="carousel-cell" id="${i}" onclick="myFunction(${i})" href="bookingTicket?action=showTimeInThisDate&date=${date.formatDate(date.addDate(i-1))}&cinemaName=${cinemaName}&movieID=${movieID}">
                                             <div class="date-numeric"><fmt:formatDate value="${date.addDate(i-1)}" pattern="dd/MM"/></div>
                                             <div class="date-day"></div>
                                             <c:forEach items="${showtimesDate}" var="std">
@@ -92,7 +92,7 @@
                                         <div class="screens">Tên phòng chiếu : <%= key %></div>
                                         <div class="time-btn">
                                             <c:forEach items="<%= value %>" var="time">
-                                                <a href="bookingTicket-servlet?action=changeToSeatBooking&time=${time}&cinemaRoomName=<%=key%>&date=${curDate}&cinemaName=${cinemaName}&movieID=${movieID}" style="border-radius: 5px; background-color: #0f6674; padding: 10px ;color: white;margin: 10px 5px">${time}</a>
+                                                <a href="${pageContext.request.contextPath}/bookingTicket?action=changeToSeatBooking&time=${time}&cinemaRoomName=<%=key%>&date=${curDate}&cinemaName=${cinemaName}&movieID=${movieID}" style="border-radius: 5px; background-color: #0f6674; padding: 10px ;color: white;margin: 10px 5px">${time}</a>
                                             </c:forEach>
                                         </div>
                                     <%    } %>
@@ -113,11 +113,11 @@
     <jsp:include page="../views/layout-view/js-function-slider.jsp" />
     <jsp:include page="../views/layout-view/script_bookingTicket.jsp" />
     <!-- responsive tabs -->
-    <script src="${pageContext.request.contextPath}assets/js/jquery-1.9.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}assets/js/easyResponsiveTabs.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.9.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/easyResponsiveTabs.js"></script>
     <!--/theme-change-->
-    <script src="${pageContext.request.contextPath}assets/js/theme-change.js"></script>
-    <script src="${pageContext.request.contextPath}assets/js/owl.carousel.js"></script>
-    <script src="${pageContext.request.contextPath}assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/theme-change.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/owl.carousel.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/movieDetail-servlet")
+@RequestMapping("/movieDetail")
 public class MovieDetailController {
     @Autowired
     private MovieService movieService;

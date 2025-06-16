@@ -54,7 +54,9 @@
                     <li>
                         <div class="slider-info banner-view"  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${newestMovie.linkMovieImage}) no-repeat center; background-size: cover; " >
                             <div class="banner-info">
-                                <h3>${newestMovie.movieName}</h3>
+                               <a href="movieDetail?action=init&movieID=${newestMovie.movieID}">
+                                   <h3>${newestMovie.movieName}</h3>
+                               </a>
                                 <p><span>${newestMovie.movieContent}</span></p>
                                 <a href="#small-dialog${loop.index}" class="popup-with-zoom-anim play-view1">
                                     <p>${newestMovie.movieName}</p>
@@ -90,7 +92,7 @@
                         <h3 class="hny-title">PHIM ĐANG CHIẾU</h3>
                     </div>
                     <div class="headerhny-right text-lg-right">
-                        <h4><a class="show-title" href="movie-servlet?action=init">XEM TẤT CẢ</a></h4>
+                        <h4><a class="show-title" href="movie?action=init">XEM TẤT CẢ</a></h4>
                     </div>
                 </div>
             </div>
@@ -98,7 +100,7 @@
                 <c:forEach items="${publishedMovies}" var="m" >
                     <div class="item vhny-grid">
                         <div class="box16 mb-0">
-                            <a href="movieDetail-servlet?action=init&movieID=${m.movieID}">
+                            <a href="movieDetail?action=init&movieID=${m.movieID}">
                                 <figure>
                                     <img class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  300px">
                                 </figure>
@@ -110,17 +112,17 @@
                                 <span class="fa fa-play-circle video-icon" aria-hidden="true"></span>
                             </a>
                         </div>
-                        <h3><a class="title-gd" style="height: 3rem; font-size: 15px" href="movieDetail-servlet?action=init&movieID=${m.movieID}"> ${m.movieName} </a> </h3>
+                        <h3><a class="title-gd" style="height: 3rem; font-size: 15px" href="movieDetail?action=init&movieID=${m.movieID}"> ${m.movieName} </a> </h3>
                         <p style="height: 2rem" > ${m.movieDescription} </p>
                         <div class="row">
                             <div class="col-4">
                                 <div class="button-center text-center mt-4" style="text-align: center">
-                                    <a href="bookingTicket-servlet?action=init&movieID=${m.movieID}" class="btn watch-button" style="padding: 0px 0px !important;"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="shoppingCart-servlet?action=view" class="btn watch-button" style="padding: 0px 0px !important;"><i class="fa fa-cart-plus"></i></a>
                                 </div>
                             </div>
                             <div class="col-8">
                                 <div class="button-right text-center mt-4" style="text-align: right">
-                                    <a href="bookingTicket-servlet?action=init" class="btn watch-button" style="padding: 0px 0px !important;">Đặt vé</a>
+                                    <a href="bookingTicket?action=init&movieID=${m.movieID}" class="btn watch-button" style="padding: 0px 0px !important;">Đặt vé</a>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +144,7 @@
                         <h3 class="hny-title">PHIM SẮP CHIẾU</h3>
                     </div>
                     <div class="headerhny-right text-lg-right">
-                        <h4><a class="show-title" href="movie-servlet?action=init">XEM TẤT CẢ</a></h4>
+                        <h4><a class="show-title" href="movie?action=init">XEM TẤT CẢ</a></h4>
                     </div>
                 </div>
             </div>
@@ -150,7 +152,7 @@
                 <c:forEach items="${unPublishedMovies}" var="m" >
                     <div class="item vhny-grid">
                         <div class="box16">
-                            <a href="movieDetail-servlet?action=init&movieID=${m.movieID}">
+                            <a href="movieDetail?action=init&movieID=${m.movieID}">
                                 <figure>
                                     <img class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  350px">
                                 </figure>
@@ -203,7 +205,7 @@
             <div class="row">
                 <div class="col-5">
                     <%-- thực hiện tìm kiếm tên rạp - ten rap chieu phim can tim den HomeController servlet --%>
-                    <form action="home-servlet" method="post">
+                    <form action="home" method="post">
                         <input type="hidden" name="action" value="cinemaSearch">
                         <input type="hidden" name="cid" value="${cinemaDetail.cinemaID}">
                         <input class="form-control" type="text" name="cinemaName" placeholder="Nhập tên rạp để tìm kiếm" aria-label="search" value="${txtHistory}">
@@ -214,7 +216,7 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="home-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -222,7 +224,7 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="home-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -230,7 +232,7 @@
                             <c:forEach items="${searchedResultCinemaList}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="home-servlet?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -238,7 +240,7 @@
                 </div>
                 <div class="col-7">
                     <div id="showtimes-rightBox">
-                        <%-- hien thi noi dung cinema lay duoc tu home-servlet --%>
+                        <%-- hien thi noi dung cinema lay duoc tu home --%>
                         <div class="showtimes-cinema_title" id="cinemaTitle">
                             <c:if test="${(cinemaDetail == null) && (searchedResultCinemaListSize == 0)}">
                                 <h2 style="font-size: 25px;padding-bottom: 5px"><i class="fa-solid fa-film"> </i> Bạn chưa chọn rạp phim</h2>
@@ -255,12 +257,12 @@
                                 <div class="showtimes-calenderBox" style="text-align: center">
                                     <%--  dùng javaBean để lấy ngày tháng và hiển thị ngày hôm nay--%>
                                     <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean" scope="session"/>
-                                    <a class="showtimes-dateItem" href="home-servlet?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
+                                    <a class="showtimes-dateItem" href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
                                         <fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/>
                                     </a>
                                     <c:forEach var="i" begin="1" end="6" >
                                         <%-- hien thi 6 ngay bat dau tu ngay chieu phim dang duoc chon --%>
-                                        <a class="showtimes-dateItem" href="home-servlet?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
+                                        <a class="showtimes-dateItem" href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
                                             <fmt:formatDate value="${date.addDate(i)}" pattern="dd/MM"/>
                                         </a>
                                     </c:forEach>
@@ -281,10 +283,10 @@
                                         <%-- hien thi cac phim trong ngay duoc chon --%>
                                         <div class="card">
                                             <div class="card-body"
-                                                 style="background: url(${pageContext.request.contextPath}static/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
+                                                 style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
                                                 <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
                                                 <p class="card-text" style="color: whitesmoke;">${m.movieDescription}</p>
-                                                <a href="movieDetail-servlet?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
+                                                <a href="movieDetail?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
                                             </div>
                                         </div>
                                     </c:forEach>
@@ -310,7 +312,7 @@
                             <div class="card-body"
                                  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${c.linkMovieImage}) no-repeat center; background-size: cover;border-radius: 5px;">
                                 <h5 class="card-title" style="color: #ffffff;height: 3rem;border-radius: 5px;background-color: rgba(108,117,125,0.3)">
-                                    <a href="movieDetail-servlet?action=init&movieID=${c.movieID}">${c.movieName}</a>
+                                    <a href="movieDetail?action=init&movieID=${c.movieID}">${c.movieName}</a>
                                 </h5>
                                 <p class="card-text" style=" color:white;border-radius: 5px;background-color: rgba(108,117,125,0.3)">Ẩn Danh : " ${c.commentText} " </p>
                             </div>

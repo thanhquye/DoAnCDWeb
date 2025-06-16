@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/movie-servlet")
+@RequestMapping("/movie")
 public class MovieController {
     @Autowired
     private MovieService movieService;

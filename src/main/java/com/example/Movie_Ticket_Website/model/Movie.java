@@ -48,8 +48,8 @@ public class Movie {
     @JoinColumn(name = "actorID")
     private Actor actor;
 
-    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ShowTime showTimes;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ShowTime> showTimes;
 
     @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MovieMediaLink movieMediaLink;
@@ -69,11 +69,11 @@ public class Movie {
         this.actor = actor;
     }
 
-    public ShowTime getShowTimes() {
+    public List<ShowTime> getShowTimes() {
         return showTimes;
     }
 
-    public void setShowTimes(ShowTime showTimes) {
+    public void setShowTimes(List<ShowTime> showTimes) {
         this.showTimes = showTimes;
     }
 
