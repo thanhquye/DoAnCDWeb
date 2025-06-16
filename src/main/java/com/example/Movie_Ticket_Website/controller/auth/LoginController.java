@@ -34,6 +34,7 @@ public class LoginController {
         UserLogin user = loginService.authenticate(email, password);
         if (user != null) {
             Customer customer = loginService.getCustomerByUserId(user.getUserId());
+            System.out.println(customer.getFullName());
             session.setAttribute("user", user);
             session.setAttribute("customer", customer);
             session.setAttribute("userName", user.getUserName());

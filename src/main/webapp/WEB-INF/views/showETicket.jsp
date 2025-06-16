@@ -79,9 +79,10 @@
                                             <strong>50,000 VNĐ</strong>
                                         </li>
                                     </ul>
-                                    <form class="card p-2">
+                                    <form class="card p-2" action="bookingTicket" method="get">
+                                        <input type="hidden" name="action" value="directCart">
                                         <div class="input-group">
-                                            <button type="submit" class="btn btn-danger" >Tiếp tục đặt</button>
+                                            <button type="submit" class="btn btn-danger">Hoàn thành</button>
                                         </div>
                                     </form>
                                 </div>
@@ -94,7 +95,7 @@
                                                 <p class="cinema">${movieName}</p>
                                             </div>
                                             <div class="poster">
-                                                <img src="../Movie_Ticket_Website/assets/movie-image/${movieImage}"  alt="Movie: Only God Forgives" style="height: 250px;width: 400px"/>
+                                                <img src="${pageContext.request.contextPath}/assets/movie-image/${movieImage}"  alt="Movie: Only God Forgives" style="height: 250px;width: 400px"/>
                                             </div>
                                             <div class="info">
                                                 <table class="info-table ticket-table">

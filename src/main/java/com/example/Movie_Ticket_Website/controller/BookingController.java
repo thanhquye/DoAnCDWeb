@@ -62,9 +62,14 @@ public class BookingController {
             case "changeToSeatBooking" -> changeToSeatBooking(mid,cinemaName, date, time, cinemaRoomName, session, model);
             case "changeToCheckout" -> changeToCheckout(mid,cinemaName, date, time, cinemaRoomName, seatName,session, model);
             case "changeToETicket" -> changeToETicket(mid,cinemaName, date, time, cinemaRoomName, seatName, session, model);
+            case "directCart" -> directCart(session, model);
             default -> "redirect:/home?action=direct";
 
         };
+    }
+
+    private String directCart(HttpSession session, Model model) {
+        return "shoppingCart";
     }
 
     private String changeToETicket(String movieID,String cinemaName,String curDate,String time, String cinemaRoomName, String seatName, HttpSession session, Model model) {
@@ -174,13 +179,11 @@ public class BookingController {
         // xử lí khi người dùng đặt vé mà không đăng nhập
         if(user == null) {
             return "login";
+        }else {
+            session.setAttribute("userEmail", user.getEmail());
+            List<Payment> payments = paymentService.getAllPayments();
+            model.addAttribute("payments", payments);
         }
-        session.setAttribute("userEmail",user.getEmail());
-        Customer customer = customerService.getCustomerByUserId(user.getUserId());
-        session.setAttribute("customer",customer);
-        List<Payment> payments = paymentService.getAllPayments();
-        model.addAttribute("payments",payments);
-
 
         return "checkoutTicket";
     }

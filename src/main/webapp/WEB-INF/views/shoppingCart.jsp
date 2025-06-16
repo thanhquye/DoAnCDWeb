@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="float-right">
-                    <button href="home-servlet?action=direct" type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3" >Quay lại</button>
+                    <button href="home?action=direct" type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3" >Quay lại</button>
                     <button type="button" class="btn btn-lg btn-primary mt-2">Thanh toán</button>
                 </div>
             </div>

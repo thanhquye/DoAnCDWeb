@@ -16,8 +16,8 @@ public class ShowTimeService {
         this.showTimeRepository = showTimeRepository;
     }
 
-    public List<ShowTime> getShowtimeByCinemaIDAndMovieID(String cinemaID, String movieID) {
-        return showTimeRepository.findShowtimeByCinemaIDAndMovieID(cinemaID, movieID);
+    public List<ShowTime> getShowtimeByCinemaIDAndMovieID(String movieID, String cinemaName) {
+        return showTimeRepository.findShowtimeByCinemaIDAndMovieID(movieID, cinemaName);
     }
 
     public List<ShowTime> getShowtimeByMID_CNAME_DATE_RNAME(String movieID, String cinemaName, String date, String roomName) {

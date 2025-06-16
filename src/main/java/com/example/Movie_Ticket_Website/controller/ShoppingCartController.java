@@ -27,7 +27,7 @@ public class ShoppingCartController {
     private UserCommentService userCommentService;
 
     @GetMapping
-    public String movieRedirect(@RequestParam(name = "action", required = false) String action,
+    public String ShoppingCartRedirect(@RequestParam(name = "action", required = false) String action,
                                 @RequestParam(name = "cid", required = false) String cid,
                                 @RequestParam(name = "cinemaName", required = false) String cinemaName,
                                 @RequestParam(name = "movieID", required = false) String mid,
@@ -44,7 +44,7 @@ public class ShoppingCartController {
         }
 
         return switch (action) {
-            case "view" -> viewCart(model);
+            case "view" -> viewCart(session,model);
             case "add" -> addToCart(mid,session);
             case "update" -> updateCart(session);
             case "remove" -> removeMovie(session);
@@ -52,7 +52,7 @@ public class ShoppingCartController {
         };
 
     }
-    private String viewCart(Model model) {
+    private String viewCart(HttpSession session,Model model) {
 
         return "shoppingCart";
 

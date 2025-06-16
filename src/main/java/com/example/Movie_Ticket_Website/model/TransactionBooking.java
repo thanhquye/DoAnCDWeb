@@ -26,7 +26,7 @@ public class TransactionBooking {
     @JoinColumn(name = "bookingID")
     private Booking booking;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "paymentTypeID")
     private Payment payment;
 
