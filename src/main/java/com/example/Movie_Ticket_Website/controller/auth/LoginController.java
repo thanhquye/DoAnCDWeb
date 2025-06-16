@@ -44,7 +44,9 @@ public class LoginController {
                 session.setAttribute("admin", user);
                 return "redirect:/adminHome";
             } else {
-                // Nếu không phải admin, chuyển hướng đến trang chính (index.jsp hoặc controller homepage)
+                if (!user.isVerifyEmail()) {
+                    return "redirect:/GmailVerify";
+                }
                 return "redirect:/";
             }
         } else {

@@ -16,19 +16,23 @@ import java.util.Set;
 @Component
 public class VerifyEmailFilter implements Filter {
 
+    // Bao gồm các đường dẫn tĩnh từ resources
     private static final Set<String> STATIC_PATH_PREFIXES = new HashSet<>(Arrays.asList(
-            "/css/", "/js/", "/images/", "/assets/", "/admin/", "/static/"
+            "/resources/", "/css/", "/js/", "/images/", "/assets/", "/admin/", "/static/", "/img/"
+            , "/css_made/"
     ));
 
     private static final Set<String> PUBLIC_PATHS = new HashSet<>(Arrays.asList(
-            "/login", "/register", "/forgotPass", "/home", "/userpage",
+            "/login", "/register", "/forgot-pass", "/forgotPass", "/home", "/userpage",
             "/logout", "/", "/shop", "/about", "/contact", "/GmailVerify", "/verify"
     ));
 
-    // Danh sách các API được phép truy cập mà không cần xác minh email
+    // API được phép truy cập mà không cần xác minh email
     private static final Set<String> API_WHITELIST = new HashSet<>(Arrays.asList(
             "/api/resendVerification",
-            "/api/verify"
+            "/api/verify",
+            "/api/auth/validate-email",
+            "/api/auth/check-user-email"
     ));
 
     @Override
