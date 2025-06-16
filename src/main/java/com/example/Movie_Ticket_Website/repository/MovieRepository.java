@@ -136,4 +136,6 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
         LIMIT :numMovie
         """, nativeQuery = true)
     List<Object[]> findMostPopularMovies(@Param("numMovie") int numMovie);
+
+    Movie findAllByMovieID(String movieID);
 }

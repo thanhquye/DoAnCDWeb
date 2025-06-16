@@ -30,7 +30,7 @@
     <div class="w3l-breadcrumbs" style="padding-top: 70px;padding-bottom: 0px">
         <nav id="breadcrumbs" class="breadcrumbs">
             <div class="container page-wrapper">
-                <a href="index.jsp">Home</a> » <span class="breadcrumb_last" aria-current="page">Giỏ hàng</span>
+                <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Giỏ hàng</span>
             </div>
         </nav>
     </div>
@@ -55,7 +55,7 @@
                                 <tr>
                                 <td class="p-4">
                                     <div class="media align-items-center">
-                                        <img src="../Movie_Ticket_Website/assets/movie-image/<%= ci %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                        <img src="${pageContext.request.contextPath}/assets/assets/movie-image/<%= ci %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                                         <div class="media-body">
                                             <a href="#" class="d-block text-dark"><%= ci %></a>
                                             <small>
@@ -77,39 +77,20 @@
                             <tr>
                                 <td class="p-4">
                                     <div class="media align-items-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                        <img src="${pageContext.request.contextPath}assets/movie-image/ke-an-hon.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                                         <div class="media-body">
-                                            <a href="#" class="d-block text-dark">Product 2</a>
+                                            <a href="#" class="d-block text-dark">Kẻ ăn hồn</a>
                                             <small>
-                                                <span class="text-muted">Color:</span>
-                                                <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#000;"></span> &nbsp;
-                                                <span class="text-muted">Storage: </span> 32GB &nbsp;
-                                                <span class="text-muted">Warranty: </span> Standard - 1 year &nbsp;
-                                                <span class="text-muted">Ships from: </span> China
+                                                <span class="text-muted">ngày: </span> 16/6/2025
+                                                <span class="text-muted">ghế: </span> a1
+                                                <span class="text-muted">thời gian </span> 19:00:00
                                             </small>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>
+                                <td class="text-right font-weight-semibold align-middle p-4">50000</td>
                                 <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>
-                                <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>
-                                <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
-                            </tr>
-                            <tr>
-                                <td class="p-4">
-                                    <div class="media align-items-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">
-                                        <div class="media-body">
-                                            <a href="#" class="d-block text-dark">Product 3</a>
-                                            <small>
-                                                <span class="text-muted">Ships from: </span> Germany
-                                            </small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>
-                                <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>
-                                <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>
+                                <td class="text-right font-weight-semibold align-middle p-4">50000</td>
                                 <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
                             </tr>
                         </tbody>
@@ -123,17 +104,17 @@
                     <div class="d-flex">
                         <div class="text-right mt-4 mr-5">
                             <label class="text-muted font-weight-normal m-0">Khuyến mãi</label>
-                            <div class="text-large"><strong>$20</strong></div>
+                            <div class="text-large"><strong>0</strong></div>
                         </div>
                         <div class="text-right mt-4">
                             <label class="text-muted font-weight-normal m-0">Tổng thanh toán</label>
-                            <div class="text-large"><strong>$1164.65</strong></div>
+                            <div class="text-large"><strong>50000</strong></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="float-right">
-                    <button href="home-servlet?action=direct" type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3" >Quay lại</button>
+                    <button href="home?action=direct" type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3" >Quay lại</button>
                     <button type="button" class="btn btn-lg btn-primary mt-2">Thanh toán</button>
                 </div>
             </div>

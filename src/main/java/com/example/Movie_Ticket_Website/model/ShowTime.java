@@ -20,7 +20,7 @@ public class ShowTime {
     @Column(name = "endTime")
     private String endTime;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movieID")
     private Movie movie;
 

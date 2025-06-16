@@ -2,6 +2,8 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "payment")
 public class Payment {
@@ -13,8 +15,8 @@ public class Payment {
     @Column(name = "paymentTypeName")
     private String paymentTypeName;
 
-    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TransactionBooking transactionTicket;
+    @OneToMany(mappedBy = "payment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TransactionBooking> transactionTicket;
 
     public Payment() {
     }
@@ -35,11 +37,11 @@ public class Payment {
         this.paymentTypeName = paymentTypeName;
     }
 
-    public TransactionBooking getTransactionTicket() {
+    public List<TransactionBooking> getTransactionTicket() {
         return transactionTicket;
     }
 
-    public void setTransactionTicket(TransactionBooking transactionTicket) {
+    public void setTransactionTicket(List<TransactionBooking> transactionTicket) {
         this.transactionTicket = transactionTicket;
     }
 }
