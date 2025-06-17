@@ -55,8 +55,9 @@
         <div class="header-mobile__bar">
             <div class="container-fluid">
                 <div class="header-mobile-inner">
-                    <a class="logo" href="adminHome">
-                        <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                    <a href="${pageContext.request.contextPath}/admin/home">
+                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
+                             title="PZO TICKET"
                              style="height:35px;"/>
                         PZO TICKET
                     </a>
@@ -72,26 +73,24 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li>
-                        <a class="js-arrow" href="quanlinguoidung">
+                        <a class="js-arrow" href="${pageContext.request.contextPath}/admin/userManagement">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li>
-                        <a href="quanliphim">
+                        <a href="${pageContext.request.contextPath}/admin/moviesManagement">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li>
-                        <a href="quanlive">
+                        <a href="${pageContext.request.contextPath}/admin/ticketManagement">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
-
                     </li>
                     <li>
-                        <a href="quanlibinhluan">
+                        <a href="${pageContext.request.contextPath}/admin/commentManagement">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
-
                 </ul>
             </div>
         </nav>
@@ -101,7 +100,7 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="adminHome">
+            <a href="${pageContext.request.contextPath}/admin/home">
                 <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
                      title="PZO TICKET" style="height:35px;"/>
                 PZO TICKET
@@ -111,21 +110,21 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a class="js-arrow" href="quanlinguoidung">
+                        <a class="js-arrow" href="${pageContext.request.contextPath}/admin/userManagement">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li>
-                        <a href="quanliphim">
+                        <a href="${pageContext.request.contextPath}/admin/moviesManagement">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li>
-                        <a href="quanlive">
+                        <a href="${pageContext.request.contextPath}/admin/ticketManagement">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
                     </li>
                     <li>
-                        <a href="quanlibinhluan">
+                        <a href="${pageContext.request.contextPath}/admin/commentManagement">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
@@ -166,7 +165,7 @@
 
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>

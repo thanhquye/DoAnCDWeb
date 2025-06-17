@@ -82,4 +82,26 @@ public class UserLoginService {
         return userLoginRepository.findByUserId(userID);
     }
 
+    // admin
+    public boolean deleteUserById(String userId) {
+        try {
+            userLoginRepository.deleteById(userId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    //admin
+    public boolean toggleActiveStatus(String userId) {
+        Optional<UserLogin> optionalUser = userLoginRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            UserLogin user = optionalUser.get();
+            user.setActive(!user.isActive());
+            userLoginRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
 }
