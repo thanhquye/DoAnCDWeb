@@ -16,11 +16,11 @@ public class ShowTimeService {
         this.showTimeRepository = showTimeRepository;
     }
 
-    public List<ShowTime> getShowtimeByCinemaIDAndMovieID(String cinemaID, String movieID) {
-        return showTimeRepository.findShowtimeByCinemaIDAndMovieID(cinemaID, movieID);
+    public List<ShowTime> getShowtimeByCinemaIDAndMovieID(String movieID, String cinemaName) {
+        return showTimeRepository.findShowtimeByCinemaIDAndMovieID(movieID, cinemaName);
     }
 
-    public List<ShowTime> getShowtimeByMID_CNAME_DATE_RNAME(String movieID, String cinemaID, String date, String roomName) {
-        return showTimeRepository.findShowtimeByMID_CNAME_DATE_RNAME(movieID, cinemaID, date, roomName);
+    public List<ShowTime> getShowtimeByMID_CNAME_DATE_RNAME(String movieID, String cinemaName, String date, String roomName) {
+        return showTimeRepository.findShowtimeByMID_CNAME_DATE_RNAME(movieID, cinemaName, date, roomName);
     }
 }

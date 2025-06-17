@@ -27,11 +27,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"  ><a class="nav-link" href="index.jsp">Trang chủ</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="movie-servlet?action=init">Phim</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="showtimes-servlet?action=init">Lịch chiếu</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="about.jsp">Thông tin</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="contact.jsp">Liên hệ</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="movie?action=init">Phim</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="showTimes?action=init">Lịch chiếu</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="about">Thông tin</a></li>
+                    <li class="nav-item"  ><a class="nav-link" href="contact">Liên hệ</a></li>
                 </ul>
                 <div class="Login_SignUp" id="login" style="font-size: 2rem ; display: inline-block; position: relative;border-radius: 5px; ">
                     <a class="nav-link" href="login.jsp" style="padding: 0px 0px;">
@@ -53,13 +53,13 @@
                 </div>
                 <%--  search movie btn --%>
                 <div class="search-right">
-                    <a href="movie-servlet?action=init" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
+                    <a href="movie?action=init" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </a>
                     <!-- search popup -->
                     <div id="search" class="pop-overlay">
                         <div class="popup">
-                            <form action="home-page" method="get" class="search-box">
+                            <form action="home" method="get" class="search-box">
                                 <input type="hidden" name="action" value="search-bar">
                                 <input type="search" placeholder="Search your Keyword" name="search"
                                        required="required" autofocus="" style="color: black">
