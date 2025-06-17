@@ -79,6 +79,11 @@ public class VerificationEmailController {
             System.out.println("gmail verify + update session userLogin success!");
 
             session.setAttribute("user", updatedUser);
+
+            // Thêm session để báo thành công
+            String message = "Người dùng " + updatedUser.getUserName() + " với Gmail " + updatedUser.getEmail() + " đã được xác thực thành công!";
+            session.setAttribute("verifySuccessMessage", message);
+
             VerificationCodeStore.remove(email);
             response.sendRedirect("/"); // chuyển tiếp về home
         } else {

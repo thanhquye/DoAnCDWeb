@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "userlogin")
 public class UserLogin {
 
-
     @Id
     @Column(name = "userId")
     String userId;

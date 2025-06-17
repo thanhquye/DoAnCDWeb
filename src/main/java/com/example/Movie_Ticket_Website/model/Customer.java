@@ -109,7 +109,7 @@ public class Customer {
     }
 
     public void setUserLogin(UserLogin userLogin) {
-        userLogin = userLogin;
+        this.userLogin = userLogin;
     }
 
     public List<TransactionBooking> getTransactionBookings() {
