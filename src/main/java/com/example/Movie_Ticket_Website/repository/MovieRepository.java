@@ -138,4 +138,9 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     List<Object[]> findMostPopularMovies(@Param("numMovie") int numMovie);
 
     Movie findAllByMovieID(String movieID);
+
+    @Query("select p.price from MoviePrice p " +
+            "join p.movie m " +
+            "where m.movieID =:movieID")
+    int findMoviePrice(@Param("movieID") String movieID);
 }

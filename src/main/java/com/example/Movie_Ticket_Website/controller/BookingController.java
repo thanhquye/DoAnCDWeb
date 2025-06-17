@@ -39,6 +39,8 @@ public class BookingController {
     PaymentService paymentService;
     @Autowired
     CinemaRoomService cinemaRoomService;
+    @Autowired
+    BookingService bookingService;
 
     public static List<UserCommentWithMovieDTO> comments ;
     public static List<MovieWithMediaDTO> newestMovies, publishedMovies, unPublishedMovies, popularMovies, movieListForCNameAndShowtime;
@@ -62,15 +64,23 @@ public class BookingController {
             case "changeToSeatBooking" -> changeToSeatBooking(mid,cinemaName, date, time, cinemaRoomName, session, model);
             case "changeToCheckout" -> changeToCheckout(mid,cinemaName, date, time, cinemaRoomName, seatName,session, model);
             case "changeToETicket" -> changeToETicket(mid,cinemaName, date, time, cinemaRoomName, seatName, session, model);
-            case "directCart" -> directCart(session, model);
+            case "directCart" -> directCart(time,  date, session, model);
             default -> "redirect:/home?action=direct";
 
         };
     }
 
-    private String directCart(HttpSession session, Model model) {
-        return "shoppingCart";
+    private String directCart(String time, String date, HttpSession session, Model model) {
+        UserLogin userLogin = (UserLogin) session.getAttribute("user");
+        Boolean addBooking = bookingService.addBooking(userLogin.getUserId(), date, time);
+        if(addBooking){
+            return "redirect:/shoppingCart?action=view";
+        }else {
+            return "redirect:/login";
+        }
+
     }
+
 
     private String changeToETicket(String movieID,String cinemaName,String curDate,String time, String cinemaRoomName, String seatName, HttpSession session, Model model) {
         // process : get Movie to process

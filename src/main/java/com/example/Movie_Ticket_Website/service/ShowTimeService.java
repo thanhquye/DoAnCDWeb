@@ -23,4 +23,7 @@ public class ShowTimeService {
     public List<ShowTime> getShowtimeByMID_CNAME_DATE_RNAME(String movieID, String cinemaName, String date, String roomName) {
         return showTimeRepository.findShowtimeByMID_CNAME_DATE_RNAME(movieID, cinemaName, date, roomName);
     }
+    public ShowTime getShowTimeByDayAndStartTime(String day, String startTime) {
+        return showTimeRepository.findByShowDateAndStartTime(day, startTime);
+    }
 }

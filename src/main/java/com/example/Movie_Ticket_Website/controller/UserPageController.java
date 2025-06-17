@@ -309,7 +309,14 @@ public class UserPageController {
 
     private String initData(String movieID, HttpSession session, Model model) {
 // process : get Movie to process
+        String fMovieID;
+        if(movieID.isEmpty()) {
+           fMovieID = "Mv1";
+        }else {
+            fMovieID = movieID;
+        }
         Movie movie = movieService.getMovieByMovieID(movieID);
+
         model.addAttribute("movieName", movie.getMovieName());
         model.addAttribute("movieID", movieID);
         // lấy danh sách all rạp chiếu phim có chiếu phim này

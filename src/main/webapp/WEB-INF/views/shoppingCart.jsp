@@ -49,31 +49,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%
-                                for(CartItem ci : cartItem) {
-                            %>
-                                <tr>
-                                <td class="p-4">
-                                    <div class="media align-items-center">
-                                        <img src="${pageContext.request.contextPath}/assets/assets/movie-image/<%= ci %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
-                                        <div class="media-body">
-                                            <a href="#" class="d-block text-dark"><%= ci %></a>
-                                            <small>
-                                                <span class="text-muted">Color:</span>
-                                                <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
-                                                <span class="text-muted">Size: </span> EU 37 &nbsp;
-                                                <span class="text-muted">Ships from: </span> China
-                                            </small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-right font-weight-semibold align-middle p-4">$57.55</td>
-                                <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
-                                <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
-                                <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
-                            </tr>
-                            <% } %>
-
                             <tr>
                                 <td class="p-4">
                                     <div class="media align-items-center">

@@ -44,6 +44,12 @@ class MovieTicketWebsiteApplicationTests {
     private ShowTimeService showTimeService;
 
     @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private BookingService bookingService;
+
+    @Autowired
     private TransactionBookingService transactionBookingService;
 
 
@@ -133,11 +139,8 @@ class MovieTicketWebsiteApplicationTests {
 
     @Test
     void getAllCategory() {
-        List<String> list = movieService.getAllMovieYear();
-        for (String c : list) {
-            System.out.println(c);
-        }
-
+        boolean check = bookingService.addBooking("user5","2025-6-18", "17:00:00");
+        System.out.println(check);
     }
 
     @Test

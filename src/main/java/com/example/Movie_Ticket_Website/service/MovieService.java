@@ -132,4 +132,8 @@ public class MovieService {
 
         return movieRepository.existsById(movie.getMovieID());
     }
+
+    public int getMoviePrice(String movieID){
+        return movieRepository.findMoviePrice(movieID);
+    }
 }

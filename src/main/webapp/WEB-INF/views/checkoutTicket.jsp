@@ -47,7 +47,7 @@
                     <ul id="progressbar" class="progressbar-class">
                         <li class="not_active" id="step1">Chọn rạp, đặt ngày </li>
                         <li id="step2" class="not_active">Chọn ghế</li>
-                        <li id="step3" class="active">Thanh toán</li>
+                        <li id="step3" class="active">Đặt vé</li>
                         <li id="step4" class="not_active">Vé điện tử PZO_E-Ticket</li>
                     </ul>
                     <br>
@@ -98,7 +98,7 @@
                                 <form class="card p-2">
                                     <div class="input-group">
 <%--                                        <input type="text" class="form-control" placeholder="Mã giảm giá" style="width: 10px !important;">--%>
-                                            <a href="bookingTicket?action=changeToETicket&time=${time}&cinemaRoomName=${cinemaRoomName}&date=${curDate}&cinemaName=${cinemaName}&movieID=${movieID}&seatName=${c.seatName}">Thanh toán</a>
+                                            <a href="bookingTicket?action=changeToETicket&time=${time}&cinemaRoomName=${cinemaRoomName}&date=${curDate}&cinemaName=${cinemaName}&movieID=${movieID}&seatName=${seatName}">Đặt vé</a>
                                     </div>
                                 </form>
                             </div>

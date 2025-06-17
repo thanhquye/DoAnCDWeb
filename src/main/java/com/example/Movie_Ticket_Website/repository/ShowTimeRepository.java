@@ -33,4 +33,5 @@ public interface ShowTimeRepository extends JpaRepository<ShowTime, String> {
             @Param("roomName") String roomName
     );
 
+    ShowTime findByShowDateAndStartTime(String showDate, String startTime);
 }
