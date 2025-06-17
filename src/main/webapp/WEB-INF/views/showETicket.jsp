@@ -47,7 +47,7 @@
                     <ul id="progressbar" class="progressbar-class">
                         <li class="not_active" id="step1">Chọn rạp, đặt ngày </li>
                         <li id="step2" class="not_active">Chọn ghế</li>
-                        <li id="step3" class="not_active">Thanh toán</li>
+                        <li id="step3" class="not_active">Đặt vé</li>
                         <li id="step4" class="active">Vé điện tử PZO_E-Ticket</li>
                     </ul>
                     <br>
@@ -81,6 +81,12 @@
                                     </ul>
                                     <form class="card p-2" action="bookingTicket" method="get">
                                         <input type="hidden" name="action" value="directCart">
+                                        <input type="hidden" name="time" value="${time}">
+                                        <input type="hidden" name="date" value="${curDate}">
+                                        <input type="hidden" name="movieID" value="${movieID}">
+                                        <input type="hidden" name="cinemaName" value="${cinemaName}">
+                                        <input type="hidden" name="cinemaRoomName" value="${cinemaRoomName}">
+                                        <input type="hidden" name="seatName" value="${seatName}">
                                         <div class="input-group">
                                             <button type="submit" class="btn btn-danger">Hoàn thành</button>
                                         </div>

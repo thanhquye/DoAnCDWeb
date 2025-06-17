@@ -26,4 +26,7 @@ public interface SeatRepository extends JpaRepository<Seat, String> {
             @Param("date") String date,
             @Param("roomName") String roomName,
             @Param("time") String time
-    );}
+    );
+
+    Seat findBySeatName(String seatName);
+}

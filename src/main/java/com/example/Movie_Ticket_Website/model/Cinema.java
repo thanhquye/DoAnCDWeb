@@ -24,6 +24,7 @@ public class Cinema {
     private List<CinemaRoom> cinemaRooms;
 
 
+
     public Cinema(String cinemaID, String cinemaName, String location) {
         this.cinemaID = cinemaID;
         this.cinemaName = cinemaName;
@@ -33,6 +34,9 @@ public class Cinema {
     public Cinema() {
 
     }
+
+
+
 
     public List<ShowTime> getShowTimes() {
         return showTimes;
