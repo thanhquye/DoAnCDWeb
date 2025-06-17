@@ -28,7 +28,7 @@ public class AdminHomeController {
         model.addAttribute("ticketQuantity", (int) dashboardService.countTickets());
         model.addAttribute("totalMovie", (int) dashboardService.totalMovies());
 
-        // ✅ totalEarning là double → để nguyên
+        // ✅ totalEarning là double
         model.addAttribute("totalEarning", dashboardService.totalEarning());
 
         model.addAttribute("Top10MovieEarning", dashboardService.getTop10MovieEarnings());

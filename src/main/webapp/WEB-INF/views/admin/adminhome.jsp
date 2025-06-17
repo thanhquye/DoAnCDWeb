@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.Movie_Ticket_Website.dto.FilmEarning" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>--%>
 
 <%
     int userOnl = (Integer) request.getAttribute("userOnl");
@@ -10,6 +10,7 @@
     double totalEarning = (Double) request.getAttribute("totalEarning");
     List<FilmEarning> filmEarnings = (List<FilmEarning>) request.getAttribute("Top10MovieEarning");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +45,6 @@
 
     <!-- Main CSS-->
     <link href="${pageContext.request.contextPath}/admin/css/theme.css" rel="stylesheet" media="all">
-
 </head>
 
 <body class="animsition">
@@ -137,6 +137,7 @@
 
     <!-- PAGE CONTAINER-->
     <div class="page-container">
+
         <!-- HEADER DESKTOP-->
         <header class="header-desktop">
             <div class="section__content section__content--p30">
@@ -273,6 +274,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row m-t-25">
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c1">
@@ -293,6 +295,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c2">
                                 <div class="overview__inner">
@@ -312,6 +315,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c3">
                                 <div class="overview__inner">
@@ -331,6 +335,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c4">
                                 <div class="overview__inner" style="padding-bottom: 33px">
@@ -339,8 +344,9 @@
                                             <i class="zmdi zmdi-money"></i>
                                         </div>
                                         <div class="text">
-                                            <%-- <h2><%=totalEarning%></h2>--%>
-                                            <h2><fmt:formatNumber value="${totalEarning}" type="currency"/></h2>
+                                            <h2><%=totalEarning%>
+                                            </h2>
+                                            <%--                                            <h2><fmt:formatNumber value="${totalEarning}" type="currency"/></h2>--%>
                                             <span>Tổng thu nhập</span>
                                         </div>
                                     </div>
@@ -351,6 +357,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="au-card recent-report">
@@ -386,6 +393,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="au-card chart-percent-card">
                                 <div class="au-card-inner">
@@ -413,6 +421,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <h2 class="title-1 m-b-25">10 phim có doanh thu cao nhất</h2>
                         <div class="table-responsive table--no-card m-b-40">
@@ -446,7 +455,6 @@
                                     <%-- <td class="text-right"><%=FilmEarning.getPrice()%></td>--%>
                                     <td class="text-right"><fmt:formatNumber value="${filmEaring.total}"
                                                                              type="currency"/></td>
-
                                 </tr>
                                 <%}%>
                                 </tbody>
