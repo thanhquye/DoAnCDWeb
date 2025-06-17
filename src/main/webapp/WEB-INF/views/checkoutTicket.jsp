@@ -54,7 +54,7 @@
                     <fieldset>
                         <main>
                         <div class="py-5 text-center" style="padding-top: 0px !important; padding-bottom: 30px !important; ">
-                            <h2>Xác nhận thanh toán</h2>
+                            <h2>Xác nhận đặt vé</h2>
                         </div>
                         <div class="row g-5">
                             <div class="col-md-5 col-lg-4 order-md-last">

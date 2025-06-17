@@ -20,7 +20,7 @@ public class ShowTime {
     @Column(name = "endTime")
     private String endTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "movieID")
     private Movie movie;
 
@@ -93,5 +93,16 @@ public class ShowTime {
         this.ticket = ticket;
     }
 
-
+    @Override
+    public String toString() {
+        return "ShowTime{" +
+                "showtimeID='" + showtimeID + '\'' +
+                ", showDate='" + showDate + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", movie=" + movie +
+                ", cinema=" + cinema +
+                ", ticket=" + ticket +
+                '}';
+    }
 }

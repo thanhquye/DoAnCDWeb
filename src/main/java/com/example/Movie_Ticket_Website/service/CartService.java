@@ -22,12 +22,13 @@ public class CartService {
 
 
 
-
+// tìm các ticket của 1 user
     public List<Ticket> getCartByUserID(String userID) {
         return bookingRepository.findCartByUserID(userID);
     }
 
-    public List<TicketCartDTO> getTicketByTicketID(String ticketID ) {
+
+    public TicketCartDTO getTicketByTicketID(String ticketID ) {
         return ticketRepository.findTicketByTicketID(ticketID);
     }
 }

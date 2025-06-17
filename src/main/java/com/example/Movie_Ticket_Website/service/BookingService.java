@@ -32,7 +32,7 @@ public class BookingService {
         this.dateBean = dateBean;
     }
 
-    public boolean addBooking(String userID, String date, String time) {
+    public boolean addBooking(String userID, String date, String time, String cinemaRoomName, String seatName, String movieID) {
         // Tìm ID lớn nhất
         List<Booking> bookings = bookingRepository.findAll();
         int maxId = bookings.stream()
@@ -53,7 +53,7 @@ public class BookingService {
         bookingRepository.save(booking);
 
         // 3. Sau khi booking đã tồn tại trong DB, mới tạo Ticket
-        Ticket ticket = ticketService.addTicket(booking, date, time);
+        Ticket ticket = ticketService.addTicket(booking, date, time, cinemaRoomName, seatName, movieID);
         List<Ticket> ticketList = new ArrayList<>();
         ticketList.add(ticket);
 
@@ -70,6 +70,8 @@ public class BookingService {
         detail.setBooking(booking); // Gán booking vừa tạo
         detail.setBookingDate(dateBean.formatDate(dateBean.currentDate));
         detail.setTotalTicket(ticketList.size());
+
+        System.out.println(detail.getBookingDetailID());
 
         bookingDetailRepository.save(detail);
         return true;

@@ -2,9 +2,8 @@ package com.example.Movie_Ticket_Website.controller;
 
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
 import com.example.Movie_Ticket_Website.dto.UserCommentWithMovieDTO;
-import com.example.Movie_Ticket_Website.model.Cinema;
-import com.example.Movie_Ticket_Website.model.Movie;
-import com.example.Movie_Ticket_Website.model.UserComment;
+import com.example.Movie_Ticket_Website.model.*;
+import com.example.Movie_Ticket_Website.service.CartService;
 import com.example.Movie_Ticket_Website.service.CinemaService;
 import com.example.Movie_Ticket_Website.service.MovieService;
 import com.example.Movie_Ticket_Website.service.UserCommentService;
@@ -33,6 +32,9 @@ public class HomeController {
     @Autowired
     private UserCommentService userCommentService;
 
+    @Autowired
+    private CartService cartService;
+
 
     public static List<MovieWithMediaDTO> newestMovies, publishedMovies, unPublishedMovies, popularMovies, movieListForCNameAndShowtime;
     public static List<Cinema>  allCinema, top2Cinema, searchedResultCinemaList;
@@ -54,7 +56,7 @@ public class HomeController {
         if (action == null) action = "direct";
 
         return switch (action) {
-            case "direct" -> redirectToHomePage(model);
+            case "direct" -> redirectToHomePage(session,model);
             case "show-cinemaShowtime" ->showCinemaName(cid,session,model);
             case "show-cinemaDetail" ->showCinemaDetail(cinemaName,model);
             case "showCinemaNameAjax" ->showCinemaNameAjax(cid,model);
@@ -244,7 +246,7 @@ public class HomeController {
 
     }
 
-    private String redirectToHomePage(Model model) {
+    private String redirectToHomePage(HttpSession session, Model model) {
         model.addAttribute("top4NewestMovies", movieService.getNewestFilms(5));
         model.addAttribute("publishedMovies", movieService.getPublishedMovie(1, 5));
         model.addAttribute("unPublishedMovies", movieService.getPublishedMovie(0, 4));
@@ -255,6 +257,15 @@ public class HomeController {
         model.addAttribute("allCinema", cinemaService.getAllCinema());
         model.addAttribute("searchedResultCinemaList", null);
         model.addAttribute("isShowAllCinema", true);
+
+        UserLogin userLogin = (UserLogin) session.getAttribute("user");
+        if (userLogin != null) {
+            session.setAttribute("cartSize", cartService.getCartByUserID(userLogin.getUserId()).size());;
+        }else{
+            session.setAttribute("cartSize", 0);;
+        }
+
+
         return "home";
     }
 }

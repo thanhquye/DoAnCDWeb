@@ -9,10 +9,7 @@
     boolean isLogined = user == null ? false : true;
 %>
 <%
-    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-    if(shoppingCart == null){
-        shoppingCart = new ShoppingCart();
-    }
+    int cartSize = (int) session.getAttribute("cartSize");
 %>
 <header id="site-header" class="w3l-header fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
@@ -48,7 +45,7 @@
                 <%--  shopping cart icon --%>
                 <div class="search-right">
                     <a href="shoppingCart?action=view" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
-                        <i class="fa-solid fa-cart-shopping "></i> ( <%= shoppingCart.getSize() %>)
+                        <i class="fa-solid fa-cart-shopping "></i> ( <%=cartSize %>)
                     </a>
                 </div>
                 <%--  search movie btn --%>

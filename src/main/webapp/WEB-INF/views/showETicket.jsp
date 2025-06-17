@@ -81,6 +81,12 @@
                                     </ul>
                                     <form class="card p-2" action="bookingTicket" method="get">
                                         <input type="hidden" name="action" value="directCart">
+                                        <input type="hidden" name="time" value="${time}">
+                                        <input type="hidden" name="date" value="${curDate}">
+                                        <input type="hidden" name="movieID" value="${movieID}">
+                                        <input type="hidden" name="cinemaName" value="${cinemaName}">
+                                        <input type="hidden" name="cinemaRoomName" value="${cinemaRoomName}">
+                                        <input type="hidden" name="seatName" value="${seatName}">
                                         <div class="input-group">
                                             <button type="submit" class="btn btn-danger">Hoàn thành</button>
                                         </div>

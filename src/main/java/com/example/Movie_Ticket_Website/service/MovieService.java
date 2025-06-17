@@ -98,9 +98,7 @@ public class MovieService {
     public List<MovieWithMediaDTO> getMostPopularMovies(int numMovies){
         List<Object[]> rows = movieRepository.findMostPopularMovies(numMovies);
         List<MovieWithMediaDTO> movies = new ArrayList<>();
-        for (Object obj : rows) {
-            System.out.println(obj + " | " + obj.getClass());
-        }
+
         for (Object[] row : rows) {
             MovieWithMediaDTO dto = new MovieWithMediaDTO();
 
@@ -115,8 +113,8 @@ public class MovieService {
             dto.setMovieContent((String) row[8]);                           // movieContent
             dto.setIsPublished(((Number) row[9]).intValue());               // isPublished (check kiểu cẩn thận!)
             dto.setMovieScore(((Number) row[10]).doubleValue());            // movieScore (Double hoặc BigDecimal)
-            dto.setLinkMovieTrailer((String) row[12]);                      // trailer
-            dto.setLinkMovieImage((String) row[13]);                        // image
+            dto.setLinkMovieTrailer((String) row[13]);                      // trailer
+            dto.setLinkMovieImage((String) row[14]);                        // image
             movies.add(dto);
         }
         return movies;
@@ -136,4 +134,6 @@ public class MovieService {
     public int getMoviePrice(String movieID){
         return movieRepository.findMoviePrice(movieID);
     }
+
+
 }

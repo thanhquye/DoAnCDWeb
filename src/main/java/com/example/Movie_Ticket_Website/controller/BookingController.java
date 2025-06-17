@@ -64,21 +64,21 @@ public class BookingController {
             case "changeToSeatBooking" -> changeToSeatBooking(mid,cinemaName, date, time, cinemaRoomName, session, model);
             case "changeToCheckout" -> changeToCheckout(mid,cinemaName, date, time, cinemaRoomName, seatName,session, model);
             case "changeToETicket" -> changeToETicket(mid,cinemaName, date, time, cinemaRoomName, seatName, session, model);
-            case "directCart" -> directCart(time,  date, session, model);
+            case "directCart" -> directCart(time,  date, mid,cinemaName, cinemaRoomName, seatName, session, model);
             default -> "redirect:/home?action=direct";
 
         };
     }
 
-    private String directCart(String time, String date, HttpSession session, Model model) {
+    private String directCart(String time, String date, String mid, String cinemaName, String cinemaRoomName, String seatName, HttpSession session, Model model) {
         UserLogin userLogin = (UserLogin) session.getAttribute("user");
-        Boolean addBooking = bookingService.addBooking(userLogin.getUserId(), date, time);
+        System.out.println(time);
+        boolean addBooking = bookingService.addBooking(userLogin.getUserId(), date, time,cinemaRoomName, seatName, mid);
         if(addBooking){
             return "redirect:/shoppingCart?action=view";
         }else {
             return "redirect:/login";
         }
-
     }
 
 
@@ -241,11 +241,12 @@ public class BookingController {
         model.addAttribute("time",time);
         model.addAttribute("cinemaRoomName",cinemaRoomName);
         List<Seat> seats = seatService.getSeatByMID_CNAME_DATE_RNAME_TIME(movieID,cinemaName,curDate,cinemaRoomName,time);
-        System.out.println("ghế ");
-        for(Seat s : seats) {
-           System.out.println("ghế "+s.getSeatName());
-       }
         model.addAttribute("seats",seats);
+
+        Customer customer = (Customer) session.getAttribute("customer");
+        if(customer == null){
+            return "redirect:/login";
+        }
 
         return "seatBooking";
     }

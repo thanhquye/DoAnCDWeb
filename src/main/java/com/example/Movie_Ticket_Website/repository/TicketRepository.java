@@ -36,7 +36,7 @@ public interface TicketRepository extends JpaRepository<Ticket, String> {
     List<Ticket> findAllByBooking(Booking booking);
 
     @Query("SELECT new com.example.Movie_Ticket_Website.dto.TicketCartDTO(" +
-            "m.movieName, st.showDate, s.seatName, st.startTime, mp.price ) " +
+            "m.movieName, st.showDate, s.seatName, st.startTime,ml.linkMovieImage, mp.price ) " +
             "FROM Ticket tk " +
             "JOIN tk.ticketDetail tkdt " +
             "JOIN tkdt.seat s  " +
@@ -45,5 +45,5 @@ public interface TicketRepository extends JpaRepository<Ticket, String> {
             "JOIN m.moviePrice mp " +
             "join m.movieMediaLink ml " +
             "where tk.ticketID =:ticketID")
-    List<TicketCartDTO> findTicketByTicketID(@Param("ticketID") String ticketID);
+    TicketCartDTO findTicketByTicketID(@Param("ticketID") String ticketID);
 }
