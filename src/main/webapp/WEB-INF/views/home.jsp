@@ -1,5 +1,6 @@
 <%@ page import="com.example.Movie_Ticket_Website.beans.ShoppingCart" %>
 <%@ page import="com.example.Movie_Ticket_Website.model.MovieMediaLink" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.UserLogin" %>
 <%--<%--%>
 <%--    if (session.getAttribute("name") == null){--%>
 <%--        response.sendRedirect("login.jsp");--%>
@@ -15,6 +16,7 @@
 <head>
     <title>MovieBooking - PZO</title>
     <jsp:include page="../views/layout-view/header.jsp"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <%
     ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
@@ -392,16 +394,31 @@
 <% String verifySuccessMessage = (String) session.getAttribute("verifySuccessMessage"); %>
 <% if (verifySuccessMessage != null) { %>
 <script>
-    swal({
-        title: "Xác minh thành công!",
-        text: "<%= verifySuccessMessage %>",
-        icon: "success",
-        button: "OK",
+    window.addEventListener("load", function () {
+        swal({
+            title: "Xác minh thành công!",
+            text: "",
+            content: {
+                element: "div",
+                attributes: {
+                    innerHTML: `<div style='text-align:center; font-size: 16px; line-height: 1.5'>
+                        Người dùng <span style='color:#007BFF; font-size:18px; font-weight:bold'>
+                            <%= ((UserLogin) session.getAttribute("user")).getUserName() %>
+                        </span> với Gmail
+                        <span style='color:#007BFF; font-size:18px; font-weight:bold'>
+                            <%= ((UserLogin) session.getAttribute("user")).getEmail() %>
+                        </span> đã được xác thực thành công!
+                    </div>`
+                }
+            },
+            icon: "success",
+        });
     });
 </script>
 <%
         session.removeAttribute("verifySuccessMessage");
     } %>
+
 </body>
 
 </html>
@@ -438,5 +455,3 @@
 <script src="${pageContext.request.contextPath}assets/js/theme-change.js"></script>
 <script src="${pageContext.request.contextPath}assets/js/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}assets/js/main.js"></script>
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
