@@ -20,6 +20,8 @@
 <body style="background: url('${pageContext.request.contextPath}/img/pxfuel.jpg') no-repeat; background-size: cover">
 <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 <div class="form">
+    <input type="hidden" id="registerSuccess" value="${registerSuccess}">
+
     <div class="form-box login">
         <h2>Đăng nhập</h2>
         <form action="login" method="post">
@@ -53,6 +55,11 @@
     // console.log(status);
     if (status === "failed") {
         swal("Rất tiếc", "Email hoặc Mật khẩu không chính xác!!", "error")
+    }
+
+    var registerSuccess = document.getElementById("registerSuccess").value;
+    if (registerSuccess === "true") {
+        swal("Thành công!", "Tài khoản đã được đăng ký. Vui lòng đăng nhập.", "success");
     }
 </script>
 

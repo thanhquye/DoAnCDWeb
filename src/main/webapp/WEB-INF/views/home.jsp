@@ -1,6 +1,6 @@
-
 <%@ page import="com.example.Movie_Ticket_Website.beans.ShoppingCart" %>
 <%@ page import="com.example.Movie_Ticket_Website.model.MovieMediaLink" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.UserLogin" %>
 <%--<%--%>
 <%--    if (session.getAttribute("name") == null){--%>
 <%--        response.sendRedirect("login.jsp");--%>
@@ -16,10 +16,11 @@
 <head>
     <title>MovieBooking - PZO</title>
     <jsp:include page="../views/layout-view/header.jsp"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <%
     ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-    if(shoppingCart == null) {
+    if (shoppingCart == null) {
         shoppingCart = new ShoppingCart();
     }
 %>
@@ -32,8 +33,8 @@
 <%
     String status_getCinemaListOfThisMovie = (String) session.getAttribute("status_getCinemaListOfThisMovie");
     session.removeAttribute("status_getCinemaListOfThisMovie");
-    if(status_getCinemaListOfThisMovie != null) {
-        if(status_getCinemaListOfThisMovie.equals("0")) {
+    if (status_getCinemaListOfThisMovie != null) {
+        if (status_getCinemaListOfThisMovie.equals("0")) {
 %>
 
 <script>noteNonCinema();</script>
@@ -52,7 +53,8 @@
             <c:forEach items="${top4NewestMovies}" var="newestMovie" varStatus="loop">
                 <div class="item">
                     <li>
-                        <div class="slider-info banner-view"  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${newestMovie.linkMovieImage}) no-repeat center; background-size: cover; " >
+                        <div class="slider-info banner-view"
+                             style="background: url(${pageContext.request.contextPath}/assets/movie-image/${newestMovie.linkMovieImage}) no-repeat center; background-size: cover; ">
                             <div class="banner-info">
                                <a href="movieDetail?action=init&movieID=${newestMovie.movieID}">
                                    <h3>${newestMovie.movieName}</h3>
@@ -71,7 +73,8 @@
                                             src="${newestMovie.linkMovieTrailer}"
                                             title="${newestMovie.movieName} - OFFICIAL TRAILER"
                                             frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -97,27 +100,41 @@
                 </div>
             </div>
             <div class="owl-three owl-carousel owl-theme">
-                <c:forEach items="${publishedMovies}" var="m" >
+                <c:forEach items="${publishedMovies}" var="m">
                     <div class="item vhny-grid">
                         <div class="box16 mb-0">
                             <a href="movieDetail?action=init&movieID=${m.movieID}">
                                 <figure>
-                                    <img class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  300px">
+                                    <img class="img-fluid"
+                                         src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
+                                         alt="" style=" height:  300px">
                                 </figure>
                                 <div class="box-content">
-                                    <h4> <span class="post"><span class="fa fa-clock-o"></span> ${m.duration} </span>
+                                    <h4><span class="post"><span class="fa fa-clock-o"></span> ${m.duration} </span>
                                         <span class="post fa fa-heart text-right"></span>
                                     </h4>
                                 </div>
                                 <span class="fa fa-play-circle video-icon" aria-hidden="true"></span>
                             </a>
                         </div>
+
+<!--                         <h3><a class="title-gd" style="height: 3rem; font-size: 15px"
+                               href="movieDetail-servlet?action=init&movieID=${m.movieID}"> ${m.movieName} </a></h3>
+                        <p style="height: 2rem"> ${m.movieDescription} </p>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="button-center text-center mt-4" style="text-align: center">
+                                    <a href="bookingTicket-servlet?action=init&movieID=${m.movieID}"
+                                       class="btn watch-button" style="padding: 0px 0px !important;"><i
+                                            class="fa fa-cart-plus"></i></a> -->
+
                         <h3><a class="title-gd" style="height: 3rem; font-size: 15px" href="movieDetail?action=init&movieID=${m.movieID}"> ${m.movieName} </a> </h3>
                         <p style="height: 2rem" > ${m.movieDescription} </p>
                         <div class="row">
                             <div class="col-4">
                                 <div class="button-center text-center mt-4" style="text-align: center">
                                     <a href="shoppingCart-servlet?action=view" class="btn watch-button" style="padding: 0px 0px !important;"><i class="fa fa-cart-plus"></i></a>
+                                  
                                 </div>
                             </div>
                             <div class="col-8">
@@ -149,16 +166,18 @@
                 </div>
             </div>
             <div class="w3l-populohny-grids">
-                <c:forEach items="${unPublishedMovies}" var="m" >
+                <c:forEach items="${unPublishedMovies}" var="m">
                     <div class="item vhny-grid">
                         <div class="box16">
                             <a href="movieDetail?action=init&movieID=${m.movieID}">
                                 <figure>
-                                    <img class="img-fluid" src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}" alt="" style=" height:  350px">
+                                    <img class="img-fluid"
+                                         src="${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}"
+                                         alt="" style=" height:  350px">
                                 </figure>
                                 <div class="box-content">
-                                    <h2 class="title" style="font-weight: bolder" >${m.movieName}</h2>
-                                    <h4> <span class="post"><span class="fa fa-clock-o"> </span> ${m.duration} </span>
+                                    <h2 class="title" style="font-weight: bolder">${m.movieName}</h2>
+                                    <h4><span class="post"><span class="fa fa-clock-o"> </span> ${m.duration} </span>
                                         <span class="post fa fa-heart text-right"></span>
                                     </h4>
                                 </div>
@@ -180,13 +199,14 @@
                 <div class="item">
                     <li>
                         <div class="slider-info mid-view"
-                             style = "background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover; ">
+                             style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover; ">
                             <div class="container">
                                 <div class="mid-info">
                                     <span class="sub-text"> ${m.movieCategory} </span>
                                     <h3> ${m.movieName}</h3>
                                     <p>${m.releaseDate} ‧ ${m.country} ‧ ${m.duration}</p>
-                                    <a class="watch" href="${m.linkMovieTrailer}" target="_blank" ><span class="fa fa-play" aria-hidden="true"></span>Watch Trailer</a>
+                                    <a class="watch" href="${m.linkMovieTrailer}" target="_blank"><span
+                                            class="fa fa-play" aria-hidden="true"></span>Watch Trailer</a>
                                 </div>
                             </div>
                         </div>
@@ -195,11 +215,12 @@
             </c:forEach>
         </div>
     </div>
-</section><br>
+</section>
+<br>
 
 <%--Section hiển thị lịch chiếu phim --%>
-<section class="showtimes-section" id="showtimeSection" >
-    <div class="showtimes-title" style="padding : 20px 0px 30px 0px;"> LỊCH CHIẾU PHIM </div>
+<section class="showtimes-section" id="showtimeSection">
+    <div class="showtimes-title" style="padding : 20px 0px 30px 0px;"> LỊCH CHIẾU PHIM</div>
     <div class="border-div-1">
         <div class="container">
             <div class="row">
@@ -208,11 +229,13 @@
                     <form action="home" method="post">
                         <input type="hidden" name="action" value="cinemaSearch">
                         <input type="hidden" name="cid" value="${cinemaDetail.cinemaID}">
-                        <input class="form-control" type="text" name="cinemaName" placeholder="Nhập tên rạp để tìm kiếm" aria-label="search" value="${txtHistory}">
-                    </form> <br>
-                    <div id= "showtimes-list_cinema" style="padding-bottom: 30px">
+                        <input class="form-control" type="text" name="cinemaName" placeholder="Nhập tên rạp để tìm kiếm"
+                               aria-label="search" value="${txtHistory}">
+                    </form>
+                    <br>
+                    <div id="showtimes-list_cinema" style="padding-bottom: 30px">
                         <%-- hien thi toan bo danh sach cinema, click 1 cinema thuc hien truyen cid toi servlet home --%>
-                        <c:if test="${(allCinema != null) && (searchedResultCinemaListSize == 0) }" >
+                        <c:if test="${(allCinema != null) && (searchedResultCinemaListSize == 0) }">
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
@@ -220,7 +243,7 @@
                                 </div>
                             </c:forEach>
                         </c:if>
-                        <c:if test="${isShowAllCinema}" >
+                        <c:if test="${isShowAllCinema}">
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
@@ -243,11 +266,13 @@
                         <%-- hien thi noi dung cinema lay duoc tu home --%>
                         <div class="showtimes-cinema_title" id="cinemaTitle">
                             <c:if test="${(cinemaDetail == null) && (searchedResultCinemaListSize == 0)}">
-                                <h2 style="font-size: 25px;padding-bottom: 5px"><i class="fa-solid fa-film"> </i> Bạn chưa chọn rạp phim</h2>
+                                <h2 style="font-size: 25px;padding-bottom: 5px"><i class="fa-solid fa-film"> </i> Bạn
+                                    chưa chọn rạp phim</h2>
                                 <h4 style="font-size: 17px; font-weight: lighter;padding-bottom: 10px"></h4>
                             </c:if>
                             <c:if test="${cinemaDetail != null}">
-                                <h2 style="font-size: 25px;padding-bottom: 5px"><i class="fa-solid fa-film"> </i> ${cinemaDetail.cinemaName}</h2>
+                                <h2 style="font-size: 25px;padding-bottom: 5px"><i
+                                        class="fa-solid fa-film"> </i> ${cinemaDetail.cinemaName}</h2>
                                 <h4 style="font-size: 17px; font-weight: lighter;padding-bottom: 10px"> ${cinemaDetail.location}</h4>
                             </c:if>
                         </div>
@@ -260,25 +285,28 @@
                                     <a class="showtimes-dateItem" href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
                                         <fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/>
                                     </a>
-                                    <c:forEach var="i" begin="1" end="6" >
+                                    <c:forEach var="i" begin="1" end="6">
                                         <%-- hien thi 6 ngay bat dau tu ngay chieu phim dang duoc chon --%>
                                         <a class="showtimes-dateItem" href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
                                             <fmt:formatDate value="${date.addDate(i)}" pattern="dd/MM"/>
                                         </a>
                                     </c:forEach>
                                 </div>
-                            </div> <br>
+                            </div>
+                            <br>
                             <div class="showtimes-show">
                                 <%-- neu user chua chon ten rap phim va thoi gian --%>
-                                <c:if test="${movieListForCNameAndShowtime == null}" >
+                                <c:if test="${movieListForCNameAndShowtime == null}">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">Chưa có Phim để hiển thị</h5>
+                                            <h5 class="card-title"
+                                                style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">
+                                                Chưa có Phim để hiển thị</h5>
                                             <p class="card-text" style="color: whitesmoke;"></p>
                                         </div>
                                     </div>
                                 </c:if>
-                                <c:if test="${movieListForCNameAndShowtime != null}" >
+                                <c:if test="${movieListForCNameAndShowtime != null}">
                                     <c:forEach items="${movieListForCNameAndShowtime}" var="m">
                                         <%-- hien thi cac phim trong ngay duoc chon --%>
                                         <div class="card">
@@ -305,8 +333,8 @@
     <div class="comments-title">BÌNH LUẬN NỔI BẬT</div>
     <div class="border-div-2">
         <div class="container">
-            <div class="row align-items" >
-                <c:forEach items="${comments}" var="c" >
+            <div class="row align-items">
+                <c:forEach items="${comments}" var="c">
                     <div class="col">
                         <div class="card" style="width: 18rem; height: 10rem;background-color: rgba(108,117,125,0.65) ">
                             <div class="card-body"
@@ -314,7 +342,9 @@
                                 <h5 class="card-title" style="color: #ffffff;height: 3rem;border-radius: 5px;background-color: rgba(108,117,125,0.3)">
                                     <a href="movieDetail?action=init&movieID=${c.movieID}">${c.movieName}</a>
                                 </h5>
-                                <p class="card-text" style=" color:white;border-radius: 5px;background-color: rgba(108,117,125,0.3)">Ẩn Danh : " ${c.commentText} " </p>
+                                <p class="card-text"
+                                   style=" color:white;border-radius: 5px;background-color: rgba(108,117,125,0.3)">Ẩn
+                                    Danh : " ${c.commentText} " </p>
                             </div>
                         </div>
                     </div>
@@ -326,8 +356,8 @@
 
 <%-- Section : Hiển thị danh sách các rạp chiếu phim --%>
 <section class="theaters-section">
-    <div >
-        <h3 class="hny-title" style="color: #c94c7a; text-align: center" >RẠP CHIẾU NỔI BẬT</h3>
+    <div>
+        <h3 class="hny-title" style="color: #c94c7a; text-align: center">RẠP CHIẾU NỔI BẬT</h3>
     </div>
     <div class="w3l-title-grids">
         <div class="headerhny-left text-lg-left">
@@ -339,7 +369,7 @@
     <div class="border-div-2">
         <div class="row">
             <%-- hien thi 2 rap chieu phim noi bat nhat --%>
-            <c:forEach items="${top2Cinema}" var="c2" >
+            <c:forEach items="${top2Cinema}" var="c2">
                 <div class="col-sm-6">
                     <div class="card">
                         <h5 class="card-header" style="color: #0c5460; font-size: 15px">${c2.cinemaName}</h5>
@@ -355,9 +385,39 @@
     </div>
 </section>
 
-<jsp:include page="../views/layout-view/footer.jsp" />
-<jsp:include page="../views/layout-view/script-libraries.jsp" />
-<jsp:include page="../views/layout-view/js-function-slider.jsp" />
+<jsp:include page="../views/layout-view/footer.jsp"/>
+<jsp:include page="../views/layout-view/script-libraries.jsp"/>
+<jsp:include page="../views/layout-view/js-function-slider.jsp"/>
+
+<%-- Thông báo gmail verify thành công --%>
+<% String verifySuccessMessage = (String) session.getAttribute("verifySuccessMessage"); %>
+<% if (verifySuccessMessage != null) { %>
+<script>
+    window.addEventListener("load", function () {
+        swal({
+            title: "Xác minh thành công!",
+            text: "",
+            content: {
+                element: "div",
+                attributes: {
+                    innerHTML: `<div style='text-align:center; font-size: 16px; line-height: 1.5'>
+                        Người dùng <span style='color:#007BFF; font-size:18px; font-weight:bold'>
+                            <%= ((UserLogin) session.getAttribute("user")).getUserName() %>
+                        </span> với Gmail
+                        <span style='color:#007BFF; font-size:18px; font-weight:bold'>
+                            <%= ((UserLogin) session.getAttribute("user")).getEmail() %>
+                        </span> đã được xác thực thành công!
+                    </div>`
+                }
+            },
+            icon: "success",
+        });
+    });
+</script>
+<%
+        session.removeAttribute("verifySuccessMessage");
+    } %>
+
 </body>
 
 </html>
@@ -368,11 +428,11 @@
         console.log('AJAX');
         $.ajax({
             url: "/Movie_Ticket_Website_war/showCinemaNameAjaxf",
-            type : "get",
-            data : {
-                cid : cName
+            type: "get",
+            data: {
+                cid: cName
             },
-            success : function (data) {
+            success: function (data) {
                 var row = document.getElementById("cinemaTitle");
                 row.innerHTML = data;
             }
@@ -383,7 +443,7 @@
 <script>
     function reloadAndScrollToDiv(targetDiv) {
         var targetDiv = document.getElementById(targetDiv);
-        targetDiv.scrollIntoView({ behavior: 'smooth' });
+        targetDiv.scrollIntoView({behavior: 'smooth'});
     }
 </script>
 <!-- responsive tabs -->
