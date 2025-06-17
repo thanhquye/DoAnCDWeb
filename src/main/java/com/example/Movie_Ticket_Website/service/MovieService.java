@@ -119,7 +119,6 @@ public class MovieService {
         }
         return movies;
     }
-
     // add movie
     public boolean addNewMovie(Movie movie, MovieMediaLink mediaLink, String actorID) {
         Actor actor = actorRepository.findById(actorID).orElse(null);
