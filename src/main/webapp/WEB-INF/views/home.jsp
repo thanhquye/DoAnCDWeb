@@ -56,9 +56,9 @@
                         <div class="slider-info banner-view"
                              style="background: url(${pageContext.request.contextPath}/assets/movie-image/${newestMovie.linkMovieImage}) no-repeat center; background-size: cover; ">
                             <div class="banner-info">
-                               <a href="movieDetail?action=init&movieID=${newestMovie.movieID}">
-                                   <h3>${newestMovie.movieName}</h3>
-                               </a>
+                                <a href="movieDetail?action=init&movieID=${newestMovie.movieID}">
+                                    <h3>${newestMovie.movieName}</h3>
+                                </a>
                                 <p><span>${newestMovie.movieContent}</span></p>
                                 <a href="#small-dialog${loop.index}" class="popup-with-zoom-anim play-view1">
                                     <p>${newestMovie.movieName}</p>
@@ -118,28 +118,21 @@
                             </a>
                         </div>
 
-<!--                         <h3><a class="title-gd" style="height: 3rem; font-size: 15px"
-                               href="movieDetail-servlet?action=init&movieID=${m.movieID}"> ${m.movieName} </a></h3>
+                        <h3><a class="title-gd" style="height: 3rem; font-size: 15px"
+                               href="movieDetail?action=init&movieID=${m.movieID}"> ${m.movieName} </a></h3>
                         <p style="height: 2rem"> ${m.movieDescription} </p>
                         <div class="row">
                             <div class="col-4">
                                 <div class="button-center text-center mt-4" style="text-align: center">
-                                    <a href="bookingTicket-servlet?action=init&movieID=${m.movieID}"
-                                       class="btn watch-button" style="padding: 0px 0px !important;"><i
-                                            class="fa fa-cart-plus"></i></a> -->
+                                    <a href="shoppingCart-servlet?action=view" class="btn watch-button"
+                                       style="padding: 0px 0px !important;"><i class="fa fa-cart-plus"></i></a>
 
-                        <h3><a class="title-gd" style="height: 3rem; font-size: 15px" href="movieDetail?action=init&movieID=${m.movieID}"> ${m.movieName} </a> </h3>
-                        <p style="height: 2rem" > ${m.movieDescription} </p>
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="button-center text-center mt-4" style="text-align: center">
-                                    <a href="shoppingCart-servlet?action=view" class="btn watch-button" style="padding: 0px 0px !important;"><i class="fa fa-cart-plus"></i></a>
-                                  
                                 </div>
                             </div>
                             <div class="col-8">
                                 <div class="button-right text-center mt-4" style="text-align: right">
-                                    <a href="bookingTicket?action=init&movieID=${m.movieID}" class="btn watch-button" style="padding: 0px 0px !important;">Đặt vé</a>
+                                    <a href="bookingTicket?action=init&movieID=${m.movieID}" class="btn watch-button"
+                                       style="padding: 0px 0px !important;">Đặt vé</a>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +232,8 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
+                                       style="color: whitesmoke">${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -247,7 +241,8 @@
                             <c:forEach items="${allCinema}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
+                                       style="color: whitesmoke">${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -255,7 +250,8 @@
                             <c:forEach items="${searchedResultCinemaList}" var="cinema">
                                 <div class="row_cinemaName">
                                     <i class="fa-solid fa-film"> </i>
-                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}" style="color: whitesmoke" >${cinema.cinemaName}</a>
+                                    <a href="${pageContext.request.contextPath}home?action=show-cinemaShowtime&cid=${cinema.cinemaID}"
+                                       style="color: whitesmoke">${cinema.cinemaName}</a>
                                 </div>
                             </c:forEach>
                         </c:if>
@@ -281,13 +277,16 @@
                                 <%-- hien thi 7 ngay tinh tu HOM NAY de dat ve --%>
                                 <div class="showtimes-calenderBox" style="text-align: center">
                                     <%--  dùng javaBean để lấy ngày tháng và hiển thị ngày hôm nay--%>
-                                    <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean" scope="session"/>
-                                    <a class="showtimes-dateItem" href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
+                                    <jsp:useBean id="date" class="com.example.Movie_Ticket_Website.beans.DateBean"
+                                                 scope="session"/>
+                                    <a class="showtimes-dateItem"
+                                       href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.currentDate)}&cid=${cinemaDetail.cinemaID}&cinemaName=">
                                         <fmt:formatDate value="${date.currentDate}" pattern="dd/MM"/>
                                     </a>
                                     <c:forEach var="i" begin="1" end="6">
                                         <%-- hien thi 6 ngay bat dau tu ngay chieu phim dang duoc chon --%>
-                                        <a class="showtimes-dateItem" href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
+                                        <a class="showtimes-dateItem"
+                                           href="${pageContext.request.contextPath}home?action=showShowTime&date=${date.formatDate(date.addDate(i))}&cid=${cinemaDetail.cinemaID}">
                                             <fmt:formatDate value="${date.addDate(i)}" pattern="dd/MM"/>
                                         </a>
                                     </c:forEach>
@@ -312,9 +311,13 @@
                                         <div class="card">
                                             <div class="card-body"
                                                  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${m.linkMovieImage}) no-repeat center; background-size: cover;  margin: 5px 0px 0px 0px;border-radius: 5px;">
-                                                <h5 class="card-title" style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
-                                                <p class="card-text" style="color: whitesmoke;">${m.movieDescription}</p>
-                                                <a href="movieDetail?action=init&movieID=${m.movieID}" class="btn btn-primary" style="margin-top: 5px">Đặt vé ngày ${wantedBookDate}</a>
+                                                <h5 class="card-title"
+                                                    style="color: whitesmoke;font-weight: bolder; margin-bottom: 5px; background-color: rgba(121,177,187,0.35); border-radius: 5px">${m.movieName}</h5>
+                                                <p class="card-text"
+                                                   style="color: whitesmoke;">${m.movieDescription}</p>
+                                                <a href="movieDetail?action=init&movieID=${m.movieID}"
+                                                   class="btn btn-primary" style="margin-top: 5px">Đặt vé
+                                                    ngày ${wantedBookDate}</a>
                                             </div>
                                         </div>
                                     </c:forEach>
@@ -339,7 +342,8 @@
                         <div class="card" style="width: 18rem; height: 10rem;background-color: rgba(108,117,125,0.65) ">
                             <div class="card-body"
                                  style="background: url(${pageContext.request.contextPath}/assets/movie-image/${c.linkMovieImage}) no-repeat center; background-size: cover;border-radius: 5px;">
-                                <h5 class="card-title" style="color: #ffffff;height: 3rem;border-radius: 5px;background-color: rgba(108,117,125,0.3)">
+                                <h5 class="card-title"
+                                    style="color: #ffffff;height: 3rem;border-radius: 5px;background-color: rgba(108,117,125,0.3)">
                                     <a href="movieDetail?action=init&movieID=${c.movieID}">${c.movieName}</a>
                                 </h5>
                                 <p class="card-text"

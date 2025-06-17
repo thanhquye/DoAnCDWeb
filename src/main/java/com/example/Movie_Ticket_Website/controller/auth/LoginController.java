@@ -43,7 +43,7 @@ public class LoginController {
 
             if (user.isAdmin()) {
                 session.setAttribute("admin", user);
-                return "redirect:/adminHome";
+                return "redirect:/admin/home";
             } else {
                 if (!user.isVerifyEmail()) {
                     return "redirect:/GmailVerify";
