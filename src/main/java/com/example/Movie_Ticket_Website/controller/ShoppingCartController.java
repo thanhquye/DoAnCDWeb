@@ -1,8 +1,11 @@
 package com.example.Movie_Ticket_Website.controller;
 
-import com.example.Movie_Ticket_Website.beans.CartItem;
-import com.example.Movie_Ticket_Website.beans.ShoppingCart;
+
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
+import com.example.Movie_Ticket_Website.dto.TicketCartDTO;
+import com.example.Movie_Ticket_Website.model.Ticket;
+import com.example.Movie_Ticket_Website.model.UserLogin;
+import com.example.Movie_Ticket_Website.service.CartService;
 import com.example.Movie_Ticket_Website.service.CinemaService;
 import com.example.Movie_Ticket_Website.service.MovieService;
 import com.example.Movie_Ticket_Website.service.UserCommentService;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/shoppingCart")
 public class ShoppingCartController {
@@ -24,7 +30,7 @@ public class ShoppingCartController {
     private CinemaService cinemaService;
 
     @Autowired
-    private UserCommentService userCommentService;
+    private CartService cartService;
 
     @GetMapping
     public String ShoppingCartRedirect(@RequestParam(name = "action", required = false) String action,
@@ -37,38 +43,51 @@ public class ShoppingCartController {
                                 @RequestParam(name = "year", required = false) String year,
                                 HttpSession session, Model model) {
 
-        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new ShoppingCart();
-            session.setAttribute("cart", cart);
-        }
 
         return switch (action) {
             case "view" -> viewCart(session,model);
             case "add" -> addToCart(mid,session);
             case "update" -> updateCart(session);
             case "remove" -> removeMovie(session);
+            case "directHome" -> directHome(session);
             default -> "redirect:/404";
         };
 
     }
+
+    private String directHome(HttpSession session) {
+        return "redirect:/home?action=direct";
+    }
+
     private String viewCart(HttpSession session,Model model) {
+        UserLogin userLogin = (UserLogin) session.getAttribute("user");
+
+        if (userLogin == null) {
+            return "redirect:/login";
+        }
+        List<Ticket> tickets = cartService.getCartByUserID(userLogin.getUserId());
+
+        List<TicketCartDTO> cartDTOS = new ArrayList<>();
+        for (Ticket ticket : tickets) {
+            cartDTOS.add(cartService.getTicketByTicketID(ticket.getTicketID()));
+
+        }
+        // test
+        int totalPrice = 0;
+        for (TicketCartDTO ticketCartDTO : cartDTOS) {
+            totalPrice += ticketCartDTO.getMoviePrice();
+        }
+
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("cartDTOS", cartDTOS);
+        model.addAttribute("totalTicket", tickets.size());
 
         return "shoppingCart";
 
     }
 
     private String addToCart(String mid, HttpSession session) {
-        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
-        MovieWithMediaDTO movie = movieService.getMovieByID(mid);
-
-        CartItem item = new CartItem();
-//        item.setMovie(movie);
-        item.setQuanlity(1);
-        item.setPrice(50000);
-        cart.add(item);
-        session.setAttribute("cart",cart);
         return "shoppingCart";
     }
 

@@ -9,10 +9,7 @@
     boolean isLogined = user == null ? false : true;
 %>
 <%
-    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-    if(shoppingCart == null){
-        shoppingCart = new ShoppingCart();
-    }
+    int cartSize = (int) session.getAttribute("cartSize");
 %>
 <header id="site-header" class="w3l-header fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
@@ -34,10 +31,10 @@
                     <li class="nav-item"  ><a class="nav-link" href="contact">Liên hệ</a></li>
                 </ul>
                 <div class="Login_SignUp" id="login" style="font-size: 2rem ; display: inline-block; position: relative;border-radius: 5px; ">
-                    <a class="nav-link" href="login.jsp" style="padding: 0px 0px;">
+                    <a class="nav-link" href="login" style="padding: 0px 0px;">
                     <ul class="navbar-nav ml-auto">
                     <% if(isLogined) { %>
-                        <li class="nav-item " ><a class="nav-link" href="userpage-servlet?action=init" style="padding-right: 1rem; padding-left: 1rem" >Chào, ${sessionScope.get("userName")}</a></li>
+                        <li class="nav-item " ><a class="nav-link" href="/" style="padding-right: 1rem; padding-left: 1rem" >Chào, ${sessionScope.get("userName")}</a></li>
                         <li class="nav-item " ><a class="nav-link" href="/logout" style="padding-right: 1rem; padding-left: 1rem" >Đăng xuất</a></li>
                     <% } else { %>
                         <li class="nav-item " ><a class="nav-link" href="login" style="padding-right: 1rem; padding-left: 1rem" >Đăng nhập</a></li>
@@ -47,8 +44,8 @@
                 </div>
                 <%--  shopping cart icon --%>
                 <div class="search-right">
-                    <a href="shoppingCart-servlet?action=view" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
-                        <i class="fa-solid fa-cart-shopping "></i> ( <%= shoppingCart.getSize() %>)
+                    <a href="shoppingCart?action=view" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
+                        <i class="fa-solid fa-cart-shopping "></i> ( <%=cartSize %>)
                     </a>
                 </div>
                 <%--  search movie btn --%>

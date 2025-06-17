@@ -44,6 +44,12 @@ class MovieTicketWebsiteApplicationTests {
     private ShowTimeService showTimeService;
 
     @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private BookingService bookingService;
+
+    @Autowired
     private TransactionBookingService transactionBookingService;
 
 
@@ -133,11 +139,8 @@ class MovieTicketWebsiteApplicationTests {
 
     @Test
     void getAllCategory() {
-        List<String> list = movieService.getAllMovieYear();
-        for (String c : list) {
-            System.out.println(c);
-        }
-
+//        boolean check = bookingService.addBooking("user5","2025-6-18", "17:00:00");
+//        System.out.println(check);
     }
 
     @Test
@@ -165,18 +168,14 @@ class MovieTicketWebsiteApplicationTests {
 
     @Test
     void findCinemaRoomDay() {
-        List<CinemaRoom> cinemas = cinemaRoomService.getCinemaRoomNameByMID_CNAME_DATE("Mv1", "Cinestar Quốc Thanh", "2023-12-22");
-        for (CinemaRoom cinema : cinemas) {
-            System.out.println(cinema.getRoomName());
-        }
+        TicketCartDTO cartDTO = cartService.getTicketByTicketID("tk11");
+      System.out.println(cartDTO.toString());
     }
 
     @Test
     void getAllComment() {
-        List<UserCommentWithMovieDTO> getPopular = userCommentService.getPopularComment(3);
-        for (UserCommentWithMovieDTO userComment : getPopular) {
-            System.out.println(userComment.getMovieName());
-        }
+        ShowTime showTime = showTimeService.getShowTimeByDayAndStartTime("2025-06-19", "08:00:00" , "Mv18");
+        System.out.println(showTime.getShowtimeID());
 
     }
 

@@ -23,4 +23,6 @@ public class TicketDetailService {
     public List<TicketWithMovieDTO> getTicketDetailByTicketId(String ticketID) {
         return ticketDetailRepository.findTicketDetailByTicketId(ticketID);
     }
+
+
 }

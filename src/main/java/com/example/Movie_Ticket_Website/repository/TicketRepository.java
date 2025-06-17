@@ -1,6 +1,8 @@
 package com.example.Movie_Ticket_Website.repository;
 
+import com.example.Movie_Ticket_Website.dto.TicketCartDTO;
 import com.example.Movie_Ticket_Website.dto.TicketWithCustomerDTO;
+import com.example.Movie_Ticket_Website.model.Booking;
 import com.example.Movie_Ticket_Website.model.Ticket;
 import jakarta.persistence.Entity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,4 +33,17 @@ public interface TicketRepository extends JpaRepository<Ticket, String> {
             "WHERE c.cinemaID = :cinemaID ")
     List<Ticket> findAllByCinemaID(@Param("cinemaID") String cinemaID);
 
+    List<Ticket> findAllByBooking(Booking booking);
+
+    @Query("SELECT new com.example.Movie_Ticket_Website.dto.TicketCartDTO(" +
+            "m.movieName, st.showDate, s.seatName, st.startTime,ml.linkMovieImage, mp.price ) " +
+            "FROM Ticket tk " +
+            "JOIN tk.ticketDetail tkdt " +
+            "JOIN tkdt.seat s  " +
+            "JOIN tk.showTime st " +
+            "JOIN st.movie m " +
+            "JOIN m.moviePrice mp " +
+            "join m.movieMediaLink ml " +
+            "where tk.ticketID =:ticketID")
+    TicketCartDTO findTicketByTicketID(@Param("ticketID") String ticketID);
 }

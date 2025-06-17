@@ -19,4 +19,8 @@ public class SeatService {
         return seatRepository.findSeatByMID_CNAME_DATE_RNAME_TIME(movieID, cinemaID, date, roomName, time);
 
     }
+
+    public Seat getSeatByName(String seatName) {
+        return seatRepository.findBySeatName(seatName);
+    }
 }

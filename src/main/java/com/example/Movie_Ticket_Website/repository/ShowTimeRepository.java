@@ -33,4 +33,7 @@ public interface ShowTimeRepository extends JpaRepository<ShowTime, String> {
             @Param("roomName") String roomName
     );
 
+    @Query("select st from ShowTime st join st.movie m " +
+            "where st.showDate =:showDate and st.startTime =:startTime and m.movieID =:movieID")
+    ShowTime findSTByDateTimeMovieID(@Param("showDate") String showDate,@Param("startTime") String startTime, @Param("movieID") String movieID);
 }
