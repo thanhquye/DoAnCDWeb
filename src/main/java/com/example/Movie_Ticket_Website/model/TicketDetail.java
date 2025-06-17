@@ -12,7 +12,7 @@ public class TicketDetail {
     @Column(name = "price")
     private int price;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "seatID")
     private Seat seat;
 

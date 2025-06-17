@@ -9,13 +9,13 @@ public class TicketWithCustomerDTO {
     String cinemaID;
     String showtimeID;
 
-    public TicketWithCustomerDTO(String fullName, String phoneNumber, String movieName, String cinemaName, String cinemaID, String ticketID, String showtimeID) {
+    public TicketWithCustomerDTO(String fullName, String phoneNumber, String movieName, String cinemaName,String ticketID, String cinemaID,  String showtimeID) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.movieName = movieName;
         this.cinemaName = cinemaName;
-        this.cinemaID = cinemaID;
         this.ticketID = ticketID;
+        this.cinemaID = cinemaID;
         this.showtimeID = showtimeID;
     }
 

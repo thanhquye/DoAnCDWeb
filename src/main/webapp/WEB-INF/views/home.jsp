@@ -431,7 +431,7 @@
     function showCinemaName(cName) {
         console.log('AJAX');
         $.ajax({
-            url: "/Movie_Ticket_Website_war/showCinemaNameAjaxf",
+            url: "/home/showCinemaNameAjaxf",
             type: "get",
             data: {
                 cid: cName

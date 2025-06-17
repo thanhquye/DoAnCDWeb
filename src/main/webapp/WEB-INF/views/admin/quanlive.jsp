@@ -1,6 +1,7 @@
-<%@page import="model.User" %>
+<%@page import="com.example.Movie_Ticket_Website.model.UserLogin" %>
 <%@page import="java.util.List" %>
-<%@ page import="model.Ticket" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.Ticket" %>
+<%@ page import="com.example.Movie_Ticket_Website.dto.TicketWithCustomerDTO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,118 +18,118 @@
     <title>ADMIN HOME</title>
 
     <!-- Fontfaces CSS-->
-    <link href="admin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/css/font-face.css" rel="stylesheet" media="all">
 <%--    <link href="admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">--%>
 <%--    <link href="admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">--%>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="admin/css/theme.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/css/theme.css" rel="stylesheet" media="all">
     <!-- new css -->
-    <link rel="stylesheet" href="admin/css/style_admin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/style_admin.css">
 
 </head>
 
 <body class="animsition">
-<%List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");%>
-<div class="page-wrapper">
-    <!-- HEADER MOBILE-->
-    <header class="header-mobile d-block d-lg-none">
-        <div class="header-mobile__bar">
-            <div class="container-fluid">
-                <div class="header-mobile-inner">
-                    <a class="logo" href="adminHome">
-                        <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
-                             style="height:35px;"/>
-                        PZO TICKET
+<%List<TicketWithCustomerDTO> tickets = (List<TicketWithCustomerDTO>) request.getAttribute("tickets");%>
 
-                    </a>
-                    <button class="hamburger hamburger--slider" type="button">
+<header class="header-mobile d-block d-lg-none">
+    <div class="header-mobile__bar">
+        <div class="container-fluid">
+            <div class="header-mobile-inner">
+                <a class="logo" href="/admin/home">
+                    <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                         style="height:35px;"/>
+                    PZO TICKET
+
+                </a>
+                <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
                             </span>
-                    </button>
-                </div>
+                </button>
             </div>
         </div>
-        <nav class="navbar-mobile">
-            <div class="container-fluid">
-                <ul class="navbar-mobile__list list-unstyled">
-                    <<li >
-                    <a class="js-arrow"  href="quanlinguoidung">
+    </div>
+    <nav class="navbar-mobile">
+        <div class="container-fluid">
+            <ul class="navbar-mobile__list list-unstyled">
+                <li >
+                    <a class="js-arrow"  href="/admin/quanlinguoidung">
                         <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                 </li>
-                    <li >
-                        <a href="quanliphim">
-                            <i class="fas fa-chart-bar"></i>Quản Lí Phim
-                        </a>
-                    </li>
-                    <li class="active has-sub">
-                        <a href="quanlive">
-                            <i class="fas fa-table"></i>Quản Lí vé
-                        </a>
+                <li >
+                    <a href="/admin/quanliphim">
+                        <i class="fas fa-chart-bar"></i>Quản Lí Phim
+                    </a>
+                </li>
+                <li class="active has-sub">
+                    <a href="/admin/quanlive">
+                        <i class="fas fa-table"></i>Quản Lí vé
+                    </a>
 
-                    </li>
-                    <li >
-                        <a href="quanlibinhluan">
-                            <i class="far fa-check-square"></i>Quản Lí Bình Luận
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                </li>
+                <li >
+                    <a href="/admin/quanlibinhluan">
+                        <i class="far fa-check-square"></i>Quản Lí Bình Luận
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- END HEADER MOBILE-->
+
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a href="/home">
+            <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
+            PZO TICKET
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li >
+                    <a class="js-arrow"  href="/admin/quanlinguoidung">
+                        <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
+                </li>
+                <li >
+                    <a href="/admin/quanliphim">
+                        <i class="fas fa-chart-bar"></i>Quản Lí Phim
+                    </a>
+                </li>
+                <li class="active has-sub">
+                    <a href="/admin/quanlive">
+                        <i class="fas fa-table"></i>Quản Lí vé
+                    </a>
+
+                </li>
+                <li >
+                    <a href="/admin/quanlibinhluan">
+                        <i class="far fa-check-square"></i>Quản Lí Bình Luận
+                    </a>
+                </li>
+            </ul>
         </nav>
-    </header>
-    <!-- END HEADER MOBILE-->
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->
 
-    <!-- MENU SIDEBAR-->
-    <aside class="menu-sidebar d-none d-lg-block">
-        <div class="logo">
-            <a href="adminHome">
-                <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
-                PZO TICKET
-            </a>
-        </div>
-        <div class="menu-sidebar__content js-scrollbar1">
-            <nav class="navbar-sidebar">
-                <ul class="list-unstyled navbar__list">
-                    <li >
-                        <a class="js-arrow"  href="quanlinguoidung">
-                            <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
-                    </li>
-                    <li>
-                        <a href="quanliphim">
-                            <i class="fas fa-chart-bar"></i>Quản Lí Phim
-                        </a>
-                    </li>
-                    <li class="active has-sub">
-                        <a href="quanlive">
-                            <i class="fas fa-table"></i>Quản Lí vé
-                        </a>
-
-                    </li>
-                    <li >
-                        <a href="quanlibinhluan">
-                            <i class="far fa-check-square"></i>Quản Lí Bình Luận
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </aside>
-    <!-- END MENU SIDEBAR-->
 
     <!-- PAGE CONTAINER-->
     <div class="page-container">
@@ -138,7 +139,7 @@
                 <div class="container-fluid">
                     <div class="header-wrap">
 
-                        <form class="form-header" action="search?cid=0&uid=0&fid=0&tid=1" method="POST">
+                        <form class="form-header" action="search?cid=0&uid=0&fid=0&tid=1" method="get">
                             <input class="au-input au-input--xl" type="text" name="search" placeholder="ID Rạp chiếu phim"/>
                             <button class="au-btn--submit" type="submit">
                                 <i class="zmdi zmdi-search"></i>
@@ -156,7 +157,7 @@
                                         </div>
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>
@@ -166,7 +167,7 @@
                                         </div>
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>
@@ -188,7 +189,7 @@
                                         </div>
                                         <div class="email__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <p>Cuộc họp về bảng điều khiển mới...</p>
@@ -197,7 +198,7 @@
                                         </div>
                                         <div class="email__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <p>Cuộc họp về Database...</p>
@@ -206,7 +207,7 @@
                                         </div>
                                         <div class="email__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <p>Cuộc họp về Database...</p><p>Meeting about new dashboard...</p>
@@ -261,7 +262,7 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
+                                        <img src="${pageContext.request.contextPath}/assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">Thanh Quyen</a>
@@ -270,7 +271,7 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
+                                                    <img src="${pageContext.request.contextPath}/assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -317,7 +318,6 @@
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                             <tr>
-                                <th>STT</th>
                                 <th>Người dùng</th>
                                 <th>Phim</th>
                                 <th>Rạp chiếu phim</th>
@@ -329,23 +329,23 @@
                             <tbody class="align-middle" id="renderdata-user">
                             <%boolean showAll = (boolean) request.getAttribute("showAll");
                              if (showAll) {
-                            for(Ticket ticket : tickets){%>
+                            for(TicketWithCustomerDTO ticket : tickets){%>
                             <tr>
-                                <td class="align-middle"><%=ticket.getStt()%></td>
                                 <td class="align-middle"><%=ticket.getFullName()%></td>
                                 <td class="align-middle"><%=ticket.getMovieName()%></td>
                                 <td class="align-middle"><%=ticket.getCinemaName()%></td>
-                                <td class="align-middle"><%=ticket.getSdt()%></td>
+                                <td class="align-middle"><%=ticket.getPhoneNumber()%></td>
                                 <td class="align-middle">
-                                    <a href="detailticket?sid=<%=ticket.getTicketID()%>">
+                                    <a href="quanlive?action=detail&tid=<%=ticket.getTicketID()%>">
                                         <button class="btn btn-sm btn-primary">
                                             <i class="fa-solid fa-circle-info"></i>
                                         </button>
                                     </a>
                                 </td>
                                 <td class="align-middle">
-                                    <button data-id="<%=ticket.getTicketID()%>" data-toggle="modal"
-                                            data-target="#deleteTicket" class="btn btn-sm btn-primary">
+                                    <button
+                                            onclick="deleteItem('<%=ticket.getTicketID()%>')"
+                                            class="btn btn-sm btn-primary">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
@@ -353,24 +353,24 @@
                             </tr>
                             <%}%>
                             <%}else{
-                                List<Ticket> listTicketSearch = (List<Ticket>) request.getAttribute("ticketsS");
-                                for (Ticket ticket : listTicketSearch){%>
+                                List<TicketWithCustomerDTO> listTicketSearch = (List<TicketWithCustomerDTO>) request.getAttribute("ticketsS");
+                                for (TicketWithCustomerDTO ticket : listTicketSearch){%>
                             <tr>
-                                <td class="align-middle"><%=ticket.getStt()%></td>
                                 <td class="align-middle"><%=ticket.getFullName()%></td>
                                 <td class="align-middle"><%=ticket.getMovieName()%></td>
                                 <td class="align-middle"><%=ticket.getCinemaName()%></td>
-                                <td class="align-middle"><%=ticket.getSdt()%></td>
+                                <td class="align-middle"><%=ticket.getPhoneNumber()%></td>
                                 <td class="align-middle">
-                                    <a href="detailticket?sid=<%=ticket.getTicketID()%>">
+                                    <a href="quanlive?action=detail&tid=<%=ticket.getTicketID()%>">
                                         <button class="btn btn-sm btn-primary">
                                             <i class="fa-solid fa-circle-info"></i>
                                         </button>
                                     </a>
                                 </td>
                                 <td class="align-middle">
-                                    <button data-id="<%=ticket.getTicketID()%>" data-toggle="modal"
-                                            data-target="#deleteTicket" class="btn btn-sm btn-primary">
+                                    <button
+                                            onclick="deleteItem('<%=ticket.getTicketID()%>')"
+                                            class="btn btn-sm btn-primary">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
@@ -390,55 +390,59 @@
     </div>
 
 </div>
-<%--Delete--%>
-<div id="deleteTicket" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Xóa phim</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Bạn có chắc chắn muốn xóa nó không ? </p>
-            </div>
-            <div class="modal-footer">
-                <button id="btn-delete-ticket" type="button" class="btn btn-danger">Xóa</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<script src="./admin/js/Dialog.js"></script>
 <script>
-    Dialog('#deleteTicket', '#btn-delete-ticket', 'quanlive', 'ticketID', 'delete')
+    function deleteItem(id) {
+        if (confirm("Bạn có chắc chắn muốn xóa?")) {
+            fetch('http://localhost:8080/admin/delete?tid=' + id, {
+                method: 'POST'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Xóa thành công!");
+                        console.log("Xóa thành công"); // ghi log ở trình duyệt
+                        window.location.reload();
+                    } else {
+                        alert("Xóa thất bại!");
+                        console.log("Xóa thất bại!");
+                    }
+                })
+                .catch(error => {
+                    alert("Có lỗi xảy ra!");
+                    console.error("Lỗi fetch:", error);
+                });
+        }
+    }
+
+</script>
+<script src="${pageContext.request.contextPath}/admin/js/Dialog.js"></script>
+<script>
+    Dialog('#deleteTicket', '#btn-delete-ticket', 'deleteTicket', 'ticketID', 'delete')
 </script>
 <!-- Jquery JS-->
-<script src="admin/vendor/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->
-<script src="admin/vendor/bootstrap-4.1/popper.min.js"></script>
-<script src="admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <!-- Vendor JS       -->
-<script src="admin/vendor/slick/slick.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/slick/slick.min.js">
 </script>
-<script src="admin/vendor/wow/wow.min.js"></script>
-<script src="admin/vendor/animsition/animsition.min.js"></script>
-<script src="admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/wow/wow.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/animsition/animsition.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 </script>
-<script src="admin/vendor/counter-up/jquery.waypoints.min.js"></script>
-<script src="admin/vendor/counter-up/jquery.counterup.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/counter-up/jquery.counterup.min.js">
 </script>
-<script src="admin/vendor/circle-progress/circle-progress.min.js"></script>
-<script src="admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="admin/vendor/chartjs/Chart.bundle.min.js"></script>
-<script src="admin/vendor/select2/select2.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/select2/select2.min.js">
 </script>
 
 <!-- Main JS-->
-<script src="admin/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/main.js"></script>
 
 </body>
 
