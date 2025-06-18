@@ -165,7 +165,8 @@
 
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png"
+                                                     alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>

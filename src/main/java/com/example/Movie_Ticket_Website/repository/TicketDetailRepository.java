@@ -26,5 +26,5 @@ public interface TicketDetailRepository extends JpaRepository<TicketDetail, Stri
             "JOIN st.cinema c " +
             "JOIN c.cinemaRooms cr " +
             "WHERE tk.ticketID = :ticketID")
-    List<TicketWithMovieDTO> findTicketDetailByTicketId(@Param("ticketID") String ticketId);
+    TicketWithMovieDTO findTicketDetailByTicketId(@Param("ticketID") String ticketId);
 }

@@ -31,5 +31,4 @@ public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
     UserLogin findByUserId(String userId);
 
     long countByIsActiveTrueAndIsAdminFalse(); // Để đếm số người dùng (user thường) đang online
-
 }

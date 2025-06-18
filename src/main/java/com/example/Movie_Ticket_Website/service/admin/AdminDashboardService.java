@@ -43,6 +43,7 @@ public class AdminDashboardService {
                 .sum();
     }
 
+
     public long totalMovies() {
         return movieRepo.count();
     }

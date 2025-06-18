@@ -84,5 +84,13 @@ public class TicketService {
         return ticket;
     }
 
+    public Ticket getTicketByTicketID(String ticketID) {
+        return ticketRepository.findById(ticketID).orElse(null);
+    }
+
+    public void deleteTicket(Ticket ticket) {
+            ticketRepository.delete(ticket); // hoặc entityManager.remove(...)
+
+    }
 
 }

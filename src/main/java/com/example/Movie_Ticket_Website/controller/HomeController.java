@@ -36,10 +36,10 @@ public class HomeController {
     private CartService cartService;
 
 
-    public static List<MovieWithMediaDTO> newestMovies, publishedMovies, unPublishedMovies, popularMovies, movieListForCNameAndShowtime;
-    public static List<Cinema>  allCinema, top2Cinema, searchedResultCinemaList;
-    public static List<UserCommentWithMovieDTO> comments ;
-    public static String cinemaSearchText = "";
+    public  List<MovieWithMediaDTO> newestMovies, publishedMovies, unPublishedMovies, popularMovies, movieListForCNameAndShowtime;
+    public  List<Cinema>  allCinema, top2Cinema, searchedResultCinemaList;
+    public  List<UserCommentWithMovieDTO> comments ;
+    public  String cinemaSearchText = "";
 
     @GetMapping
     public String homeRedirect(@RequestParam(name = "action", required = false) String action,
