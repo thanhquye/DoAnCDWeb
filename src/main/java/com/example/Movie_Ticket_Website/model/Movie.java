@@ -68,11 +68,11 @@ public class Movie {
         return actor;
     }
 
-    public MoviePrice getMovieCinemaPrice() {
+    public MoviePrice getMoviePrice() {
         return moviePrice;
     }
 
-    public void setMovieCinemaPrice(MoviePrice moviePrice) {
+    public void setMoviePrice(MoviePrice moviePrice) {
         this.moviePrice = moviePrice;
     }
 

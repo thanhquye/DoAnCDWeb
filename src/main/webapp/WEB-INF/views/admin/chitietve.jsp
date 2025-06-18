@@ -42,7 +42,7 @@
     <div class="header-mobile__bar">
         <div class="container-fluid">
             <div class="header-mobile-inner">
-                <a class="logo" href="/admin/home">
+                <a class="logo" href="admin/home">
                     <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
                          style="height:35px;"/>
                     PZO TICKET
@@ -427,7 +427,7 @@
 </script>
 
 <!-- Main JS-->
-<script src="admin/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/main.js"></script>
 
 </body>
 

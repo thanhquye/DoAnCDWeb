@@ -134,5 +134,10 @@ public class MovieService {
         return movieRepository.findMoviePrice(movieID);
     }
 
-
+    public MovieWithMediaDTO getMovieBy(String movieID){
+        return movieRepository.findByMovieID(movieID);
+    }
+    public Movie getMovieById(String movieID){
+        return  movieRepository.findMovieByMovieID(movieID);
+    }
 }
