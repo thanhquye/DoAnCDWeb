@@ -34,11 +34,23 @@ public class LoginController {
         UserLogin user = loginService.authenticate(email, password);
         if (user != null) {
             Customer customer = loginService.getCustomerByUserId(user.getUserId());
-            System.out.println(customer.getFullName());
+
+            // Kiểm tra null trước khi gọi getFullName()
+            String fullName = "Người dùng ẩn danh or chưa set trong customer";
+            if (customer != null) {
+                String nameFromDB = customer.getFullName();
+                if (nameFromDB != null && !nameFromDB.isEmpty()) {
+                    fullName = nameFromDB;
+                }
+            }
+
+            System.out.println(fullName);
             session.setAttribute("user", user);
             session.setAttribute("customer", customer);
             session.setAttribute("userName", user.getUserName());
-            session.setAttribute("customerID", customer.getCustomerID());
+            if (customer != null) {
+                session.setAttribute("customerID", customer.getCustomerID());
+            }
 
             System.out.println("login success");
 
