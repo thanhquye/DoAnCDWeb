@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.Movie_Ticket_Website.dto.FilmEarning" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>--%>
 
 <%
     int userOnl = (Integer) request.getAttribute("userOnl");
@@ -10,6 +10,7 @@
     double totalEarning = (Double) request.getAttribute("totalEarning");
     List<FilmEarning> filmEarnings = (List<FilmEarning>) request.getAttribute("Top10MovieEarning");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +45,6 @@
 
     <!-- Main CSS-->
     <link href="${pageContext.request.contextPath}/admin/css/theme.css" rel="stylesheet" media="all">
-
 </head>
 
 <body class="animsition">
@@ -55,8 +55,9 @@
         <div class="header-mobile__bar">
             <div class="container-fluid">
                 <div class="header-mobile-inner">
-                    <a class="logo" href="adminHome">
-                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                    <a href="${pageContext.request.contextPath}/admin/home">
+                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
+                             title="PZO TICKET"
                              style="height:35px;"/>
                         PZO TICKET
                     </a>
@@ -72,26 +73,24 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li>
-                        <a class="js-arrow" href="quanlinguoidung">
+                        <a class="js-arrow" href="${pageContext.request.contextPath}/admin/userManagement">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li>
-                        <a href="quanliphim">
+                        <a href="${pageContext.request.contextPath}/admin/moviesManagement">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li>
-                        <a href="quanlive">
+                        <a href="${pageContext.request.contextPath}/admin/ticketManagement">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
-
                     </li>
                     <li>
-                        <a href="quanlibinhluan">
+                        <a href="${pageContext.request.contextPath}/admin/commentManagement">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
-
                 </ul>
             </div>
         </nav>
@@ -101,7 +100,7 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="adminHome">
+            <a href="${pageContext.request.contextPath}/admin/home">
                 <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
                      title="PZO TICKET" style="height:35px;"/>
                 PZO TICKET
@@ -111,21 +110,21 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a class="js-arrow" href="quanlinguoidung">
+                        <a class="js-arrow" href="${pageContext.request.contextPath}/admin/userManagement">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li>
-                        <a href="quanliphim">
+                        <a href="${pageContext.request.contextPath}/admin/moviesManagement">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li>
-                        <a href="quanlive">
+                        <a href="${pageContext.request.contextPath}/admin/ticketManagement">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
                     </li>
                     <li>
-                        <a href="quanlibinhluan">
+                        <a href="${pageContext.request.contextPath}/admin/commentManagement">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
@@ -137,6 +136,7 @@
 
     <!-- PAGE CONTAINER-->
     <div class="page-container">
+
         <!-- HEADER DESKTOP-->
         <header class="header-desktop">
             <div class="section__content section__content--p30">
@@ -165,7 +165,8 @@
 
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png"
+                                                     alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>
@@ -273,6 +274,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row m-t-25">
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c1">
@@ -293,6 +295,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c2">
                                 <div class="overview__inner">
@@ -312,6 +315,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c3">
                                 <div class="overview__inner">
@@ -331,6 +335,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c4">
                                 <div class="overview__inner" style="padding-bottom: 33px">
@@ -339,8 +344,9 @@
                                             <i class="zmdi zmdi-money"></i>
                                         </div>
                                         <div class="text">
-                                            <%-- <h2><%=totalEarning%></h2>--%>
-                                            <h2><fmt:formatNumber value="${totalEarning}" type="currency"/></h2>
+                                            <h2><%=totalEarning%>
+                                            </h2>
+                                            <%--                                            <h2><fmt:formatNumber value="${totalEarning}" type="currency"/></h2>--%>
                                             <span>Tổng thu nhập</span>
                                         </div>
                                     </div>
@@ -351,6 +357,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="au-card recent-report">
@@ -386,6 +393,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="au-card chart-percent-card">
                                 <div class="au-card-inner">
@@ -413,6 +421,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <h2 class="title-1 m-b-25">10 phim có doanh thu cao nhất</h2>
                         <div class="table-responsive table--no-card m-b-40">
@@ -446,7 +455,6 @@
                                     <%-- <td class="text-right"><%=FilmEarning.getPrice()%></td>--%>
                                     <td class="text-right"><fmt:formatNumber value="${filmEaring.total}"
                                                                              type="currency"/></td>
-
                                 </tr>
                                 <%}%>
                                 </tbody>
