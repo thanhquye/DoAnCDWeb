@@ -185,31 +185,6 @@
 </section>
 
 <%-- Phần comment người dùng cho từng bộ phim --%>
-<%--<div class="comment-section">--%>
-<%--    <div class="comment-header">BÌNH LUẬN</div>--%>
-<%--    <div class="comment-form">--%>
-<%--        <form id="commentForm" method="post" action="submitComment-servlet">--%>
-<%--            <textarea name="commentText" placeholder="Viết bình luận của bạn"></textarea>--%>
-<%--            <button type="submit">Gửi</button>--%>
-<%--        </form>--%>
-<%--    </div>--%>
-<%--    <div class="comment-list">--%>
-<%--        <!-- Giả sử các bình luận được lấy từ cơ sở dữ liệu và lặp qua -->--%>
-<%--        <div class="comment-item">--%>
-<%--            <div class="comment-user">User1</div>--%>
-<%--            <div class="comment-content">--%>
-<%--                Đây là nội dung bình luận của User1.--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="comment-item">--%>
-<%--            <div class="comment-user">User2</div>--%>
-<%--            <div class="comment-content">--%>
-<%--                Đây là nội dung bình luận của User2.--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
 <div class="comment-section">
     <div class="comment-header">BÌNH LUẬN</div>
 
@@ -239,7 +214,6 @@
         </c:choose>
     </div>
 </div>
-
 <!-- End Comment Section -->
 
 <jsp:include page="../views/layout-view/footer.jsp"/>
