@@ -369,47 +369,6 @@
 
 </div>
 
-
-<%--<script>--%>
-<%--    // Xóa người dùng--%>
-<%--    $(document).on('click', '.btn-delete-user', function () {--%>
-<%--        const userId = $(this).data('id');--%>
-<%--        $.ajax({--%>
-<%--            url: '/admin/userManagement?userID=' + userId,--%>
-<%--            type: 'DELETE',--%>
-<%--            success: function (res) {--%>
-<%--                console.log("Xóa thành công:", res);--%>
-<%--                swal("Thành công!", res.message, "success").then(() => {--%>
-<%--                    location.reload();--%>
-<%--                });--%>
-<%--            },--%>
-<%--            error: function (xhr) {--%>
-<%--                console.error("Lỗi xóa:", xhr);--%>
-<%--                swal("Lỗi!", "Không thể xóa người dùng.", "error");--%>
-<%--            }--%>
-<%--        });--%>
-<%--    });--%>
-
-<%--    // Chặn / Mở chặn--%>
-<%--    $(document).on('click', '.btn-block-user', function () {--%>
-<%--        const userId = $(this).data('id');--%>
-<%--        $.ajax({--%>
-<%--            url: '/admin/userManagement?userID=' + userId,--%>
-<%--            type: 'PUT',--%>
-<%--            success: function (res) {--%>
-<%--                console.log("Toggle trạng thái:", res);--%>
-<%--                swal("Thành công!", res.message, "success").then(() => {--%>
-<%--                    location.reload();--%>
-<%--                });--%>
-<%--            },--%>
-<%--            error: function (xhr) {--%>
-<%--                console.error("Lỗi toggle:", xhr);--%>
-<%--                swal("Lỗi!", "Không thể thay đổi trạng thái.", "error");--%>
-<%--            }--%>
-<%--        });--%>
-<%--    });--%>
-<%--</script>--%>
-
 <!-- Modal xác nhận xóa người dùng -->
 <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="deleteUserLabel"
      aria-hidden="true">
@@ -452,7 +411,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     $(document).ready(function () {
