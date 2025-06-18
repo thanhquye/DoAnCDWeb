@@ -28,5 +28,9 @@ public interface UserLoginRepository extends JpaRepository<UserLogin, String> {
     @Query("select user.userId from UserLogin user")
     List<String> findAllUserID();
 
+
+    UserLogin findByUserId(String userId);
+
     long countByIsActiveTrueAndIsAdminFalse(); // Để đếm số người dùng (user thường) đang online
+
 }

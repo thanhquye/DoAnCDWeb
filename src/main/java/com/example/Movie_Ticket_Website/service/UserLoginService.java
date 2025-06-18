@@ -77,4 +77,9 @@ public class UserLoginService {
         return userLoginRepository.findByEmail(email);
     }
 
+    // find by ID
+    public UserLogin getUserByUserID(String userID) {
+        return userLoginRepository.findByUserId(userID);
+    }
+
 }

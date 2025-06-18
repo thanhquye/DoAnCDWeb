@@ -1,10 +1,14 @@
 package com.example.Movie_Ticket_Website.beans;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+@Component
 public class DateBean implements Serializable {
     public Date currentDate;
 

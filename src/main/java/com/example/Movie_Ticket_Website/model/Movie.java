@@ -2,8 +2,6 @@ package com.example.Movie_Ticket_Website.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -58,11 +56,24 @@ public class Movie {
     @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private UserComment userComment;
 
+    @ManyToOne
+    @JoinColumn(name = "priceID")
+    private MoviePrice moviePrice;
+
+
     public Movie() {
     }
 
     public Actor getActor() {
         return actor;
+    }
+
+    public MoviePrice getMovieCinemaPrice() {
+        return moviePrice;
+    }
+
+    public void setMovieCinemaPrice(MoviePrice moviePrice) {
+        this.moviePrice = moviePrice;
     }
 
     public void setActor(Actor actor) {
