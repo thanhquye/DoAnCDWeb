@@ -38,6 +38,7 @@ public class LoginController {
             session.setAttribute("user", user);
             session.setAttribute("customer", customer);
             session.setAttribute("userName", user.getUserName());
+            session.setAttribute("customerID", customer.getCustomerID());
 
             System.out.println("login success");
 
