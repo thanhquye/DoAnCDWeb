@@ -8,14 +8,23 @@
     UserLogin user = (UserLogin) session.getAttribute("user");
     boolean isLogined = user == null ? false : true;
 %>
+
+<%--<%--%>
+<%--    int cartSize = (int) session.getAttribute("cartSize");--%>
+<%--%>--%>
+
 <%
-    int cartSize = (int) session.getAttribute("cartSize");
+    int cartSize = session.getAttribute("cartSize") != null
+            ? (Integer) session.getAttribute("cartSize")
+            : 0;
 %>
+
 <header id="site-header" class="w3l-header fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
         <div class="container">
-            <a class="navbar-brand" href= "${pageContext.request.contextPath}/home?action=direct" >
-                <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>PZO TICKET</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home?action=direct">
+                <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
+                     title="PZO TICKET" style="height:35px;"/>PZO TICKET</a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -24,22 +33,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"  ><a class="nav-link" href="/">Trang chủ</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="movie?action=init">Phim</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="showTimes?action=init">Lịch chiếu</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="about">Thông tin</a></li>
-                    <li class="nav-item"  ><a class="nav-link" href="contact">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="movie?action=init">Phim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="showTimes?action=init">Lịch chiếu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about">Thông tin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact">Liên hệ</a></li>
                 </ul>
-                <div class="Login_SignUp" id="login" style="font-size: 2rem ; display: inline-block; position: relative;border-radius: 5px; ">
+                <div class="Login_SignUp" id="login"
+                     style="font-size: 2rem ; display: inline-block; position: relative;border-radius: 5px; ">
                     <a class="nav-link" href="login" style="padding: 0px 0px;">
-                    <ul class="navbar-nav ml-auto">
-                    <% if(isLogined) { %>
-                        <li class="nav-item " ><a class="nav-link" href="/" style="padding-right: 1rem; padding-left: 1rem" >Chào, ${sessionScope.get("userName")}</a></li>
-                        <li class="nav-item " ><a class="nav-link" href="/logout" style="padding-right: 1rem; padding-left: 1rem" >Đăng xuất</a></li>
-                    <% } else { %>
-                        <li class="nav-item " ><a class="nav-link" href="login" style="padding-right: 1rem; padding-left: 1rem" >Đăng nhập</a></li>
-                    <% } %>
-                    </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <% if (isLogined) { %>
+                            <li class="nav-item "><a class="nav-link" href="/"
+                                                     style="padding-right: 1rem; padding-left: 1rem">Chào, ${sessionScope.get("userName")}</a>
+                            </li>
+                            <li class="nav-item "><a class="nav-link" href="/logout"
+                                                     style="padding-right: 1rem; padding-left: 1rem">Đăng xuất</a></li>
+                            <% } else { %>
+                            <li class="nav-item "><a class="nav-link" href="login"
+                                                     style="padding-right: 1rem; padding-left: 1rem">Đăng nhập</a></li>
+                            <% } %>
+                        </ul>
                     </a>
                 </div>
                 <%--  shopping cart icon --%>
@@ -110,7 +124,7 @@
     var btns = document.getElementsByClassName("nav-item");
     console.log(btns);
     for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
+        btns[i].addEventListener("click", function () {
             console.log(this.className);
             console.log("check");
             this.className += " active";
