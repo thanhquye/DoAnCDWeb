@@ -90,10 +90,8 @@ class MovieTicketWebsiteApplicationTests {
 
     @Test
     void totaTicketsPrice() {
-        List<TicketWithMovieDTO> getByTID = ticketDetailService.getTicketDetailByTicketId("tk1");
-        for (TicketWithMovieDTO ticketWithMovieDTO : getByTID) {
-            System.out.println(ticketWithMovieDTO.getPrice());
-        }
+        Ticket ticket = ticketService.getTicketByTicketID("tk13");
+        ticketService.deleteTicket(ticket);
     }
 
     @Test

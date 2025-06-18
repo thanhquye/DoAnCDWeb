@@ -35,6 +35,9 @@ public class TicketWithMovieDTO {
         this.movieScore = movieScore;
     }
 
+    public TicketWithMovieDTO() {
+    }
+
     public String getTicketID() {
         return ticketID;
     }

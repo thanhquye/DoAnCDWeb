@@ -1,5 +1,5 @@
 <%@page import="java.util.List" %>
-<%@ page import="model.MovieMediaLink" %>
+<%@ page import="com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,25 +13,25 @@
     <link href="admin/css/font-face.css" rel="stylesheet" media="all">
     <%--    <link href="admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">--%>
     <%--    <link href="admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">--%>
-    <link href="admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <!-- Bootstrap CSS-->
-    <link href="admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="admin/css/theme.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/css/theme.css" rel="stylesheet" media="all">
     <!-- new css -->
-    <link rel="stylesheet" href="admin/css/style_admin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/style_admin.css">
 
 </head>
 
@@ -44,8 +44,8 @@
         <div class="header-mobile__bar">
             <div class="container-fluid">
                 <div class="header-mobile-inner">
-                    <a class="logo" href="adminHome">
-                        <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                    <a class="logo" href="/admin/home">
+                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
                              style="height:35px;"/>
                         PZO TICKET
 
@@ -62,22 +62,22 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li >
-                        <a class="js-arrow"  href="quanlinguoidung">
+                        <a class="js-arrow"  href="/admin/quanlinguoidung">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li class="active has-sub">
-                        <a href="quanliphim">
+                        <a href="/admin/quanliphim">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li >
-                        <a href="quanlive">
+                        <a href="/admin/quanlive">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
 
                     </li>
                     <li >
-                        <a href="quanlibinhluan">
+                        <a href="/admin/quanlibinhluan">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
@@ -90,8 +90,8 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="adminHome">
-                <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
+            <a href="/admin/home">
+                <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
                 PZO TICKET
             </a>
         </div>
@@ -99,22 +99,22 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li >
-                        <a class="js-arrow"  href="quanlinguoidung">
+                        <a class="js-arrow"  href="/admin/quanlinguoidung">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li class="active has-sub">
-                        <a href="quanliphim">
+                        <a href="/admin/quanliphim">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li >
-                        <a href="quanlive">
+                        <a href="/admin/quanlive">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
 
                     </li>
                     <li >
-                        <a href="quanlibinhluan">
+                        <a href="/admin/quanlibinhluan">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>

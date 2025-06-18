@@ -56,7 +56,7 @@
             <div class="container-fluid">
                 <div class="header-mobile-inner">
                     <a class="logo" href="adminHome">
-                        <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
                              style="height:35px;"/>
                         PZO TICKET
                     </a>
