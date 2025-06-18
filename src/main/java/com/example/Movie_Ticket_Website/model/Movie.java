@@ -52,9 +52,8 @@ public class Movie {
     @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MovieMediaLink movieMediaLink;
 
-
-    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private UserComment userComment;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserComment> userComments;
 
     @ManyToOne
     @JoinColumn(name = "priceID")
@@ -88,14 +87,21 @@ public class Movie {
         this.showTimes = showTimes;
     }
 
-    public UserComment getUserComment() {
-        return userComment;
+    public List<UserComment> getUserComments() {
+        return userComments;
     }
 
-    public void setUserComment(UserComment userComment) {
-        this.userComment = userComment;
+    public void setUserComments(List<UserComment> userComments) {
+        this.userComments = userComments;
     }
 
+    public MoviePrice getMoviePrice() {
+        return moviePrice;
+    }
+
+    public void setMoviePrice(MoviePrice moviePrice) {
+        this.moviePrice = moviePrice;
+    }
 
     public String getMovieID() {
         return movieID;

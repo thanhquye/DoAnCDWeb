@@ -12,7 +12,7 @@ public class UserComment {
     @Column(name = "commentText")
     private String commentText;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "movieID")
     private Movie movie;
 
@@ -20,7 +20,8 @@ public class UserComment {
     @JoinColumn(name = "customerID")
     private Customer customer;
 
-    public UserComment() {}
+    public UserComment() {
+    }
 
 
     public String getCommentID() {

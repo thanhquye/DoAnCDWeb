@@ -1,7 +1,8 @@
-<%@page import="model.User" %>
 <%@page import="java.util.List" %>
-<%@ page import="model.Comment" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.UserComment" %>
+<%@ page import="com.example.Movie_Ticket_Website.dto.CommentDTO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,47 +10,61 @@
 
     <!-- Title Page-->
     <title>ADMIN HOME</title>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <%--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--%>
+
+    <!-- jQuery & Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Fontfaces CSS-->
-    <link href="admin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/css/font-face.css" rel="stylesheet" media="all">
     <%--    <link href="admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">--%>
     <%--    <link href="admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">--%>
-    <link href="admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/admin/vendor/mdi-font/css/material-design-iconic-font.min.css"
+          rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Bootstrap CSS-->
-    <link href="admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
+          media="all">
 
     <!-- Vendor CSS-->
-    <link href="admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/animsition/animsition.min.css" rel="stylesheet"
+          media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+          rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
+          media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/vendor/perfect-scrollbar/perfect-scrollbar.css"
+          rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="admin/css/theme.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/css/theme.css" rel="stylesheet" media="all">
     <!-- new css -->
-    <link rel="stylesheet" href="admin/css/style_admin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/style_admin.css">
 
 
 </head>
 
 <body class="animsition">
-<% List<Comment> comments = (List<Comment>) request.getAttribute("commentList");%>
+<% List<CommentDTO> comments = (List<CommentDTO>) request.getAttribute("commentList"); %>
 <div class="page-wrapper">
+
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
         <div class="header-mobile__bar">
             <div class="container-fluid">
                 <div class="header-mobile-inner">
-                    <a class="logo" href="adminHome">
-                        <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                    <a href="${pageContext.request.contextPath}/admin/home">
+                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
+                             title="PZO TICKET"
                              style="height:35px;"/>
                         PZO TICKET
-
                     </a>
                     <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -63,22 +78,21 @@
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
                     <li>
-                        <a class="js-arrow" href="quanlinguoidung">
+                        <a class="js-arrow" href="${pageContext.request.contextPath}/admin/userManagement">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li>
-                        <a href="quanliphim">
+                        <a href="${pageContext.request.contextPath}/admin/moviesManagement">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
                     <li>
-                        <a href="quanlive">
+                        <a href="${pageContext.request.contextPath}/admin/ticketManagement">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
-
                     </li>
-                    <li class="active has-sub">
-                        <a href="quanlibinhluan">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/admin/commentManagement">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
@@ -91,8 +105,9 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="adminHome">
-                <img src="assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
+            <a href="${pageContext.request.contextPath}/admin/home">
+                <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET"
+                     title="PZO TICKET" style="height:35px;"/>
                 PZO TICKET
             </a>
         </div>
@@ -100,22 +115,21 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
                     <li>
-                        <a class="js-arrow" href="quanlinguoidung">
+                        <a class="js-arrow" href="${pageContext.request.contextPath}/admin/userManagement">
                             <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
                     </li>
                     <li>
-                        <a href="quanliphim">
+                        <a href="${pageContext.request.contextPath}/admin/moviesManagement">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
-                    <li c>
-                        <a href="quanlive">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/admin/ticketManagement">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
-
                     </li>
-                    <li class="active has-sub">
-                        <a href="quanlibinhluan">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/admin/commentManagement">
                             <i class="far fa-check-square"></i>Quản Lí Bình Luận
                         </a>
                     </li>
@@ -127,14 +141,16 @@
 
     <!-- PAGE CONTAINER-->
     <div class="page-container">
+
         <!-- HEADER DESKTOP-->
         <header class="header-desktop">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="header-wrap">
 
-                        <form class="form-header" action="search?cid=1&uid=0&fid=0&tid=0" method="POST">
-                            <input class="au-input au-input--xl" type="text" name="search" placeholder="ID phim"/>
+                        <%-- Form tìm kiếm --%>
+                        <form class="form-header" action="" method="POST">
+                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Tìm kiếm..."/>
                             <button class="au-btn--submit" type="submit">
                                 <i class="zmdi zmdi-search"></i>
                             </button>
@@ -145,13 +161,17 @@
                                 <div class="noti__item js-item-menu">
                                     <i class="zmdi zmdi-comment-more"></i>
                                     <span class="quantity">1</span>
+
+                                    <%-- Xem tin nhắn --%>
                                     <div class="mess-dropdown js-dropdown">
                                         <div class="mess__title">
                                             <p>Bạn có 2 tin nhắn</p>
                                         </div>
+
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png"
+                                                     alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>
@@ -159,60 +179,14 @@
                                                 <span class="time">3 phút trước</span>
                                             </div>
                                         </div>
-                                        <div class="mess__item">
-                                            <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
-                                            </div>
-                                            <div class="content">
-                                                <h6>Thanh Phát</h6>
-                                                <p>bây giờ bạn đã kết nối qua tin nhắn</p>
-                                                <span class="time">Hôm qua</span>
-                                            </div>
-                                        </div>
+
                                         <div class="mess__footer">
                                             <a href="#">Xem tất cả tin nhắn</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="noti__item js-item-menu">
-                                    <i class="zmdi zmdi-email"></i>
-                                    <span class="quantity">1</span>
-                                    <div class="email-dropdown js-dropdown">
-                                        <div class="email__title">
-                                            <p>Bạn có 3 email mới</p>
-                                        </div>
-                                        <div class="email__item">
-                                            <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
-                                            </div>
-                                            <div class="content">
-                                                <p>Cuộc họp về bảng điều khiển mới...</p>
-                                                <span>Thanh Phát, 3 phút trước</span>
-                                            </div>
-                                        </div>
-                                        <div class="email__item">
-                                            <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
-                                            </div>
-                                            <div class="content">
-                                                <p>Cuộc họp về Database...</p>
-                                                <span>Thanh Phát, Hôm qua</span>
-                                            </div>
-                                        </div>
-                                        <div class="email__item">
-                                            <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
-                                            </div>
-                                            <div class="content">
-                                                <p>Cuộc họp về Database...</p><p>Meeting about new dashboard...</p>
-                                                <span>Thanh phát, 22-1-2024</span>
-                                            </div>
-                                        </div>
-                                        <div class="email__footer">
-                                            <a href="#">Xem tất cả email</a>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <%-- thông báo ở đây --%>
                                 <div class="noti__item js-item-menu">
                                     <i class="zmdi zmdi-notifications"></i>
                                     <span class="quantity">3</span>
@@ -220,6 +194,7 @@
                                         <div class="notifi__title">
                                             <p>Bạn có 3 thông báo</p>
                                         </div>
+
                                         <div class="notifi__item">
                                             <div class="bg-c1 img-cir img-40">
                                                 <i class="zmdi zmdi-email-open"></i>
@@ -229,34 +204,20 @@
                                                 <span class="date">21-01-2024, 06:50</span>
                                             </div>
                                         </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c2 img-cir img-40">
-                                                <i class="zmdi zmdi-account-box"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p>Bạn có 1 email mới</p>
-                                                <span class="date">22-01-2024, 09:30</span>
-                                            </div>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c3 img-cir img-40">
-                                                <i class="zmdi zmdi-file-text"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p>Bạn có một tập tin mới</p>
-                                                <span class="date">22-01-2024, 11:01</span>
-                                            </div>
-                                        </div>
+
                                         <div class="notifi__footer">
                                             <a href="#">Tất cả thông báo</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <%-- Profile --%>
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
+                                        <img src="${pageContext.request.contextPath}/assets/images/thanh_quyen_avt.png"
+                                             alt="Thanh Quyen"/>
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">Thanh Quyen</a>
@@ -265,7 +226,8 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
+                                                    <img src="${pageContext.request.contextPath}/assets/images/thanh_quyen_avt.png"
+                                                         alt="Thanh Quyen"/>
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -290,7 +252,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="logout">
+                                            <a href="${pageContext.request.contextPath}/logout">
                                                 <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                         </div>
                                     </div>
@@ -312,6 +274,7 @@
                             <thead class="bg-secondary text-dark">
                             <tr>
                                 <th>STT</th>
+                                <th>id commetn</th>
                                 <th>Tên Phim</th>
                                 <th>Tên người dùng</th>
                                 <th>Nội dung</th>
@@ -322,51 +285,57 @@
                             <%
                                 boolean showAll = (boolean) request.getAttribute("showAll");
                                 if (showAll) {
-                                    for (Comment comment : comments) {
+                                    List<com.example.Movie_Ticket_Website.dto.CommentDTO> commentList =
+                                            (List<com.example.Movie_Ticket_Website.dto.CommentDTO>) request.getAttribute("commentList");
+                                    int stt = 1;
+                                    for (com.example.Movie_Ticket_Website.dto.CommentDTO comment : commentList) {
                             %>
                             <tr>
-                                <td class="align-middle"><%=comment.getStt()%>
+                                <td class="align-middle"><%= stt++ %>
                                 </td>
-                                <td class="align-middle"><%=comment.getFullName()%>
+                                <td class="align-middle"><%= comment.getCommentID() %>
                                 </td>
-                                <td class="align-middle"><%=comment.getMovieName()%>
+                                <td class="align-middle"><%= comment.getMovieName() %>
                                 </td>
-                                <td class="align-middle"><%=comment.getCommentText()%>
+                                <td class="align-middle"><%= comment.getFullName() %>
+                                </td>
+                                <td class="align-middle"><%= comment.getCommentText() %>
                                 </td>
                                 <td class="align-middle">
-                                    <button data-id="<%=comment.getCommentID()%>" data-toggle="modal"
-                                            data-target="#deleteComment" class="btn btn-sm btn-primary">
+                                    <button data-id="<%= comment.getCommentID() %>" data-toggle="modal"
+                                            data-target="#deleteCommentModal" class="btn btn-sm btn-primary btn-delete">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
-
                             </tr>
-                            <%}%>
                             <%
+                                }
                             } else {
-                                List<Comment> listCommentSearch = (List<Comment>) request.getAttribute("commentListS");
-                                for (Comment comment : listCommentSearch) {
+                                List<com.example.Movie_Ticket_Website.dto.CommentDTO> commentListS =
+                                        (List<com.example.Movie_Ticket_Website.dto.CommentDTO>) request.getAttribute("commentListS");
+                                int stt = 1;
+                                for (com.example.Movie_Ticket_Website.dto.CommentDTO comment : commentListS) {
                             %>
                             <tr>
-
-                                <td class="align-middle"><%=comment.getStt()%>
+                                <td class="align-middle"><%= stt++ %>
                                 </td>
-                                <td class="align-middle"><%=comment.getFullName()%>
+                                <td class="align-middle"><%= comment.getMovieName() %>
                                 </td>
-                                <td class="align-middle"><%=comment.getMovieName()%>
+                                <td class="align-middle"><%= comment.getFullName() %>
                                 </td>
-                                <td class="align-middle"><%=comment.getCommentText()%>
+                                <td class="align-middle"><%= comment.getCommentText() %>
                                 </td>
                                 <td class="align-middle">
-                                    <button data-id="<%=comment.getCommentID()%>" data-toggle="modal"
-                                            data-target="#deleteComment" class="btn btn-sm btn-primary">
+                                    <button data-id="<%= comment.getCommentID() %>" data-toggle="modal"
+                                            data-target="#deleteCommentModal" class="btn btn-sm btn-primary btn-delete">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
-
                             </tr>
-                            <%}%>
-                            <%}%>
+                            <%
+                                    }
+                                }
+                            %>
                             </tbody>
                         </table>
                     </div>
@@ -374,59 +343,89 @@
             </div>
         </div>
         <!-- END MAIN CONTENT-->
+
         <!-- END PAGE CONTAINER-->
     </div>
 
 </div>
-<%--Delete--%>
-<div id="deleteComment" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Xóa phim</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"></span>
-                </button>
-            </div>
+
+<!-- Modal xác nhận xóa bình luận -->
+<div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content bg-light text-center">
             <div class="modal-body">
-                <p>Bạn có chắc chắn muốn xóa nó không ? </p>
+                <i class="fa fa-exclamation-triangle text-danger mb-3" style="font-size: 2rem;"></i>
+                <h5>Bạn có chắc chắn muốn xóa bình luận này không?</h5>
             </div>
-            <div class="modal-footer">
-                <button id="btn-delete-comment" type="button" class="btn btn-danger">Xóa</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy</button>
+                <button type="button" id="confirmDeleteComment" data-id="" class="btn btn-danger btn-sm">Xóa</button>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="./admin/js/Dialog.js"></script>
+<!-- Script xóa bình luận -->
 <script>
-    Dialog('#deleteComment', '#btn-delete-comment', 'quanlibinhluan', 'commentID', 'delete')
+    $(document).ready(function () {
+        // Khi bấm nút xóa → mở modal và lưu commentID vào button confirm
+        $("#renderdata-user").on("click", ".btn-delete", function () {
+            var commentID = $(this).data("id");
+            $("#confirmDeleteComment").data("id", commentID);
+        });
+
+        // Khi xác nhận xóa trong modal
+        $("#confirmDeleteComment").on("click", function () {
+            var commentID = $(this).data("id");
+
+            $.ajax({
+                url: "/admin/commentManagement",
+                type: "POST",
+                data: {commentID: commentID},
+                success: function (response) {
+                    $("#deleteCommentModal").modal("hide");
+                    if (response.status === 200) {
+                        alert(response.message);
+                        // Có thể xóa dòng trong bảng bằng JS hoặc reload trang:
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    $("#deleteCommentModal").modal("hide");
+                    alert("Lỗi xảy ra khi gửi yêu cầu xóa.");
+                }
+            });
+        });
+    });
 </script>
+
+<script src="${pageContext.request.contextPath}/admin/js/Dialog.js"></script>
+
 <!-- Jquery JS-->
-<script src="admin/vendor/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->
-<script src="admin/vendor/bootstrap-4.1/popper.min.js"></script>
-<script src="admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <!-- Vendor JS       -->
-<script src="admin/vendor/slick/slick.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/slick/slick.min.js">
 </script>
-<script src="admin/vendor/wow/wow.min.js"></script>
-<script src="admin/vendor/animsition/animsition.min.js"></script>
-<script src="admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/wow/wow.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/animsition/animsition.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 </script>
-<script src="admin/vendor/counter-up/jquery.waypoints.min.js"></script>
-<script src="admin/vendor/counter-up/jquery.counterup.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/counter-up/jquery.counterup.min.js">
 </script>
-<script src="admin/vendor/circle-progress/circle-progress.min.js"></script>
-<script src="admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="admin/vendor/chartjs/Chart.bundle.min.js"></script>
-<script src="admin/vendor/select2/select2.min.js">
-</script>
+<script src="${pageContext.request.contextPath}/admin/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/select2/select2.min.js"></script>
 
 <!-- Main JS-->
-<script src="admin/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/main.js"></script>
 
 </body>
 
