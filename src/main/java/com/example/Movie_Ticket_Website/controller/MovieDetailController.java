@@ -1,5 +1,6 @@
 package com.example.Movie_Ticket_Website.controller;
 
+import com.example.Movie_Ticket_Website.dto.CommentDTO;
 import com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO;
 import com.example.Movie_Ticket_Website.model.Cinema;
 import com.example.Movie_Ticket_Website.service.CinemaService;
@@ -9,9 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,18 +31,45 @@ public class MovieDetailController {
     public static String cinemaSearchText = "";
 
 
+    //    @GetMapping
+//    public String movieDetailRedirect(@RequestParam(name = "action", required = false) String action,
+//                                      @RequestParam(name = "cid", required = false) String cid,
+//                                      @RequestParam(name = "cinemaName", required = false) String cinemaName,
+//                                      @RequestParam(name = "movieID", required = false) String mid,
+//                                      @RequestParam(name = "date", required = false) String date,
+//                                      @RequestParam(name = "category", required = false) String category,
+//                                      @RequestParam(name = "country", required = false) String country,
+//                                      @RequestParam(name = "year", required = false) String year,
+//                                      HttpSession session, Model model) {
+//        return switch (action) {
+//            case "init" -> initData(mid, cid, model);
+//            case "show-cinemaShowtime" -> showCinemaName(cid, mid, session, model);
+//            case "show-cinemaDetail" -> searchCinemaAction(cinemaName, model);
+//            case "showShowTime" -> showShowTime(mid, cid, date, session, model);
+//            case "cinemaSearch" -> cinemaSearchAction(mid, cid, date, cinemaName, session, model);
+//            default -> "redirect:/home?action=direct";
+//        };
+//    }
     @GetMapping
     public String movieDetailRedirect(@RequestParam(name = "action", required = false) String action,
-                                @RequestParam(name = "cid", required = false) String cid,
-                                @RequestParam(name = "cinemaName", required = false) String cinemaName,
-                                @RequestParam(name = "movieID", required = false) String mid,
-                                @RequestParam(name = "date", required = false) String date,
-                                @RequestParam(name = "category", required = false) String category,
-                                @RequestParam(name = "country", required = false) String country,
-                                @RequestParam(name = "year", required = false) String year,
-                                HttpSession session, Model model) {
+                                      @RequestParam(name = "cid", required = false) String cid,
+                                      @RequestParam(name = "cinemaName", required = false) String cinemaName,
+                                      @RequestParam(name = "movieID", required = false) String mid,
+                                      @RequestParam(name = "date", required = false) String date,
+                                      @RequestParam(name = "category", required = false) String category,
+                                      @RequestParam(name = "country", required = false) String country,
+                                      @RequestParam(name = "year", required = false) String year,
+                                      HttpSession session, Model model) {
+
+        // Nếu có movieID thì lấy comment của phim đó
+        if (mid != null && !mid.isEmpty()) {
+            List<CommentDTO> comments = userCommentService.getCommentsByMovieId(mid);
+            model.addAttribute("comments", comments);
+        }
+
+        // Xử lý action trả về view tương ứng
         return switch (action) {
-            case "init" -> initData(mid, cid, model);
+            case "init" -> initData(mid, cid, model);  // trong initData vẫn trả về "movieDetail"
             case "show-cinemaShowtime" -> showCinemaName(cid, mid, session, model);
             case "show-cinemaDetail" -> searchCinemaAction(cinemaName, model);
             case "showShowTime" -> showShowTime(mid, cid, date, session, model);
@@ -52,7 +78,8 @@ public class MovieDetailController {
         };
     }
 
-    private String cinemaSearchAction(String mid,String cid,String date,String cinemaName, HttpSession session, Model model) {
+
+    private String cinemaSearchAction(String mid, String cid, String date, String cinemaName, HttpSession session, Model model) {
         newestMovies = movieService.getNewestFilms(5);
         publishedMovies = movieService.getPublishedMovie(1, 5);
         unPublishedMovies = movieService.getPublishedMovie(0, 4);
@@ -69,31 +96,31 @@ public class MovieDetailController {
 
 // main process : show movie detail
         movie = movieService.getMovieByID(mid);
-       model.addAttribute("movie", movie);
+        model.addAttribute("movie", movie);
 
         // process right box data
         Cinema cinemaDetail = cinemaService.getCinemaByID(cid);
-       model.addAttribute("cinemaDetail", cinemaDetail);
-       model.addAttribute("wantedBookDate", date);
+        model.addAttribute("cinemaDetail", cinemaDetail);
+        model.addAttribute("wantedBookDate", date);
         movieListForCNameAndShowtime = movieService.getMovieForCinemaAndShowtime(cid, date); // danh sach cac phim cua cinema co cid trong thoi gian date
         if (movieListForCNameAndShowtime.size() != 0) {
-           model.addAttribute("movieListForCNameAndShowtime", movieListForCNameAndShowtime);
+            model.addAttribute("movieListForCNameAndShowtime", movieListForCNameAndShowtime);
         }
         // main process : show detail cinema
-       model.addAttribute("cinemaDetail", cinemaDetail);
+        model.addAttribute("cinemaDetail", cinemaDetail);
 
         // main process : show showtime of detail cinema
-       model.addAttribute("cinemaDetail", cinemaDetail);
-       model.addAttribute("movieListForCNameAndShowtime", session.getAttribute("movieListForCNameAndShowtime"));
+        model.addAttribute("cinemaDetail", cinemaDetail);
+        model.addAttribute("movieListForCNameAndShowtime", session.getAttribute("movieListForCNameAndShowtime"));
 
         // main process : search cinema by name
         cinemaSearchText = cinemaName;
-       model.addAttribute("txtHistory", cinemaName);
+        model.addAttribute("txtHistory", cinemaName);
         searchedResultCinemaList = cinemaService.getCinemaByName(cinemaName);
         int searchedResultCinemaListSize = searchedResultCinemaList.size();
-       model.addAttribute("searchedResultCinemaList", searchedResultCinemaList);
+        model.addAttribute("searchedResultCinemaList", searchedResultCinemaList);
         session.setAttribute("searchedResultCinemaList", searchedResultCinemaList);
-       model.addAttribute("searchedResultCinemaListSize", searchedResultCinemaListSize);
+        model.addAttribute("searchedResultCinemaListSize", searchedResultCinemaListSize);
 
         return "movieDetail";
     }
@@ -141,10 +168,10 @@ public class MovieDetailController {
     private String searchCinemaAction(String cinemaName, Model model) {
         List<Cinema> list = cinemaService.getCinemaByName(cinemaName);
         int size = list.size();
-       model.addAttribute("resCinemaList",list);
-       model.addAttribute("resCinemaListSize",size);
+        model.addAttribute("resCinemaList", list);
+        model.addAttribute("resCinemaListSize", size);
 
-       return "movieDetail";
+        return "movieDetail";
 
     }
 
@@ -207,5 +234,25 @@ public class MovieDetailController {
 
     }
 
+    // chức năng thêm comment
+    @PostMapping("/comment")
+    public String submitComment(@RequestParam("movieID") String movieID,
+                                @RequestParam("commentText") String commentText,
+                                HttpSession session, Model model) {
+        // Lấy thông tin user hiện tại
+        String customerID = (String) session.getAttribute("customerID");
+        System.out.println("Customer ID in session: " + customerID);
+        if (customerID == null) {
+            // Chưa đăng nhập -> chuyển hướng
+            model.addAttribute("error", "Bạn cần đăng nhập để bình luận.");
+            return "redirect:/login"; // hoặc xử lý phù hợp
+        }
+
+        // Tạo và lưu comment mới
+        userCommentService.addComment(customerID, movieID, commentText);
+        System.out.println("comment success");
+        // Redirect về trang chi tiết phim để tránh submit lại form khi F5
+        return "redirect:/movieDetail?action=init&movieID=" + movieID;
+    }
 
 }
