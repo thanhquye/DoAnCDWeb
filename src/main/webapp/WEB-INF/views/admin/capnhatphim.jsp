@@ -1,28 +1,20 @@
-<%@page import="com.example.Movie_Ticket_Website.model.UserLogin" %>
-<%@page import="java.util.List" %>
-<%@ page import="com.example.Movie_Ticket_Website.model.Ticket" %>
-<%@ page import="com.example.Movie_Ticket_Website.dto.TicketWithCustomerDTO" %>
+<%@ page import="com.example.Movie_Ticket_Website.dto.MovieWithMediaDTO" %>
+<%@ page import="com.example.Movie_Ticket_Website.model.Movie" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>ADMIN HOME</title>
+    <title>UPDATE FILM</title>
 
     <!-- Fontfaces CSS-->
     <link href="${pageContext.request.contextPath}/admin/css/font-face.css" rel="stylesheet" media="all">
-<%--    <link href="admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">--%>
-<%--    <link href="admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">--%>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <%--    <link href="admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">--%>
+    <%--    <link href="admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">--%>
     <link href="${pageContext.request.contextPath}/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <!-- Bootstrap CSS-->
     <link href="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -41,94 +33,96 @@
     <!-- new css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/style_admin.css">
 
+
 </head>
 
-<body class="animsition">
-<%List<TicketWithCustomerDTO> tickets = (List<TicketWithCustomerDTO>) request.getAttribute("tickets");%>
+<body>
+<%--<%List<User> users = (List<User>) request.getAttribute("listUser");%>--%>
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid">
+                <div class="header-mobile-inner">
+                    <a class="logo" href="admin/home">
+                        <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
+                             style="height:35px;"/>
+                        PZO TICKET
 
-<header class="header-mobile d-block d-lg-none">
-    <div class="header-mobile__bar">
-        <div class="container-fluid">
-            <div class="header-mobile-inner">
-                <a class="logo" href="admin/admin">
-                    <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
-                         style="height:35px;"/>
-                    PZO TICKET
-
-                </a>
-                <button class="hamburger hamburger--slider" type="button">
+                    </a>
+                    <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
                             </span>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <nav class="navbar-mobile">
-        <div class="container-fluid">
-            <ul class="navbar-mobile__list list-unstyled">
-                <li >
-                    <a class="js-arrow"  href="/admin/quanlinguoidung">
-                        <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
-                </li>
-                <li >
-                    <a href="/admin/quanliphim">
-                        <i class="fas fa-chart-bar"></i>Quản Lí Phim
-                    </a>
-                </li>
-                <li class="active has-sub">
-                    <a href="/admin/quanlive">
-                        <i class="fas fa-table"></i>Quản Lí vé
-                    </a>
+        <nav class="navbar-mobile">
+            <div class="container-fluid">
+                <ul class="navbar-mobile__list list-unstyled">
+                    <li >
+                        <a class="js-arrow"  href="/admin/quanlinguoidung">
+                            <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
+                    </li>
+                    <li >
+                        <a href="/admin/quanliphim">
+                            <i class="fas fa-chart-bar"></i>Quản Lí Phim
+                        </a>
+                    </li>
+                    <li class="active has-sub">
+                        <a href="/admin/quanlive">
+                            <i class="fas fa-table"></i>Quản Lí vé
+                        </a>
 
-                </li>
-                <li >
-                    <a href="/admin/quanlibinhluan">
-                        <i class="far fa-check-square"></i>Quản Lí Bình Luận
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-<!-- END HEADER MOBILE-->
-
-<!-- MENU SIDEBAR-->
-<aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-        <a href="/home">
-            <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
-            PZO TICKET
-        </a>
-    </div>
-    <div class="menu-sidebar__content js-scrollbar1">
-        <nav class="navbar-sidebar">
-            <ul class="list-unstyled navbar__list">
-                <li >
-                    <a class="js-arrow"  href="/admin/quanlinguoidung">
-                        <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
-                </li>
-                <li >
-                    <a href="/admin/quanliphim">
-                        <i class="fas fa-chart-bar"></i>Quản Lí Phim
-                    </a>
-                </li>
-                <li class="active has-sub">
-                    <a href="/admin/quanlive">
-                        <i class="fas fa-table"></i>Quản Lí vé
-                    </a>
-
-                </li>
-                <li >
-                    <a href="/admin/quanlibinhluan">
-                        <i class="far fa-check-square"></i>Quản Lí Bình Luận
-                    </a>
-                </li>
-            </ul>
+                    </li>
+                    <li >
+                        <a href="/admin/quanlibinhluan">
+                            <i class="far fa-check-square"></i>Quản Lí Bình Luận
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
-    </div>
-</aside>
-<!-- END MENU SIDEBAR-->
+    </header>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+        <div class="logo">
+            <a href="/home">
+                <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
+                PZO TICKET
+            </a>
+        </div>
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li >
+                        <a class="js-arrow"  href="/admin/quanlinguoidung">
+                            <i class="fas fa-tachometer-alt"></i>Quản Lí Người Dùng</a>
+                    </li>
+                    <li >
+                        <a href="/admin/quanliphim">
+                            <i class="fas fa-chart-bar"></i>Quản Lí Phim
+                        </a>
+                    </li>
+                    <li class="active has-sub">
+                        <a href="/admin/quanlive">
+                            <i class="fas fa-table"></i>Quản Lí vé
+                        </a>
+
+                    </li>
+                    <li >
+                        <a href="/admin/quanlibinhluan">
+                            <i class="far fa-check-square"></i>Quản Lí Bình Luận
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
 
 
     <!-- PAGE CONTAINER-->
@@ -296,7 +290,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="}">
+                                            <a href="logout">
                                                 <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                         </div>
                                     </div>
@@ -309,81 +303,108 @@
         </header>
         <!-- HEADER DESKTOP-->
 
+
         <!-- MAIN CONTENT-->
         <div class="main-content">
-
             <div>
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-bordered text-center mb-0">
-                            <thead class="bg-secondary text-dark">
-                            <tr>
-                                <th>Người dùng</th>
-                                <th>Phim</th>
-                                <th>Rạp chiếu phim</th>
-                                <th>Số điện thoại</th>
-                                <th>Chi tiết</th>
-                                <th>Xóa</th>
-                            </tr>
-                            </thead>
-                            <tbody class="align-middle" id="renderdata-user">
-                            <%boolean showAll = (boolean) request.getAttribute("showAll");
-                             if (showAll) {
-                            for(TicketWithCustomerDTO ticket : tickets){%>
-                            <tr>
-                                <td class="align-middle"><%=ticket.getFullName()%></td>
-                                <td class="align-middle"><%=ticket.getMovieName()%></td>
-                                <td class="align-middle"><%=ticket.getCinemaName()%></td>
-                                <td class="align-middle"><%=ticket.getPhoneNumber()%></td>
-                                <td class="align-middle">
-                                    <a href="quanlive?action=detail&tid=<%=ticket.getTicketID()%>">
-                                        <button class="btn btn-sm btn-primary">
-                                            <i class="fa-solid fa-circle-info"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                                <td class="align-middle">
-                                    <button
-                                            onclick="deleteItem('<%=ticket.getTicketID()%>')"
-                                            class="btn btn-sm btn-primary">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
+                        <% Movie movie = (Movie) request.getAttribute("movie");%>
+                                <div class="modal-content">
 
-                            </tr>
-                            <%}%>
-                            <%}else{
-                                List<TicketWithCustomerDTO> listTicketSearch = (List<TicketWithCustomerDTO>) request.getAttribute("ticketsS");
-                                for (TicketWithCustomerDTO ticket : listTicketSearch){%>
-                            <tr>
-                                <td class="align-middle"><%=ticket.getFullName()%></td>
-                                <td class="align-middle"><%=ticket.getMovieName()%></td>
-                                <td class="align-middle"><%=ticket.getCinemaName()%></td>
-                                <td class="align-middle"><%=ticket.getPhoneNumber()%></td>
-                                <td class="align-middle">
-                                    <a href="quanlive?action=detail&tid=<%=ticket.getTicketID()%>">
-                                        <button class="btn btn-sm btn-primary">
-                                            <i class="fa-solid fa-circle-info"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                                <td class="align-middle">
-                                    <button
-                                            onclick="deleteItem('<%=ticket.getTicketID()%>')"
-                                            class="btn btn-sm btn-primary">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Chi tiết và chỉnh sửa</h4>
+                                        <button type="button" class="close" data-dismiss="modal"></button>
+                                    </div>
 
-                            </tr>
-                            <%}%>
-                            <%}%>
-                            </tbody>
-                        </table>
+                                    <!-- Modal Body -->
+                                    <div class="modal-body">
+                                        <!-- Đặt nội dung form ở đây -->
+                                        <form action="quanliphim/update" method="post">
+                                            <input type="hidden" name="movieID" value="${movie.getMovieID()}" />
+                                            <div class="form-group">
+                                                <label>Tên </label>
+                                                <input type="text" class="form-control" name="movieName" value="${movie.getMovieName()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Thể loại</label>
+                                                <input type="text" class="form-control" name="movieCategory" value="${movie.getMovieCategory()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ngày phát hành</label>
+                                                <input type="text" class="form-control" name="releaseDate" placeholder="yyyy-MM-dd" value="${movie.getReleaseDate()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tác giả</label>
+                                                <input type="text" class="form-control" name="director" value="${movie.getDirector()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Thời gian</label>
+                                                <input type="text" class="form-control" name="duration" value="${movie.getDuration()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Quốc gia</label>
+                                                <input type="text" class="form-control" name="country" value="${movie.getCountry()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mô tả</label>
+                                                <div>
+                                                    <textarea class="form-control" name="movieDescription" >${movie.getMovieDescription()}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nội dung</label>
+                                                <div>
+                                                    <textarea class="form-control" name="movieContent" >${movie.getMovieContent()}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Trạng thái</label>
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="isPublished" value="1"
+                                                               id="flexRadioDefault1" ${movie.getIsPublished()==1?"checked":""}>
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            Đã chiếu
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="isPublished" value="0"
+                                                               id="flexRadioDefault2" ${movie.getIsPublished()==1?"":"checked"}>
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Chưa chiế<u></u>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Đánh giá</label>
+                                                <input type="text" class="form-control" name="movieScore" value="${movie.getMovieScore()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Link trailer</label>
+                                                <input type="text" class="form-control" name="movieMediaLink.linkMovieTrailer" value="${movie.getMovieMediaLink().getLinkMovieTrailer()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Link ảnh</label>
+                                                <input type="text" class="form-control" name="movieMediaLink.linkMovieImage" value="${movie.getMovieMediaLink().getLinkMovieImage()}">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="quanliphim">
+                                                <button type="button" class="btn btn-secondary" >Đóng</button>
+                                                </a>
+                                                <button  type="submit" class="btn btn-primary">Lưu</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- END MAIN CONTENT-->
         <!-- END PAGE CONTAINER-->
@@ -391,35 +412,6 @@
 
 </div>
 
-
-<script>
-    function deleteItem(id) {
-        if (confirm("Bạn có chắc chắn muốn xóa?")) {
-            fetch('http://localhost:8080/admin/quanlive/delete?tid=' + id, {
-                method: 'POST'
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert("Xóa thành công!");
-                        console.log("Xóa thành công"); // ghi log ở trình duyệt
-                        window.location.reload();
-                    } else {
-                        alert("Xóa thất bại!");
-                        console.log("Xóa thất bại!");
-                    }
-                })
-                .catch(error => {
-                    alert("Có lỗi xảy ra!");
-                    console.error("Lỗi fetch:", error);
-                });
-        }
-    }
-
-</script>
-<script src="${pageContext.request.contextPath}/admin/js/Dialog.js"></script>
-<script>
-    Dialog('#deleteTicket', '#btn-delete-ticket', 'deleteTicket', 'ticketID', 'delete')
-</script>
 <!-- Jquery JS-->
 <script src="${pageContext.request.contextPath}/admin/vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->

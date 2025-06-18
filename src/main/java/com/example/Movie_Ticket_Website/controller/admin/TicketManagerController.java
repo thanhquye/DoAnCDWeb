@@ -29,7 +29,7 @@ public class TicketManagerController {
     TicketDetailService ticketDetailService;
 
     @GetMapping("/quanlive")
-    public String admin(@RequestParam(name = "action", required = false) String action,
+    public String directTicketManagerController(@RequestParam(name = "action", required = false) String action,
                         @RequestParam(name = "tid", required = false) String tid,
                         HttpSession session,
                         Model model
@@ -54,7 +54,7 @@ public class TicketManagerController {
     private String ShowTicketDetail(String tid, HttpSession session, Model model) {
         TicketWithMovieDTO ticket = ticketDetailService.getTicketDetailByTicketId(tid);
         model.addAttribute("ticketDetail",ticket);
-       return "admin/ticketDetail";
+       return "admin/chitietve";
     }
 
     private String showAllTicket(HttpSession session, Model model) {
@@ -64,7 +64,7 @@ public class TicketManagerController {
 
         return "admin/quanlive";
     }
-    @PostMapping("/delete")
+    @PostMapping("/quanlive/delete")
     @ResponseBody
     public ResponseEntity<?> deleteTicket(@RequestParam("tid") String ticketId) {
         System.out.println("deleteTicket");

@@ -143,4 +143,6 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
             "join p.movie m " +
             "where m.movieID =:movieID")
     int findMoviePrice(@Param("movieID") String movieID);
+
+    Movie findMovieByMovieID(String movieID);
 }

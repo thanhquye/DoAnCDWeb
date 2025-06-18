@@ -10,7 +10,7 @@
     <title>ADMIN HOME</title>
 
     <!-- Fontfaces CSS-->
-    <link href="admin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="${pageContext.request.contextPath}/admin/css/font-face.css" rel="stylesheet" media="all">
     <%--    <link href="admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">--%>
     <%--    <link href="admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">--%>
     <link href="${pageContext.request.contextPath}/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -35,16 +35,15 @@
 
 </head>
 
-<body class="animsition">
-<%List<MovieMediaLink> movies = (List<MovieMediaLink>) request.getAttribute("movieList");%>
+<body>
+<%List<MovieWithMediaDTO> movies = (List<MovieWithMediaDTO>) request.getAttribute("movieList");%>
 
 <div class="page-wrapper">
-    <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
         <div class="header-mobile__bar">
             <div class="container-fluid">
                 <div class="header-mobile-inner">
-                    <a class="logo" href="/admin/home">
+                    <a class="logo" href="admin/admin">
                         <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET"
                              style="height:35px;"/>
                         PZO TICKET
@@ -68,7 +67,7 @@
                     <li class="active has-sub">
                         <a href="/admin/quanliphim">
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
-                        </a>
+                        </a>đăn
                     </li>
                     <li >
                         <a href="/admin/quanlive">
@@ -90,7 +89,7 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="/admin/home">
+            <a href="/home">
                 <img src="${pageContext.request.contextPath}/assets/images/icon_banner.jpg" alt="PZO TICKET" title="PZO TICKET" style="height:35px;"/>
                 PZO TICKET
             </a>
@@ -107,7 +106,7 @@
                             <i class="fas fa-chart-bar"></i>Quản Lí Phim
                         </a>
                     </li>
-                    <li >
+                    <li>
                         <a href="/admin/quanlive">
                             <i class="fas fa-table"></i>Quản Lí vé
                         </a>
@@ -124,6 +123,7 @@
     </aside>
     <!-- END MENU SIDEBAR-->
 
+
     <!-- PAGE CONTAINER-->
     <div class="page-container">
         <!-- HEADER DESKTOP-->
@@ -132,8 +132,8 @@
                 <div class="container-fluid">
                     <div class="header-wrap">
 
-                        <form class="form-header" action="search?cid=0&uid=0&fid=1&tid=0" method="POST">
-                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Tên phim"/>
+                        <form class="form-header" action="search?cid=0&uid=0&fid=0&tid=1" method="get">
+                            <input class="au-input au-input--xl" type="text" name="search" placeholder="ID Rạp chiếu phim"/>
                             <button class="au-btn--submit" type="submit">
                                 <i class="zmdi zmdi-search"></i>
                             </button>
@@ -150,7 +150,7 @@
                                         </div>
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>
@@ -160,7 +160,7 @@
                                         </div>
                                         <div class="mess__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <h6>Thanh Phát</h6>
@@ -182,7 +182,7 @@
                                         </div>
                                         <div class="email__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <p>Cuộc họp về bảng điều khiển mới...</p>
@@ -191,7 +191,7 @@
                                         </div>
                                         <div class="email__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <p>Cuộc họp về Database...</p>
@@ -200,7 +200,7 @@
                                         </div>
                                         <div class="email__item">
                                             <div class="image img-cir img-40">
-                                                <img src="assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
+                                                <img src="${pageContext.request.contextPath}/assets/images/thanh_phat_avt.png" alt="Thanh Phát"/>
                                             </div>
                                             <div class="content">
                                                 <p>Cuộc họp về Database...</p><p>Meeting about new dashboard...</p>
@@ -255,7 +255,7 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
+                                        <img src="${pageContext.request.contextPath}/assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">Thanh Quyen</a>
@@ -264,7 +264,7 @@
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
+                                                    <img src="${pageContext.request.contextPath}/assets/images/thanh_quyen_avt.png" alt="Thanh Quyen"/>
                                                 </a>
                                             </div>
                                             <div class="content">
@@ -302,15 +302,22 @@
         </header>
         <!-- HEADER DESKTOP-->
 
+
         <!-- MAIN CONTENT-->
         <div class="main-content">
             <div>
                 <div class="card">
                     <div class="card-body">
+                        <td class="align-middle">
+                            <a href="quanliphim?action=add">
+                                <button class="btn btn-sm btn-primary" style="margin: 20px 20px 20px 0px;">
+                                    Thêm movie
+                                </button>
+                            </a>
+                        </td>
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                             <tr>
-                                <th class="align-middle">STT</th>
                                 <th class="align-middle">Tên</th>
                                 <th class="align-middle">Thể loại</th>
                                 <th class="align-middle">Ngày phát hành</th>
@@ -327,11 +334,8 @@
                             <tbody class="align-middle" id="renderdata-user">
                             <%boolean showAll = (boolean) request.getAttribute("showAll");
                             if (showAll) {
-                            for (MovieMediaLink movie : movies) {%>
+                            for (MovieWithMediaDTO movie : movies) {%>
                             <tr>
-
-                                <td class="align-middle"><%=movie.getStt()%>
-                                </td>
                                 <td class="align-middle"><%=movie.getMovieName()%>
                                 </td>
                                 <td class="align-middle"><%=movie.getMovieCategory()%>
@@ -355,25 +359,24 @@
                                 <td class="align-middle"><%=movie.getMovieScore()%>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="updateMovie?mid=<%=movie.getMovieID()%>">
+                                    <a href="quanliphim?action=update&mid=<%=movie.getMovieID()%>">
                                         <button class="btn btn-sm btn-primary">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
                                     </a>
                                 </td>
+
                                 <td class="align-middle">
-                                    <button data-id="<%=movie.getMovieID()%>" data-toggle="modal"
-                                            data-target="#deletemovie" class="btn btn-sm btn-primary"><i
-                                            class="fa fa-times"></i></button>
+                                    <button onclick="deleteItem('<%=movie.getMovieID()%>')"
+                                            class="btn btn-sm btn-primary">
+                                        <i class="fa fa-times"></i></button>
                                 </td>
                             </tr>
                             <%}%>
                             <%}else{
-                            List<MovieMediaLink> listmoviesearch = (List<MovieMediaLink>) request.getAttribute("movieListS");
-                            for(MovieMediaLink movie : listmoviesearch){%>
+                            List<MovieWithMediaDTO> listmoviesearch = (List<MovieWithMediaDTO>) request.getAttribute("movieListS");
+                            for(MovieWithMediaDTO movie : listmoviesearch){%>
                             <tr>
-                                <td class="align-middle"><%=movie.getStt()%>
-                                </td>
                                 <td class="align-middle"><%=movie.getMovieName()%>
                                 </td>
                                 <td class="align-middle"><%=movie.getMovieCategory()%>
@@ -396,16 +399,17 @@
                                 <td class="align-middle"><%=movie.getMovieScore()%>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="updateMovie?mid=<%=movie.getMovieID()%>">
+                                    <a href="quanliphim?action=update&mid=<%=movie.getMovieID()%>">
                                         <button class="btn btn-sm btn-primary">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
                                     </a>
                                 </td>
+
                                 <td class="align-middle">
-                                    <button data-id="<%=movie.getMovieID()%>" data-toggle="modal"
-                                            data-target="#deletemovie" class="btn btn-sm btn-primary"><i
-                                            class="fa fa-times"></i></button>
+                                    <button onclick="deleteItem('<%=movie.getMovieID()%>')"
+                                            class="btn btn-sm btn-primary">>
+                                        <i class="fa fa-times"></i></button>
                                 </td>
                             </tr>
                             <%}%>
@@ -413,84 +417,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="add-movie" style="margin-left: 20px">
-                        <!-- Đặt nội dung form ở đây -->
-                        <div style="margin: 20px 0px 20px 0px">
-                            <h4>Thêm Phim Mới</h4>
-                        </div>
-                        <form action="quanliphim" method="post">
-                            <div class="form-group">
-                                <label>Tên </label>
-                                <input type="text" class="form-control" name="name">
-                            </div>
-                            <div class="form-group">
-                                <label>Thể loại</label>
-                                <input type="text" class="form-control" name="category">
-                            </div>
-                            <div class="form-group">
-                                <label>Ngày phát hành</label>
-                                <input type="text" class="form-control" name="releaseDate" placeholder="yyyy-MM-dd">
-                            </div>
-                            <div class="form-group">
-                                <label>Tác giả</label>
-                                <input type="text" class="form-control" name="director">
-                            </div>
-                            <div class="form-group">
-                                <label>Thời gian</label>
-                                <input type="text" class="form-control" name="duration">
-                            </div>
-                            <div class="form-group">
-                                <label>Quốc gia</label>
-                                <input type="text" class="form-control" name="country">
-                            </div>
-                            <div class="form-group">
-                                <label>Mô tả</label>
-                                <div>
-                                    <textarea class="form-control" name="description"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Nội dung</label>
-                                <div>
-                                    <textarea class="form-control" name="content"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Link trailer</label>
-                                <input type="text" class="form-control" name="linkMovieTrailer">
-                            </div>
-                            <div class="form-group">
-                                <label>Link ảnh</label>
-                                <input type="text" class="form-control" name="linkMovieImage">
-                            </div>
-                            <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="isPublished" value="true"
-                                               id="flexRadioDefault11">
-                                        <label class="form-check-label" for="flexRadioDefault11">
-                                            Đã chiếu
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="isPublished" value="false"
-                                               id="flexRadioDefault22" checked>
-                                        <label class="form-check-label" for="flexRadioDefault22">
-                                            Chưa chiếu
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Đánh giá</label>
-                                <input type="text" class="form-control" name="score">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Lưu</button>
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
             </div>
 
@@ -502,55 +429,59 @@
 </div>
 
 
-<%--Delete--%>
-<div id="deletemovie" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Xóa phim</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Bạn có chắc chắn muốn xóa nó không ? </p>
-            </div>
-            <div class="modal-footer">
-                <button id="btn-delete-movie" type="button" class="btn btn-danger">Xóa</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<script src="./admin/js/Dialog.js"></script>
+
 <script>
-    Dialog('#deletemovie', '#btn-delete-movie', 'quanliphim', 'movieID', 'delete')
+    function deleteItem(id) {
+        if (confirm("Bạn có chắc chắn muốn xóa?")) {
+            console.log("click thành công")
+            fetch('http://localhost:8080/admin/quanliphim/delete?mid=' + id, {
+                method: 'POST'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Xóa thành công!");
+                        console.log("Xóa thành công"); // ghi log ở trình duyệt
+                        window.location.reload();
+                    } else {
+                        alert("Xóa thất bại!");
+                        console.log("Xóa thất bại!");
+                    }
+                })
+                .catch(error => {
+                    alert("Có lỗi xảy ra!");
+                    console.error("Lỗi fetch:", error);
+                });
+        }
+    }
+
 </script>
+
+<script src="${pageContext.request.contextPath}/admin/js/Dialog.js"></script>
 <!-- Jquery JS-->
-<script src="admin/vendor/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->
-<script src="admin/vendor/bootstrap-4.1/popper.min.js"></script>
-<script src="admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <!-- Vendor JS       -->
-<script src="admin/vendor/slick/slick.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/slick/slick.min.js">
 </script>
-<script src="admin/vendor/wow/wow.min.js"></script>
-<script src="admin/vendor/animsition/animsition.min.js"></script>
-<script src="admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/wow/wow.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/animsition/animsition.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 </script>
-<script src="admin/vendor/counter-up/jquery.waypoints.min.js"></script>
-<script src="admin/vendor/counter-up/jquery.counterup.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/counter-up/jquery.counterup.min.js">
 </script>
-<script src="admin/vendor/circle-progress/circle-progress.min.js"></script>
-<script src="admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="admin/vendor/chartjs/Chart.bundle.min.js"></script>
-<script src="admin/vendor/select2/select2.min.js">
+<script src="${pageContext.request.contextPath}/admin/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendor/select2/select2.min.js">
 </script>
 
 <!-- Main JS-->
-<script src="admin/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/main.js"></script>
 
 </body>
 
